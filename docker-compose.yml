@@ -1,0 +1,21 @@
+version: "3"
+services:
+  sphinx-server:
+    image: dldl/sphinx-server
+    container_name: sphinx-server
+    expose:
+      - 81
+    ports:
+      - 8000:81
+    volumes:
+      - "$(pwd)/docs":/web
+    environment:
+       VIRTUAL_HOST: ~/docs
+       VIRTUAL_PORT: 8000
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
+
+

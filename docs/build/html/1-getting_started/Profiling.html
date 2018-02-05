@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Profiling your code &mdash; OzSTAR User Guide  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="OzSTAR User Guide  documentation" href="../index.html"/>
+        <link rel="next" title="Swinburne HPC system" href="Swinburne-HPC.html"/>
+        <link rel="prev" title="File Transfer" href="file-transfer.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> OzSTAR User Guide
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Access.html">Access the supercomputer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file-transfer.html">File Transfer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Profiling your code</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#using-valgrind">Using Valgrind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-nvprof">Using nvprof</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#monitoring-your-resource-usage">Monitoring Your Resource Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Swinburne-HPC.html">Swinburne HPC system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OzSTAR vs Green II</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What&#8217;s new on OzSTAR?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/Filesystems.html">File systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/Modules.html">Environment Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/torque-vs-slurm.html">Torque-Moab vs Slurm</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Jobs on OzSTAR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-partition.html">Job Queues on OzSTAR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-slurm-basics.html">Slurm: basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-slurm-details.html">Slurm: gathering information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-slurm-create.html">Slurm: Creating a job</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-slurm-examples.html">Slurm: script examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Jobs on Green II</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../3-greenII/g2-Queue.html">Job Queues on Green II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3-greenII/g2-qsub.html">Submitting Jobs on Green II (qsub)</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OzSTAR User Guide</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Profiling your code</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="profiling-your-code">
+<h1>Profiling your code<a class="headerlink" href="#profiling-your-code" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="using-valgrind">
+<h2>Using Valgrind<a class="headerlink" href="#using-valgrind" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://valgrind.org/">Valgrind</a> is a tool suite that provides a number of debugging and profiling tools. It is commonly used to check for or debug memory allocation bugs. Using Valgrind does not require program recompilation, however it is recommended that the application be compiled with -g so that additional symbol information be used. It should be noted that running Valgrind can be significantly slower than a normal run, so using a smaller test cases is recommended for profiling.</p>
+<p>There are three different compilations of Valgrind on green II : <code class="docutils literal"><span class="pre">valgrind/x86_64</span></code>, <code class="docutils literal"><span class="pre">valgrind/x86_64/gnu</span></code>, and <code class="docutils literal"><span class="pre">valgrind/x86_64/gnu/3.7.0</span></code>. You can load the default version using:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>module load valgrind
+</pre></div>
+</div>
+<p>To use Valgrind to check your code:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>valgrind --tool=[valgrindTool] [myexecutable]
+</pre></div>
+</div>
+<p>The default Valgrind tool is : <code class="docutils literal"><span class="pre">memcheck</span></code></p>
+<p>If you want to use valgrind for an MPI application use:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>mpirun -np [Number of Processes] valgrind –-tool=[valgrindTool] myexecutable
+</pre></div>
+</div>
+<p>You can find more details on : <a class="reference external" href="http://valgrind.org/docs/manual/quick-start.html">Valgrind Quick Start Guide</a> or <a class="reference external" href="http://valgrind.org/docs/manual/manual.html">Valgrind User Manual</a></p>
+</div>
+<div class="section" id="using-nvprof">
+<h2>Using nvprof<a class="headerlink" href="#using-nvprof" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="http://docs.nvidia.com/cuda/profiler-users-guide/#nvprof-overview">nvprof</a> profiling tool enables you to collect and view CUDA profiling data from the command-line. <code class="docutils literal"><span class="pre">nvprof</span></code> enables the collection of a timeline of CUDA-related activities on both CPU and GPU, including kernel execution, memory transfers, memory set and CUDA API calls.
+You can call <code class="docutils literal"><span class="pre">nvporf</span></code> using:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>nvprof mycuda_exec
+</pre></div>
+</div>
+<p>If multiple CUDA capable devices are profiled, use</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>nvprof --print-summary-per-gpu
+</pre></div>
+</div>
+<p>to print one summary per GPU.</p>
+<p>An alternative option is to use the <a class="reference external" href="http://docs.nvidia.com/cuda/profiler-users-guide/index.html#compute-command-line-profiler-overview">Command Line Profiler</a>.</p>
+<p>Please note that <code class="docutils literal"><span class="pre">nvprof</span></code> and the <code class="docutils literal"><span class="pre">Command</span> <span class="pre">Line</span> <span class="pre">Profiler</span></code> are mutually exclusive profiling tools. If <code class="docutils literal"><span class="pre">nvprof</span></code> is invoked when the command-line profiler is enabled, <code class="docutils literal"><span class="pre">nvprof</span></code> will report an error and exit.</p>
+</div>
+<div class="section" id="monitoring-your-resource-usage">
+<h2>Monitoring Your Resource Usage<a class="headerlink" href="#monitoring-your-resource-usage" title="Permalink to this headline">¶</a></h2>
+<p>If you want to see the resource usage of your code while running in batch mode you can add the following calls to your PBS script:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>top -d [Number of Update] -s [time] -b &gt; MyCodeUsage.txt &amp;
+</pre></div>
+</div>
+<p>Where</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">[time]</span></code> is the delay between screen updates to time seconds. The default delay between updates is 5 seconds.</li>
+<li><code class="docutils literal"><span class="pre">[Number</span> <span class="pre">of</span> <span class="pre">Update]</span></code> shows only this number of displays, then exit. A display is considered to be one update of the screen. This option allows you to select the number of displays you wants to see before top auto-matically exits. is the number of screens updates before top exits.</li>
+<li><code class="docutils literal"><span class="pre">-b</span></code> is used to select “batch” mode. In this mode, all input from the terminal is ignored.</li>
+</ul>
+<p>You can use nvidia-smi to do the same thing with GPUs.</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>nvidia-smi --loop=30 -a  &gt; nvidiasmioutput.txt &amp;
+</pre></div>
+</div>
+<p>You will need to kill the nvidia-sim process after your code finished because it loops indefinitely until ctrl-c is triggered.. You can use</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>pkill nvidia-smi
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Swinburne-HPC.html" class="btn btn-neutral float-right" title="Swinburne HPC system" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="file-transfer.html" class="btn btn-neutral" title="File Transfer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

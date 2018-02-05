@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Slurm: basics &mdash; OzSTAR User Guide  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="OzSTAR User Guide  documentation" href="../index.html"/>
+        <link rel="next" title="Slurm: gathering information" href="oz-slurm-details.html"/>
+        <link rel="prev" title="Job Queues on OzSTAR" href="oz-partition.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> OzSTAR User Guide
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Access.html">Access the supercomputer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/file-transfer.html">File Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Profiling.html">Profiling your code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Swinburne-HPC.html">Swinburne HPC system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/FAQ.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OzSTAR vs Green II</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What&#8217;s new on OzSTAR?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/Filesystems.html">File systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/Modules.html">Environment Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/torque-vs-slurm.html">Torque-Moab vs Slurm</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Jobs on OzSTAR</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="oz-partition.html">Job Queues on OzSTAR</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Slurm: basics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#brief-command-summary">Brief Command Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#slurm-keywords">Slurm keywords</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="oz-slurm-details.html">Slurm: gathering information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oz-slurm-create.html">Slurm: Creating a job</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oz-slurm-examples.html">Slurm: script examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Jobs on Green II</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../3-greenII/g2-Queue.html">Job Queues on Green II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3-greenII/g2-qsub.html">Submitting Jobs on Green II (qsub)</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OzSTAR User Guide</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Slurm: basics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="slurm-basics">
+<h1>Slurm: basics<a class="headerlink" href="#slurm-basics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="brief-command-summary">
+<h2>Brief Command Summary<a class="headerlink" href="#brief-command-summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Job control and monitoring:  <code class="docutils literal"><span class="pre">scontrol</span></code> and <code class="docutils literal"><span class="pre">squeue</span></code>.</li>
+<li>Submit batch jobs: <code class="docutils literal"><span class="pre">sbatch</span></code>.</li>
+<li>Request interactive job sessions: through <code class="docutils literal"><span class="pre">salloc</span></code>.</li>
+<li>Launch/running a job: <code class="docutils literal"><span class="pre">srun</span></code>.</li>
+<li>Nodes info and cluster status: <code class="docutils literal"><span class="pre">sinfo</span></code>.</li>
+<li>Job and job steps accounting data: <code class="docutils literal"><span class="pre">sacct</span></code>.</li>
+<li><dl class="first docutils">
+<dt>Cancel a job: <code class="docutils literal"><span class="pre">scancel</span> <span class="pre">jobid</span></code>.</dt>
+<dd><ul class="first last">
+<li>Cancel all your jobs: <code class="docutils literal"><span class="pre">scancel</span> <span class="pre">-u</span> <span class="pre">username</span></code>.</li>
+<li>Cancel all your pending jobs:<code class="docutils literal"><span class="pre">scancel</span> <span class="pre">-t</span> <span class="pre">PD</span></code>.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="slurm-keywords">
+<h2>Slurm keywords<a class="headerlink" href="#slurm-keywords" title="Permalink to this headline">¶</a></h2>
+<p><strong>Required sbatch Options/Directives</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="14%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Short Format</th>
+<th class="head">Long Format</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>-N count</td>
+<td>&#8211;nodes=count</td>
+<td>Used to allocate countnodes to your job.</td>
+</tr>
+<tr class="row-odd"><td>-t HH:MM:SS</td>
+<td>&#8211;time=HH:MM:SS</td>
+<td>Always specify the maximum wallclock time for your job.</td>
+</tr>
+<tr class="row-even"><td>-C feature</td>
+<td>&#8211;constraint=feature</td>
+<td>Always specify what type of nodes to run.</td>
+</tr>
+<tr class="row-odd"><td>-q QoS</td>
+<td>&#8211;qos=QoS</td>
+<td>Always specify your QoS (debug, regular, etc), which will usually be debug for testing and regular for production runs.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Useful sbatch Options/Directives</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="6%" />
+<col width="90%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Short Format</th>
+<th class="head">Long Format</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>N/A</td>
+<td>&#8211;ntasks-per-node=count</td>
+<td>Use [count] of MPI tasks per node</td>
+</tr>
+<tr class="row-odd"><td>-c count</td>
+<td>&#8211;cpus-per-task=count</td>
+<td>Set the value as &#8220;number of of logical cores (CPUs) per MPI task&#8221;. For example, on Cori Haswell, it is 64 logical cores divided by #MPI_per_node.</td>
+</tr>
+<tr class="row-even"><td>-L list_of_filesystems</td>
+<td>&#8211;license=list_of_filesystems</td>
+<td>Specifies the file systems (in a comma-separated list) needed for your job. Available choices for Cori are: cscratch1 (or SCRATCH), dna, project, projecta, projectb. More details on requesting file system licenses can be found here.</td>
+</tr>
+<tr class="row-odd"><td>-J job_name</td>
+<td>&#8211;job-name=job_name</td>
+<td>job_name: up to 15 printable, non-whitespace characters.</td>
+</tr>
+<tr class="row-even"><td>-A repo</td>
+<td>&#8211;account=repo</td>
+<td>Charge this job to the project repo</td>
+</tr>
+<tr class="row-odd"><td>-e filename</td>
+<td>&#8211;error=filename</td>
+<td>Write STDERR to filename</td>
+</tr>
+<tr class="row-even"><td>-o filename</td>
+<td>&#8211;output=filename</td>
+<td>Write STDOUT to filename. By default both standard output and standard error are directed to a file of the name &#8220;slurm-%j.out&#8221;, where the &#8220;%j&#8221; is replaced with the job id. See the -i option for filename specification options.</td>
+</tr>
+<tr class="row-odd"><td>-i filename_pattern</td>
+<td>&#8211;input=filename_pattern</td>
+<td>Instruct SLURM to connect the batch script&#8217;s standard input directly to the file name specified in the &#8220;filename pattern&#8221;.The filename pattern may contain one or more replacement symbols, which are a percent sign &#8220;%&#8221; followed by a letter (e.g. %j).Supported replacement symbols are:%jJob id.%NNode name. Only one file is created, so %N will be replaced by the name of the first compute node in the job, which is the one that runs the script.</td>
+</tr>
+<tr class="row-even"><td>N/A</td>
+<td>&#8211;mail-type=events &#8211;mail-user=address</td>
+<td>Valid event values are: BEGIN, END, FAIL, REQUEUE, ALL (equivalent to BEGIN, END, FAIL, REQUEUE, and STAGE_OUT), STAGE_OUT (burst buffer stage out completed), TIME_LIMIT, TIME_LIMIT_90 (reached 90 percent of time limit), TIME_LIMIT_80 (reached 80 percent of time limit), and TIME_LIMIT_50 (reached 50 percent of time limit). Multiple type values may be specified in a comma separated list. The user to be notified is indicated with &#8211;mail-user. Mail notifications on job BEGIN, END and FAIL apply to a job array as a whole rather than generating individual email messages for each task in the job array.</td>
+</tr>
+<tr class="row-odd"><td>-D directory_name</td>
+<td>&#8211;workdir=directory_name</td>
+<td>Set the working directory of the batch script to directory_name before it is executed. The path can be specified as full path or relative path to the directory where the sbatch command is executed.</td>
+</tr>
+<tr class="row-even"><td>N/A</td>
+<td>&#8211;export=ALL</td>
+<td>Export the current environment variables into the batch job environment.  This is the default behavior.  Other options (not recommended to use) are specific list of environment variables, or NONE.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="oz-slurm-details.html" class="btn btn-neutral float-right" title="Slurm: gathering information" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="oz-partition.html" class="btn btn-neutral" title="Job Queues on OzSTAR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
