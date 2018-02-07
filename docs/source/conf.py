@@ -64,9 +64,11 @@ release = ''
 
 html_show_sourcelink = False
 
+html_logo = '_static/OzStar-FA-Mono-KEYLINE.png'
 html_theme_options = {
+    'logo_only': True,
     'display_version': False,
-    }
+}
 
 html_show_copyright = False
 html_show_sphinx = False
