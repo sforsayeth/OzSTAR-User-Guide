@@ -41,25 +41,110 @@ OzSTAR vs Green II
 There exists slight differences between how modules are handled on OzSTAR and Green II.
 
 
-**OzSTAR** now includes generic and optimized versions of modules. For example, by typing ``module avail``,
-you should see a set of modules under `skylake <https://en.wikipedia.org/wiki/Skylake_(microarchitecture)>`__, which are optimised for specific hardware; the same modules are also available in a generic form::
+**OzSTAR** now includes groups of modules organised around a specific compiler (namely, intel and gcc). Each group provides
+modules compiled using one of these compiler. These are accessed via the following commands.
 
-    % module avail
+For modules compiled with the intel compiler:
+::
 
-    ------------------------------------------------------------------------ /apps/skylake/modulefiles/all -------------------------------------------------------------------------
-       fftw/2.1.5-gompi-2018    fftw/3.3.7-gompi-2018 (D)    gsl/2.4-gcc-6.4.0 (D)    python/2.7.14-foss-2018    python/3.6.4-foss-2018 (D)    sqlite/3.21.0-gcc-6.4.0 (D)
+    module load intel
 
-    ------------------------------------------------------------------------ /apps/generic/modulefiles/all -------------------------------------------------------------------------
-       astropy/2.0.3-foss-2018-python-2.7.14        git/2.16.0                                      openblas/0.2.20-gcc-6.4.0
-       astropy/2.0.3-foss-2018-python-3.6.4  (D)    gompi/2018                                      openmpi/3.0.0-gcc-6.4.0
-       (...)
-       fftw/2.1.5-gompi-2018                        iimpi/2016.2.181-gcc-6.4.0                      szip/2.1.1-foss-2018
-       fftw/3.3.7-gompi-2018                        imkl/11.3.2.181-iimpi-2016.2.181-gcc-6.4.0      ucx/1.2.1
-       foss/2018                                    impi/5.1.3.181-iccifort-2016.2.181-gcc-6.4.0    vasp/5.4.1-gpu-intel-2016.2.181-gcc-6.4.0
-       gcc/6.4.0                                    intel/2016.2.181-gcc-6.4.0                      vasp/5.4.1-intel-2016.2.181-gcc-6.4.0      (D)
-       gcccore/6.4.0                                llvm/5.0.1-foss-2018
+Then, if you run a ``module avail``, you should see at the beginning of the list of modules available specific to intel:
+::
+
+    module avail
+
+    --------------------------------------------------- /apps/skylake/modulefiles/all/mpi/intel/2018.1.163-gcc-6.4.0/openmpi/3.0.0 ----------------------------------------------------
+       boost/1.66.0    hdf5/1.8.19    hdf5/1.10.1 (D)    imkl/2018.1.163 (L)    netcdf/4.5.0
+
+    -------------------------------------------------------- /apps/skylake/modulefiles/all/compiler/intel/2018.1.163-gcc-6.4.0 --------------------------------------------------------
+       openmpi/3.0.0 (L)
+
+    (...)
 
 
+Similarly, for GCC, you can run the following:
+::
+
+    module load gcc
+
+And ``module avail`` should display something like the following:
+::
+
+    ---------------------------------------------------------------- /apps/skylake/modulefiles/all/compiler/gcc/6.4.0 -----------------------------------------------------------------
+       cfitsio/3.420    clang/5.0.1    framel/8.30    gsl/2.4    llvm/5.0.1    openblas/0.2.20    openmpi/3.0.0    qt/4.8.7    sqlite/3.21.0
+
+   (...)
+
+Please note the following useful commands: ``module purge`` will allow you to unload all modules currently loaded. It is
+also possible to switch between ``gcc`` and ``intel`` by typing:
+
+::
+
+    module swap gcc intel
+
+which is equivalent to typing:
+
+::
+
+    module unload gcc
+    module load intel
+
+Another way to search for modules is with the ``module spider`` command. This command searches the entire list of possible modules.
+
+::
+
+    module spider
+
+This can be practical if you are looking for a specific module. Consider the following example of commands:
+
+::
+
+    $ module purge
+
+    $ module python
+    Lmod has detected the following error:  These module(s) exist but cannot be loaded as requested: "python"
+   Try: "module spider python" to see how to load the module(s).
+
+You can therefore look for more information to load the module correctly:
+::
+
+    $ module spider python
+
+    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      python: python/2.7.14
+    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    Description:
+      Python is a programming language that lets you work more quickly and integrate your systems more effectively.
+
+
+     Other possible modules matches:
+        ipython, protobuf-python
+
+    You will need to load all module(s) on any one of the lines below before the "python/2.7.14" module is available to load.
+
+      gcc/6.4.0  openmpi/3.0.0
+
+    Help:
+
+      Description
+      ===========
+      Python is a programming language that lets you work more quickly and integrate your systems
+       more effectively.
+
+And now, we know how to load the module!
+::
+
+    $ module load gcc/6.4.0  openmpi/3.0.0 python/2.7.14
+
+    $ module list
+
+    Currently Loaded Modules:
+      1) nvidia/384.90 (S)   3) binutils/2.30   5) gcc/6.4.0   7) openmpi/3.0.0     9) fftw/3.3.7                       11) sqlite/3.21.0
+      2) slurm/17.11.2 (S)   4) gcccore/6.4.0   6) ucx/1.2.1   8) openblas/0.2.20  10) scalapack/2.0.2-openblas-0.2.20  12) python/2.7.14
+
+      Where:
+       S:  Module is Sticky, requires --force to unload or purge
 
 
 On **Green II**, ``module avail`` will provide a list of all versions of available modules::
