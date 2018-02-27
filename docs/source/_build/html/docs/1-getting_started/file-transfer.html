@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>File Transfer &mdash; OzSTAR User Guide  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="OzSTAR User Guide  documentation" href="../index.html"/>
+        <link rel="next" title="Profiling your code" href="Profiling.html"/>
+        <link rel="prev" title="Access the supercomputer" href="Access.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+      
+        <!-- a href="../index.html" -->
+        <a href="http://136.186.54.54"><!-- target="_blank"-->
+      
+
+      
+        
+        <img src="../_static/OzStar-FA-Mono-KEYLINE.png" class="logo" />
+      
+      </a>
+
+      
+
+      
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+      
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Access.html">Access the supercomputer</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">File Transfer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#copying-a-file-or-directory-via-ssh">Copying a file or directory via SSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transferring-a-large-number-of-small-files">Transferring a large number of small files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transferring-code">Transferring code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resuming-interrupted-transfers">Resuming interrupted transfers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#synchronising-with-a-local-directory">Synchronising with a local directory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Profiling.html">Profiling your code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Swinburne-HPC.html">Swinburne HPC system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OzSTAR vs Green II</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What’s new on OzSTAR?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/Filesystems.html">File systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/Modules.html">Environment Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/torque-vs-slurm.html">Torque-Moab vs Slurm</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Jobs on OzSTAR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-partition.html">Job Queues on OzSTAR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-slurm-basics.html">Slurm: basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-slurm-details.html">Slurm: gathering information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-slurm-create.html">Slurm: Creating a job</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-slurm-examples.html">Slurm: script examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Jobs on Green II</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../3-greenII/g2-Queue.html">Job Queues on Green II</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3-greenII/g2-qsub.html">Submitting Jobs on Green II (qsub)</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OzSTAR User Guide</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>File Transfer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-transfer">
+<h1>File Transfer<a class="headerlink" href="#file-transfer" title="Permalink to this headline">¶</a></h1>
+<p>In order to transfer files to and from the supercomputer (OzSTAR, Green II), a ssh-based file transfer utility is required. There are a variety of Options that you can use.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Operating System</td>
+<td>Terminal</td>
+</tr>
+<tr class="row-even"><td>Mac</td>
+<td><a class="reference external" href="http://www.computerhope.com/unix/scp.htm">“scp” (secure copy) command</a> can be used via the terminal or use <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> as a GUI alternative</td>
+</tr>
+<tr class="row-odd"><td>Linux</td>
+<td><cite>“scp” (secure copy) command _</cite> can be used via the terminal</td>
+</tr>
+<tr class="row-even"><td>Windows</td>
+<td>The recommended software is <a class="reference external" href="http://winscp.net/eng/index.php">WinSCP</a></td>
+</tr>
+</tbody>
+</table>
+<p>As an alternative option, you can use a SFTP Client (e.g <a class="reference external" href="https://filezilla-project.org/">FileZilla</a> Client – more details about using the SFTP mode in FileZilla can be found on <a class="reference external" href="https://it.unh.edu/sftp/filezilla.html">https://it.unh.edu/sftp/filezilla.html</a>)</p>
+<div class="section" id="copying-a-file-or-directory-via-ssh">
+<h2>Copying a file or directory via SSH<a class="headerlink" href="#copying-a-file-or-directory-via-ssh" title="Permalink to this headline">¶</a></h2>
+<p>The simplest way to copy a file to or from the supercomputer is to use the <code class="docutils literal notranslate"><span class="pre">scp</span></code> command.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the following examples, we assume an <code class="docutils literal notranslate"><span class="pre">g2</span></code> alias set to <code class="docutils literal notranslate"><span class="pre">[your-username]&#64;g2.hpc.swin.edu.au</span></code>.</p>
+</div>
+<p><strong>Copying a local file to the Green II supercomputer</strong>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>scp ./file.txt g2:destination/path/
+</pre></div>
+</div>
+<p>You can also copy a file from the supercomputer to your local machine (e.g. <strong>download</strong>) as follows:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>scp g2:path/to/file.txt .
+</pre></div>
+</div>
+<p><strong>Copy a directory and its content</strong> is done by using the <code class="docutils literal notranslate"><span class="pre">-r</span></code> option:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>scp -r path/to/copy/ g2:destination/path/
+</pre></div>
+</div>
+<p>The above command will initiate a connection from your local environment to Green II (g2) directly.</p>
+</div>
+<div class="section" id="transferring-a-large-number-of-small-files">
+<h2>Transferring a large number of small files<a class="headerlink" href="#transferring-a-large-number-of-small-files" title="Permalink to this headline">¶</a></h2>
+<p>Transferring lots of small files can take a long time with <code class="docutils literal notranslate"><span class="pre">scp</span></code> due to the overhead of copying each file individually. Instead, it is advised to package your files into a single <code class="docutils literal notranslate"><span class="pre">tar</span></code> file using the <a class="reference external" href="https://www.gnu.org/software/tar/manual/html_section/tar_22.html">tar</a> command to significantly reduce the transfer time. This is done by create a tar archive, copying it using <code class="docutils literal notranslate"><span class="pre">scp</span></code>, and finally <code class="docutils literal notranslate"><span class="pre">untar</span></code> it to retrieve your individual files.</p>
+</div>
+<div class="section" id="transferring-code">
+<h2>Transferring code<a class="headerlink" href="#transferring-code" title="Permalink to this headline">¶</a></h2>
+<p>The best way to transfer code from one computer to another is to host the code in a <em>source code repository</em> using a <em>versioning system</em> such as <a class="reference external" href="https://www.git-scm.com">git</a> or <a class="reference external" href="https://www.mercurial-scm.org">mercurial</a> and clone the repository from your local computer, or a cloud service (e.g. bitbucket, github, …), to the supercomputer.</p>
+</div>
+<div class="section" id="resuming-interrupted-transfers">
+<h2>Resuming interrupted transfers<a class="headerlink" href="#resuming-interrupted-transfers" title="Permalink to this headline">¶</a></h2>
+<p>If a transfer is interrupted, you might end up with part of the files being transferred. Rather than restarting the transfer from scratch, you should then use the rsync command. The <a class="reference external" href="https://linux.die.net/man/1/rsync">rsync</a> command will compare the <strong>source</strong> and <strong>destination</strong> directories and only transfer what needs to be transferred (missing files, modified files, etc.)</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>rsync -va ./source_dir g2:destination/path
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Make sure not to leave trailing slashes in your path names (e.g. <code class="docutils literal notranslate"><span class="pre">destination/path</span></code> rather than <code class="docutils literal notranslate"><span class="pre">destination/path/</span></code>); else you will have a full copy of the directory inside the existing, partial, one. Use the <code class="docutils literal notranslate"><span class="pre">-n</span></code> (dry-run) option of <code class="docutils literal notranslate"><span class="pre">rsync</span></code> to check what will happen before you run the actual command.</p>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">If one large file is left partially transferred, you can resume it using the <code class="docutils literal notranslate"><span class="pre">--partial</span></code>.</p>
+</div>
+</div>
+<div class="section" id="synchronising-with-a-local-directory">
+<h2>Synchronising with a local directory<a class="headerlink" href="#synchronising-with-a-local-directory" title="Permalink to this headline">¶</a></h2>
+<p>If you want to keep two directories (one on your local computer, and one on the supercomputer) in sync, you can do that with rsync using its <code class="docutils literal notranslate"><span class="pre">--delete</span></code> option. But that is only one-way so you need to really think in what direction you do it, and it does not scale beyond two synchronized directories.</p>
+<p>A real option is to use Unison, a piece of software that can detect and handle conflicts (incompatible changes made to the same file in the two directories that must be kept in sync.)</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Profiling.html" class="btn btn-neutral float-right" title="Profiling your code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Access.html" class="btn btn-neutral" title="Access the supercomputer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+    
+      <style>
+        /* Sidebar header (and topbar for mobile) */
+        .wy-side-nav-search, .wy-nav-top {
+          background: #000000;
+        }
+        /* Sidebar */
+        /*.wy-nav-side {*/
+          /*background: #ff0000;*/
+        /*}*/
+      </style>
+    
+
+</body>
+</html>

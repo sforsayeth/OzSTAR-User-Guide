@@ -1,21 +1,30 @@
 version: "3"
 services:
   sphinx-server:
-    image: dldl/sphinx-server
+    #image: dldl/sphinx-server
+    build: ./
     container_name: sphinx-server
     expose:
-      - 81
+      - 8000
     ports:
-      - 8000:81
+      - "8002:8000"
     volumes:
-      - "$(pwd)/docs":/web
-    environment:
-       VIRTUAL_HOST: ~/docs
-       VIRTUAL_PORT: 8000
+      - ./docs/source:/docs
+      #- ./docs/source:/web/docs
+      #- ./docs/source:/var/www/html/docs
+      #- ./docs/build/html:/var/www/html/docs
+    #command:
+    #  - make html
+    #depends_on:
+    #  - reverseproxy
+    #environment:
+    #   VIRTUAL_HOST: ~/docs
+    #   VIRTUAL_PORT: 8002
+       
 
-networks:
-  default:
-    external:
-      name: nginx-proxy
+#networks:
+#  default:
+#    external:
+#      name: nginx-proxy
 
 
