@@ -57,7 +57,7 @@
 
       
         <!-- a href="../index.html" -->
-        <a href="http://136.186.54.54"><!-- target="_blank"-->
+        <a href="http://136.186.1.220"><!-- target="_blank"-->
       
 
       
@@ -212,18 +212,18 @@
 <p>The simplest way to copy a file to or from the supercomputer is to use the <code class="docutils literal notranslate"><span class="pre">scp</span></code> command.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">In the following examples, we assume an <code class="docutils literal notranslate"><span class="pre">g2</span></code> alias set to <code class="docutils literal notranslate"><span class="pre">[your-username]&#64;g2.hpc.swin.edu.au</span></code>.</p>
+<p class="last">In the following examples, we assume an <code class="docutils literal notranslate"><span class="pre">g2</span></code> alias set to <code class="docutils literal notranslate"><span class="pre">[your-username]&#64;ozstar.swin.edu.au</span></code>.</p>
 </div>
 <p><strong>Copying a local file to the Green II supercomputer</strong>:</p>
-<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>scp ./file.txt g2:destination/path/
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>scp ./file.txt ozstar:destination/path/
 </pre></div>
 </div>
 <p>You can also copy a file from the supercomputer to your local machine (e.g. <strong>download</strong>) as follows:</p>
-<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>scp g2:path/to/file.txt .
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>scp ozstar:path/to/file.txt .
 </pre></div>
 </div>
 <p><strong>Copy a directory and its content</strong> is done by using the <code class="docutils literal notranslate"><span class="pre">-r</span></code> option:</p>
-<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>scp -r path/to/copy/ g2:destination/path/
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>scp -r path/to/copy/ ozstar:destination/path/
 </pre></div>
 </div>
 <p>The above command will initiate a connection from your local environment to Green II (g2) directly.</p>
@@ -239,7 +239,7 @@
 <div class="section" id="resuming-interrupted-transfers">
 <h2>Resuming interrupted transfers<a class="headerlink" href="#resuming-interrupted-transfers" title="Permalink to this headline">¶</a></h2>
 <p>If a transfer is interrupted, you might end up with part of the files being transferred. Rather than restarting the transfer from scratch, you should then use the rsync command. The <a class="reference external" href="https://linux.die.net/man/1/rsync">rsync</a> command will compare the <strong>source</strong> and <strong>destination</strong> directories and only transfer what needs to be transferred (missing files, modified files, etc.)</p>
-<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>rsync -va ./source_dir g2:destination/path
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>rsync -va ./source_dir ozstar:destination/path
 </pre></div>
 </div>
 <div class="admonition warning">

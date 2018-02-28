@@ -1,6 +1,6 @@
 .. highlight:: rst
 
-Job Queues on OzSTAR
+Job Queues
 ==================================
 
 The preferred method for utilising the supercomputer is through the job queue which accesses the majority of the compute nodes (all except the interactive nodes). The queue nodes are not available for direct login.
@@ -9,21 +9,22 @@ The basic goal of a queue system is to maximize utilisation of the supercomputer
 
 Available Partitions
 -----------------------------------------------
-Slurm's *partitions* are comparable to Moab's *queues* (e.g. :doc:`../3-greenII/g2-Queue`).
+Slurm's *partitions* are comparable to Moab's *queues* (e.g. :doc:`torque-vs-slurm`). Currently available partitions
+include ``skylake`` (default nodes), ``skylake-gpu`` (default nodes including GPUs), and ``knl`` (Intel Xeon Phi KNL nodes).
 
-Partition Name: skylake
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-*More information to come.*
+.. Partition Name: skylake
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    *More information to come.*
 
-Partition Name: knl
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-*More information to come.*
+    Partition Name: knl
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    *More information to come.*
 
-Partition Name: largemem
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-*More information to come.*
+    Partition Name: largemem
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    *More information to come.*
 
-Queue limits
------------------------------------------------
-*More information to come.*
+    Queue limits
+    -----------------------------------------------
+    *More information to come.*
 

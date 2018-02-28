@@ -3,7 +3,7 @@
 File Transfer
 ======================================================
 
-In order to transfer files to and from the supercomputer (OzSTAR, Green II), a ssh-based file transfer utility is required. There are a variety of Options that you can use.
+In order to transfer files to and from the supercomputer (OzSTAR), a ssh-based file transfer utility is required. There are a variety of Options that you can use.
 
 +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Operating System | Terminal                                                                                                                                                                  |
@@ -25,21 +25,21 @@ The simplest way to copy a file to or from the supercomputer is to use the ``scp
 
 .. note::
 
-    In the following examples, we assume an ``g2`` alias set to ``[your-username]@g2.hpc.swin.edu.au``.
+    In the following examples, we assume an ``ozstar`` alias set to ``[your-username]@ozstar.swin.edu.au``.
 
-**Copying a local file to the Green II supercomputer**::
+**Copying a local file to the OzSTAR supercomputer**::
 
-    scp ./file.txt g2:destination/path/
+    scp ./file.txt ozstar:destination/path/
 
 You can also copy a file from the supercomputer to your local machine (e.g. **download**) as follows::
 
-    scp g2:path/to/file.txt .
+    scp ozstar:path/to/file.txt .
 
 **Copy a directory and its content** is done by using the ``-r`` option::
 
-    scp -r path/to/copy/ g2:destination/path/
+    scp -r path/to/copy/ ozstar:destination/path/
 
-The above command will initiate a connection from your local environment to Green II (g2) directly.
+The above command will initiate a connection from your local environment to OzSTAR directly.
 
 Transferring a large number of small files
 --------------------------------------------
@@ -53,7 +53,7 @@ Transferring lots of small files can take a long time with ``scp`` due to the ov
 
     ::
 
-        scp -C ./large_file.txt g2:destination/path/
+        scp -C ./large_file.txt ozstar:destination/path/
 
 Transferring code
 ----------------------
@@ -66,7 +66,7 @@ If a transfer is interrupted, you might end up with part of the files being tran
 
 ::
 
-    rsync -va ./source_dir g2:destination/path
+    rsync -va ./source_dir ozstar:destination/path
 
 .. warning::
 
