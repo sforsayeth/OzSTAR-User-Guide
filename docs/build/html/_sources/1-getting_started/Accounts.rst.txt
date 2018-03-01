@@ -14,9 +14,9 @@ Getting a new account
 .. image:: ../_static/g2-Account.png
 
 - Step 1:
-    * For OzSTAR accounts:
-        - Fill in the form on https://supercomputing.swin.edu.au/account-management/join_ozstar with your details.
-    * For Green II accounts:
+    * If you already have a Green II account:
+        - Fill in the form on https://supercomputing.swin.edu.au/account-management/join_ozstar with your details to apply and activate your login details for OzSTAR.
+    * For new accounts:
         - Fill in the form on https://supercomputing.swin.edu.au/account-management/new_account_request with your details.
 - Step 2:
     * The system will send you an email to verify your email address.

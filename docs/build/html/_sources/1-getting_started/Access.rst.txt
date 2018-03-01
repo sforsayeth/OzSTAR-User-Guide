@@ -6,13 +6,6 @@ Access to the supercomputer
 Access OzSTAR
 -------------------
 
-*More information will be provided soon.*
-
-
-
-Access Green II
--------------------
-
 Access to the supercomputer is available through Secure Shell (SSH) to ozstar.swin.edu.au for all users. i.e:
 ::
 
@@ -20,15 +13,11 @@ Access to the supercomputer is available through Secure Shell (SSH) to ozstar.sw
 
 .. important::
 
-    The g2 head-node should only be used as an entry point to the supercomputer, for submitting jobs to the queue nodes, and transferring files (single process only). **Compute jobs found to be running directly on the head-node will be removed without notice.**
+    After logging in you will be assigned to one of the two login nodes: ``farnarkle1`` or ``farnarkle2``.
 
-We have a set of interactive nodes (**gstar001**, **gstar002**, **sstar001**, **sstar002**, and **sstar003**) that can be used to run short jobs directly, compile code, or test your application. These nodes can be accessed from the g2 head node via ssh too. i.e:
+From these nodes you can submit jobs to the queue nodes using `Slurm <https://slurm.schedmd.com>`__. You may also use the login nodes as interactive nodes to run short jobs directly, compile code, or test your application.
 
-::
-
-    ssh gstar001
-
-**Please, do not use these interactive nodes to run long jobs or jobs with big computational requirements.** Running such jobs in interactive mode can be done by requesting interactive nodes from the queue. Jobs running on interactive nodes can use up to 80% of the nodes total memory with a maximum of 4 GB of swap.
+**Please, do not use these login nodes to run long jobs or jobs with big computational requirements.** Running such jobs in interactive mode can be done by requesting interactive nodes from the queue.
 
 .. tip::
 
@@ -38,7 +27,7 @@ We have a set of interactive nodes (**gstar001**, **gstar002**, **sstar001**, **
 
     ::
 
-        alias g2="[your-username]@ozstar.swin.edu.au"
+        alias ozstar="[your-username]@ozstar.swin.edu.au"
 
     Once set, you can directly use this alias in your commands. The following commands will produce the same outcome:
 
@@ -46,7 +35,7 @@ We have a set of interactive nodes (**gstar001**, **gstar002**, **sstar001**, **
 
         ssh [your-username]@ozstar.swin.edu.au
 
-        ssh g2
+        ssh ozstar
 
     **Copy a local file to supercomputer**::
 
@@ -61,7 +50,7 @@ Client Requirements
 Terminal
 ^^^^^^^^
 
-A terminal is required to access Green II via Secure Shell (SSH) and issue command line instructions.
+A terminal is required to access OzSTAR via Secure Shell (SSH) and issue command line instructions.
 
 +------------------+--------------------------------------------------------------+
 | Operating System | Terminal                                                     |

@@ -96,7 +96,6 @@
 <li class="toctree-l1"><a class="reference internal" href="Accounts.html">Accounts</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Access to the supercomputer</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#access-ozstar">Access OzSTAR</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#access-green-ii">Access Green II</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#client-requirements">Client Requirements</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#terminal">Terminal</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#x11-windows-forwarding">X11 Windows Forwarding</a></li>
@@ -192,35 +191,28 @@
 <h1>Access to the supercomputer<a class="headerlink" href="#access-to-the-supercomputer" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="access-ozstar">
 <h2>Access OzSTAR<a class="headerlink" href="#access-ozstar" title="Permalink to this headline">¶</a></h2>
-<p><em>More information will be provided soon.</em></p>
-</div>
-<div class="section" id="access-green-ii">
-<h2>Access Green II<a class="headerlink" href="#access-green-ii" title="Permalink to this headline">¶</a></h2>
 <p>Access to the supercomputer is available through Secure Shell (SSH) to ozstar.swin.edu.au for all users. i.e:</p>
 <div class="highlight-rst"><div class="highlight"><pre><span></span>ssh [your-username]@ozstar.swin.edu.au
 </pre></div>
 </div>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last">The g2 head-node should only be used as an entry point to the supercomputer, for submitting jobs to the queue nodes, and transferring files (single process only). <strong>Compute jobs found to be running directly on the head-node will be removed without notice.</strong></p>
+<p class="last">After logging in you will be assigned to one of the two login nodes: <code class="docutils literal"><span class="pre">farnarkle1</span></code> or <code class="docutils literal"><span class="pre">farnarkle2</span></code>.</p>
 </div>
-<p>We have a set of interactive nodes (<strong>gstar001</strong>, <strong>gstar002</strong>, <strong>sstar001</strong>, <strong>sstar002</strong>, and <strong>sstar003</strong>) that can be used to run short jobs directly, compile code, or test your application. These nodes can be accessed from the g2 head node via ssh too. i.e:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>ssh gstar001
-</pre></div>
-</div>
-<p><strong>Please, do not use these interactive nodes to run long jobs or jobs with big computational requirements.</strong> Running such jobs in interactive mode can be done by requesting interactive nodes from the queue. Jobs running on interactive nodes can use up to 80% of the nodes total memory with a maximum of 4 GB of swap.</p>
+<p>From these nodes you can submit jobs to the queue nodes using <a class="reference external" href="https://slurm.schedmd.com">Slurm</a>. You may also use the login nodes as interactive nodes to run short jobs directly, compile code, or test your application.</p>
+<p><strong>Please, do not use these login nodes to run long jobs or jobs with big computational requirements.</strong> Running such jobs in interactive mode can be done by requesting interactive nodes from the queue.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p>If you want to avoid having to type the rather long <code class="docutils literal"><span class="pre">[your-username]&#64;ozstar.swin.edu.au</span></code> every time you want to connect to the supercomputer, you can set an <a class="reference external" href="https://www.gnu.org/software/bash/manual/html_node/Aliases.html">alias</a>.</p>
 <p>For example, if you are using the bash shell, you can set an alias in your bash configuration file (e.g. <code class="docutils literal"><span class="pre">~/.bashrc</span></code> or <code class="docutils literal"><span class="pre">~/.bash_profile</span></code>) as follows:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>alias g2=&quot;[your-username]@ozstar.swin.edu.au&quot;
+<div class="highlight-rst"><div class="highlight"><pre><span></span>alias ozstar=&quot;[your-username]@ozstar.swin.edu.au&quot;
 </pre></div>
 </div>
 <p>Once set, you can directly use this alias in your commands. The following commands will produce the same outcome:</p>
 <p><strong>Connect to supercomputer</strong>:</p>
 <div class="highlight-rst"><div class="highlight"><pre><span></span>ssh [your-username]@ozstar.swin.edu.au
 
-ssh g2
+ssh ozstar
 </pre></div>
 </div>
 <p><strong>Copy a local file to supercomputer</strong>:</p>
@@ -235,7 +227,7 @@ scp myfile.txt ozstar:path/to/location/
 <h2>Client Requirements<a class="headerlink" href="#client-requirements" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="terminal">
 <h3>Terminal<a class="headerlink" href="#terminal" title="Permalink to this headline">¶</a></h3>
-<p>A terminal is required to access Green II via Secure Shell (SSH) and issue command line instructions.</p>
+<p>A terminal is required to access OzSTAR via Secure Shell (SSH) and issue command line instructions.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="23%" />

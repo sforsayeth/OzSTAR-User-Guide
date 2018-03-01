@@ -109,7 +109,7 @@
 <p class="caption"><span class="caption-text">Software</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Environment Modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#ozstar-vs-green-ii">OzSTAR vs Green II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compiler-specific">Compiler specific</a></li>
 </ul>
 </li>
 </ul>
@@ -184,7 +184,7 @@
             
   <div class="section" id="environment-modules">
 <h1>Environment Modules<a class="headerlink" href="#environment-modules" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="http://modules.sourceforge.net/">Environment modules</a> allow for dynamically modifying ones shell environment to provide access to required packages. Managing your environment manually can be cumbersome, using modules is highly recommended and is standard practice on gStar.</p>
+<p><a class="reference external" href="http://modules.sourceforge.net/">Environment modules</a> allow for dynamically modifying ones shell environment to provide access to required packages. Managing your environment manually can be cumbersome, using modules is highly recommended and is standard practice on OzSTAR.</p>
 <p>The structure of a module command is:</p>
 <div class="highlight-rst"><div class="highlight"><pre><span></span>module &lt;command&gt; [arguments]
 </pre></div>
@@ -209,9 +209,8 @@
 <div class="highlight-rst"><div class="highlight"><pre><span></span>module load openmpi
 </pre></div>
 </div>
-<div class="section" id="ozstar-vs-green-ii">
-<h2>OzSTAR vs Green II<a class="headerlink" href="#ozstar-vs-green-ii" title="Permalink to this headline">¶</a></h2>
-<p>There exists slight differences between how modules are handled on OzSTAR and Green II.</p>
+<div class="section" id="compiler-specific">
+<h2>Compiler specific<a class="headerlink" href="#compiler-specific" title="Permalink to this headline">¶</a></h2>
 <p><strong>OzSTAR</strong> now includes groups of modules organised around a specific compiler (namely, intel and gcc). Each group provides
 modules compiled using one of these compiler. These are accessed via the following commands.</p>
 <p>For modules compiled with the intel compiler:</p>
@@ -299,21 +298,6 @@ Currently Loaded Modules:
 
   Where:
    S:  Module is Sticky, requires --force to unload or purge
-</pre></div>
-</div>
-<p>On <strong>Green II</strong>, <code class="docutils literal"><span class="pre">module</span> <span class="pre">avail</span></code> will provide a list of all versions of available modules:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>% module avail
-
------------------------------------------------------------------------- /usr/local/modules/modulefiles ------------------------------------------------------------------------
-2dfdr/x86_64/5.35                                gromacs/x86_64/gnu/4.6.3-cpu                     openmpi/x86_64/gnu/1.10.2-psm
-2dfdr/x86_64/6.28                                gromacs/x86_64/gnu/5.0.5                         openmpi/x86_64/gnu/1.4.4
-adf/2013.01                                      gsl/x86_64/gnu/1.13-1                            openmpi/x86_64/gnu/1.4.5
-adf/2016.107                                     gsl/x86_64/gnu/1.15                              openmpi/x86_64/gnu/1.6
-(...)
-google-protocol-buffer/2.5                       opencv/x86_64/gnu/3.3.0                          xz/x86_64/5.2.2
-grace/x86_64/gnu/5.1.23                          OpenFOAM/x86_64/gnu/2.2.2                        yorick/x86_64/gnu/2.1
-gromacs/x86_64/gnu/4.6.1                         OpenFOAM/x86_64/gnu/2.4.0                        yorick/x86_64/gnu/2.1.06
-gromacs/x86_64/gnu/4.6.3                         OpenFOAM/x86_64/gnu/4.1.0
 </pre></div>
 </div>
 </div>

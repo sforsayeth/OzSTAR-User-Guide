@@ -8,18 +8,22 @@ Directories
 
 On OzSTAR, the two main directories are: ::
 
-    /home
+    /home/<username>
 
-    /fred/projects
+and ::
 
-noting that ``/projects`` is soft-linked to ``/fred/projects``.
+    /fred/<project_id>
 
-Both ``/home`` and ``/projects`` directores are using the Lustre filesystem. The ``/home`` directory is backed up. It has a 10GB quota, and 100,000 files. The ``/projects`` directories are on a lustre filesystem. This is where all of your project data should be stored. There is **NO backup for** ``/projects`` **and the user must take responsibility for backing up any data that is important.**
+noting that ``/home`` is for personal access and ``/fred`` is for project access.
+
+Both ``/home`` and ``/fred`` directores are using the Lustre filesystem. The ``/home`` directory is backed up. It has a 10GB quota, and 100,000 files. The ``/fred`` directory is where all of your project data should be stored. There is **NO backup for** ``/fred`` **and the user must take responsibility for backing up any data that is important (somewhere other than OzSTAR).**
+
+You are free to create new repositories inside ``/home/<username>`` (e.g. ``/home/<username>/my_code``). Similarly, you can create directories for project use inside ``/fred/<project_id>`` (e.g. ``/fred/<project_id>/my_project_code/``).
 
 Lustre
 ------
 
-OzSTAR includes ~5 Petabytes of Lustre-zfs Filesystem for the nodes. The achievable bandwidth into each OSS (Object Storage Server) is approximately 100 Gb/s.
+OzSTAR includes ~5 Petabytes of Lustre-zfs Filesystem for the nodes. The achievable bandwidth into each OSS (Object Storage Server) is approximately 30 Gb/s.
 
 Lustre manuals are at `Intel HPDD Wiki <https://wiki.hpdd.intel.com/display/PUB/Documentation>`_
 

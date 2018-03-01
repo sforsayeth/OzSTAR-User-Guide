@@ -193,17 +193,20 @@
 <div class="section" id="directories">
 <h2>Directories<a class="headerlink" href="#directories" title="Permalink to this headline">¶</a></h2>
 <p>On OzSTAR, the two main directories are:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>/home
-
-/fred/projects
+<div class="highlight-rst"><div class="highlight"><pre><span></span>/home/&lt;username&gt;
 </pre></div>
 </div>
-<p>noting that <code class="docutils literal"><span class="pre">/projects</span></code> is soft-linked to <code class="docutils literal"><span class="pre">/fred/projects</span></code>.</p>
-<p>Both <code class="docutils literal"><span class="pre">/home</span></code> and <code class="docutils literal"><span class="pre">/projects</span></code> directores are using the Lustre filesystem. The <code class="docutils literal"><span class="pre">/home</span></code> directory is backed up. It has a 10GB quota, and 100,000 files. The <code class="docutils literal"><span class="pre">/projects</span></code> directories are on a lustre filesystem. This is where all of your project data should be stored. There is <strong>NO backup for</strong> <code class="docutils literal"><span class="pre">/projects</span></code> <strong>and the user must take responsibility for backing up any data that is important.</strong></p>
+<p>and</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>/fred/&lt;project_id&gt;
+</pre></div>
+</div>
+<p>noting that <code class="docutils literal"><span class="pre">/home</span></code> is for personal access and <code class="docutils literal"><span class="pre">/fred</span></code> is for project access.</p>
+<p>Both <code class="docutils literal"><span class="pre">/home</span></code> and <code class="docutils literal"><span class="pre">/fred</span></code> directores are using the Lustre filesystem. The <code class="docutils literal"><span class="pre">/home</span></code> directory is backed up. It has a 10GB quota, and 100,000 files. The <code class="docutils literal"><span class="pre">/fred</span></code> directory is where all of your project data should be stored. There is <strong>NO backup for</strong> <code class="docutils literal"><span class="pre">/fred</span></code> <strong>and the user must take responsibility for backing up any data that is important (somewhere other than OzSTAR).</strong></p>
+<p>You are free to create new repositories inside <code class="docutils literal"><span class="pre">/home/&lt;username&gt;</span></code> (e.g. <code class="docutils literal"><span class="pre">/home/&lt;username&gt;/my_code</span></code>). Similarly, you can create directories for project use inside <code class="docutils literal"><span class="pre">/fred/&lt;project_id&gt;</span></code> (e.g. <code class="docutils literal"><span class="pre">/fred/&lt;project_id&gt;/my_project_code/</span></code>).</p>
 </div>
 <div class="section" id="lustre">
 <h2>Lustre<a class="headerlink" href="#lustre" title="Permalink to this headline">¶</a></h2>
-<p>OzSTAR includes ~5 Petabytes of Lustre-zfs Filesystem for the nodes. The achievable bandwidth into each OSS (Object Storage Server) is approximately 100 Gb/s.</p>
+<p>OzSTAR includes ~5 Petabytes of Lustre-zfs Filesystem for the nodes. The achievable bandwidth into each OSS (Object Storage Server) is approximately 30 Gb/s.</p>
 <p>Lustre manuals are at <a class="reference external" href="https://wiki.hpdd.intel.com/display/PUB/Documentation">Intel HPDD Wiki</a></p>
 </div>
 <div class="section" id="dealing-with-lustre">

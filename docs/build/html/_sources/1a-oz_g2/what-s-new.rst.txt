@@ -11,7 +11,7 @@ Entry point is now ``ozstar.swin.edu.au``.
 Hardware
 ----------
 
-Each node includes 36 CPU cores and 2 P100 GPUs. Interconnect is 100 GB/s intel infiniband. `See here fore more details <https://136.186.1.220/ozstar/>`_.
+Each node includes 36 CPU cores and 2 P100 GPUs. Interconnect is 100 Gb/s intel infiniband. `See here fore more details <https://136.186.1.220/ozstar/>`_.
 
 Interactive Nodes
 -------------------
@@ -22,7 +22,7 @@ node or start an interactive session via Slurm.
 Job Scheduling
 ----------------
 
-We will be using Slurm on OzSTAR. See :doc:`../2-ozstar/torque-vs-slurm` for a comparision between Moab and Slurm.
+We now use Slurm on OzSTAR. See :doc:`../2-ozstar/torque-vs-slurm` for a comparision between Moab and Slurm.
 
 Large memory nodes
 ---------------------
