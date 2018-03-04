@@ -3,7 +3,7 @@
 Environment Modules
 ====================
 
-`Environment modules <http://modules.sourceforge.net/>`_ allow for dynamically modifying ones shell environment to provide access to required packages. Managing your environment manually can be cumbersome, using modules is highly recommended and is standard practice on gStar.
+`Environment modules <http://modules.sourceforge.net/>`_ allow for dynamically modifying ones shell environment to provide access to required packages. Managing your environment manually can be cumbersome, using modules is highly recommended and is standard practice on OzSTAR.
 
 The structure of a module command is:
 ::
@@ -25,21 +25,9 @@ This will display a list of all installed software packages. To load a package, 
 
     module load <package name>
 
-For example, if I wanted to use a 64bit version of OpenMPI compiled with the GNU tool chain, I could use:
-::
 
-    module load openmpi/x86_64/gnu/1.4.4
-
-You’ll notice that, after running “module avail”, some of the package names have “(default)” written next to them. This indicates that you don’t need to type the whole name to enable that package. Using the previous OpenMPI example, I could achieve the same results by running:
-::
-
-    module load openmpi
-
-OzSTAR vs Green II
----------------------
-
-There exists slight differences between how modules are handled on OzSTAR and Green II.
-
+OzSTAR Module Documentation
+---------------------------
 
 **OzSTAR** uses *hierarchical* modules, what that means is that loading a module makes more modules available by updating the module path where the module manager looks for modules. This is especially useful to avoid dependency problems, and has been used on OzSTAR to avoid compiler and OpenMPI conflicts and incompatibilities.
 
@@ -155,11 +143,17 @@ If a module is not ambigous, that is to say it only has one parent toolchain, th
 
     module purge
     
-    module load python
+    module load python/2.7.14
 
     module list
 
-**insert listed modules**
+    Currently Loaded Modules:
+      1) nvidia/.384.90 (H,S)   3) binutils/2.30   5) gcc/6.4.0       7) python/2.7.14
+      2) slurm/.latest  (H,S)   4) gcccore/6.4.0   6) sqlite/3.21.0
+
+    Where:
+     S:  Module is Sticky, requires --force to unload or purge
+     H:             Hidden Module
     
 
 Loading ambiguous modules
@@ -192,90 +186,118 @@ A module is considered ambigous if it has more than one parent hierarchy, and th
 
     module list
 
-**insert listed modules**
+    Currently Loaded Modules:
+      1) slurm/.latest  (H,S)   3) binutils/2.30   5) gcc/6.4.0
+      2) nvidia/.384.90 (H,S)   4) gcccore/6.4.0   6) openblas/0.2.20
+
+      Where:
+       S:  Module is Sticky, requires --force to unload or purge
+       H:             Hidden Module
+
+Other useful commands
+^^^^^^^^^^^^^^^^^^^^^
 
 Please note the following useful commands: ``module purge`` will allow you to unload all modules currently loaded. It is
 also possible to switch between ``gcc`` and ``intel`` by typing:
 
 ::
 
-    module swap gcc intel
+    module swap gcc/6.4.0 intel/2018.1.163-gcc-6.4.0
 
 which is equivalent to typing:
 
 ::
 
-    module unload gcc
-    module load intel
+    module unload gcc/6.4.0
+    module load intel/2018.1.163-gcc-6.4.0
 
-Another way to search for modules is with the ``module spider`` command. This command searches the entire list of possible modules.
+Another way to search for modules is with the ``module spider`` command. This command searches the entire list of possible modules. Consider the following examples:-
 
 ::
 
     module spider
 
-This can be practical if you are looking for a specific module. Consider the following example of commands:
+    -----------------------------------------------------------------------------------------------------------------------
+    The following is a list of the modules currently available:
+    -----------------------------------------------------------------------------------------------------------------------
+      anaconda2: anaconda2/5.0.1
+        Built to complement the rich, open source Python community, the Anaconda platform provides an enterprise-ready
+        data analytics platform that empowers companies to adopt a modern open data science analytics architecture. 
+
+      anaconda3: anaconda3/5.0.1
+        Built to complement the rich, open source Python community, the Anaconda platform provides an enterprise-ready
+        data analytics platform that empowers companies to adopt a modern open data science analytics architecture. 
+
+      astropy: astropy/2.0.3-python-2.7.14, astropy/2.0.3-python-3.6.4
+        The Astropy Project is a community effort to develop a single core package for Astronomy in Python and foster
+        interoperability between Python astronomy packages.
+
+*Here you can see module spider will list all commands available*
 
 ::
 
-    $ module purge
+    module spider python
 
-    $ module python
-    Lmod has detected the following error:  These module(s) exist but cannot be loaded as requested: "python"
-   Try: "module spider python" to see how to load the module(s).
+    -----------------------------------------------------------------------------------------------------------------------
+      python:
+    -----------------------------------------------------------------------------------------------------------------------
+        Description:
+          Python is a programming language that lets you work more quickly and integrate your systems more effectively.
 
-You can therefore look for more information to load the module correctly:
+        Versions:
+            python/2.7.14
+            python/3.6.4
+        Other possible modules matches:
+        ipython  protobuf-python
+
+    -----------------------------------------------------------------------------------------------------------------------
+    To find other possible module matches execute:
+
+        $ module -r spider '.*python.*'
+
+    -----------------------------------------------------------------------------------------------------------------------
+      For detailed information about a specific "python" module (including how to load the modules) use the module's full name.
+      For example:
+
+        $ module spider python/3.6.4
+    -----------------------------------------------------------------------------------------------------------------------
+
+*Here you can see module spider can list information about a specific package*
+
 ::
 
-    $ module spider python
+    module spider python/2.7.14
 
-    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    -----------------------------------------------------------------------------------------------------------------------
       python: python/2.7.14
-    ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    Description:
-      Python is a programming language that lets you work more quickly and integrate your systems more effectively.
+    -----------------------------------------------------------------------------------------------------------------------
+      Description:
+        Python is a programming language that lets you work more quickly and integrate your systems more effectively.
 
 
-     Other possible modules matches:
-        ipython, protobuf-python
+      You will need to load all module(s) on any one of the lines below before the "python/2.7.14" module is available to load.
 
-    You will need to load all module(s) on any one of the lines below before the "python/2.7.14" module is available to load.
+        gcc/6.4.0
+ 
+      Help:
+      
+        Description
+        ===========
+        Python is a programming language that lets you work more quickly and integrate your systems
+         more effectively.
+      
+      
+        More information
+        ================
+         - Homepage: http://python.org/
+      
+      
+        Included extensions
+        ===================
+        cryptography-2.1.4, Cython-0.27.3, funcsigs-1.0.2, mock-2.0.0, paramiko-2.4.0,
+        pbr-3.1.1, pip-9.0.1, pycrypto-2.6.1, pytest-3.4.1, python-dateutil-2.6.1,
+        pytz-2018.3, setuptools-38.4.0, six-1.11.0, virtualenv-15.1.0
 
-      gcc/6.4.0  openmpi/3.0.0
+*Here you can see that module spider can list additional information about a specific version of a package. In this case it lists the home page of the package if one exists, as well as the included python packages (In this example)*
 
-    Help:
-
-      Description
-      ===========
-      Python is a programming language that lets you work more quickly and integrate your systems
-       more effectively.
-
-And now, we know how to load the module!
-::
-
-    $ module load gcc/6.4.0  openmpi/3.0.0 python/2.7.14
-
-    $ module list
-
-    Currently Loaded Modules:
-      1) nvidia/384.90 (S)   3) binutils/2.30   5) gcc/6.4.0   7) openmpi/3.0.0     9) fftw/3.3.7                       11) sqlite/3.21.0
-      2) slurm/17.11.2 (S)   4) gcccore/6.4.0   6) ucx/1.2.1   8) openblas/0.2.20  10) scalapack/2.0.2-openblas-0.2.20  12) python/2.7.14
-
-      Where:
-       S:  Module is Sticky, requires --force to unload or purge
-
-
-On **Green II**, ``module avail`` will provide a list of all versions of available modules::
-
-    % module avail
-
-    ------------------------------------------------------------------------ /usr/local/modules/modulefiles ------------------------------------------------------------------------
-    2dfdr/x86_64/5.35                                gromacs/x86_64/gnu/4.6.3-cpu                     openmpi/x86_64/gnu/1.10.2-psm
-    2dfdr/x86_64/6.28                                gromacs/x86_64/gnu/5.0.5                         openmpi/x86_64/gnu/1.4.4
-    adf/2013.01                                      gsl/x86_64/gnu/1.13-1                            openmpi/x86_64/gnu/1.4.5
-    adf/2016.107                                     gsl/x86_64/gnu/1.15                              openmpi/x86_64/gnu/1.6
-    (...)
-    google-protocol-buffer/2.5                       opencv/x86_64/gnu/3.3.0                          xz/x86_64/5.2.2
-    grace/x86_64/gnu/5.1.23                          OpenFOAM/x86_64/gnu/2.2.2                        yorick/x86_64/gnu/2.1
-    gromacs/x86_64/gnu/4.6.1                         OpenFOAM/x86_64/gnu/2.4.0                        yorick/x86_64/gnu/2.1.06
-    gromacs/x86_64/gnu/4.6.3                         OpenFOAM/x86_64/gnu/4.1.0
+*NB. The above example with python does not list all available python packages. Some python packages such as mpy4py and numpy are their own modules on OzSTAR*
