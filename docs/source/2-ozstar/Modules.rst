@@ -25,6 +25,48 @@ This will display a list of all installed software packages. To load a package, 
 
     module load <package name>
 
+
+The OzSTAR module manager (Lmod) also has a a convenient tool called ```ml``` (taken from `<http://lmod.readthedocs.io/en/latest/010_user.html#ml-a-convenient-tool>`_)
+
+For those of you who can’t type the mdoule, moduel, err module command correctly, Lmod has a tool for you. With ml you won’t have to type the module command again. The two most common commands are ```module list``` and ```module load <something>``` and ml does both:
+
+::
+
+    ml
+
+means module list. And:
+
+::
+
+    ml foo
+    
+means module load foo while:
+
+::
+
+    ml -bar
+
+means module unload bar. It won’t come as a surprise that you can combine them:
+
+::
+
+    ml foo -bar
+
+means module unload bar; module load foo. You can do all the module commands:
+
+::
+
+    ml spider
+    ml avail
+    ml show foo
+
+If you ever have to load a module name spider you can do:
+
+::
+
+    ml load spider
+
+
 OzSTAR Module Documentation
 ---------------------------
 
@@ -229,6 +271,8 @@ Another way to search for modules is with the ``module spider`` command. This co
       astropy: astropy/2.0.3-python-2.7.14, astropy/2.0.3-python-3.6.4
         The Astropy Project is a community effort to develop a single core package for Astronomy in Python and foster
         interoperability between Python astronomy packages.
+
+    (...)
 
 *Here you can see module spider will list all commands available*
 
