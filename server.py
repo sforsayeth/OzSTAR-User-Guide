@@ -56,7 +56,7 @@ if __name__ == '__main__':
     key = ''
     config_file = '.sphinx-server.yml'
     install_folder = '/opt/sphinx-server/'
-    build_folder = os.path.realpath('_build/html')
+    build_folder = os.path.realpath('_build/html/docs')
     source_folder = os.path.realpath('.')
     configuration = None
 
@@ -88,13 +88,13 @@ if __name__ == '__main__':
 
         builder.build()
 
-        server.serve(port=8000, host='0.0.0.0', root=build_folder)
+        server.serve(port=8002, host='0.0.0.0', root=build_folder)
     else:
         # Building once when server starts
         builder = sphinx_autobuild.SphinxBuilder(outdir=build_folder, args=['-b', 'html', source_folder, build_folder])
         builder.build()
 
-        sys.argv = ['nouser', '8000']
+        sys.argv = ['nouser', '8002']
 
         if configuration.get('credentials')['username'] is not None:
             auth = configuration.get('credentials')['username'] + ':' + configuration.get('credentials')['password']
@@ -105,5 +105,5 @@ if __name__ == '__main__':
         else:
             with pushd(build_folder):
                 Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
-                httpd = SocketServer.TCPServer(('', 8000), Handler)
+                httpd = SocketServer.TCPServer(('', 8002), Handler)
                 httpd.serve_forever()

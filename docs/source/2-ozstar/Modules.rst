@@ -25,7 +25,6 @@ This will display a list of all installed software packages. To load a package, 
 
     module load <package name>
 
-
 OzSTAR Module Documentation
 ---------------------------
 
@@ -212,11 +211,10 @@ which is equivalent to typing:
     module load intel/2018.1.163-gcc-6.4.0
 
 Another way to search for modules is with the ``module spider`` command. This command searches the entire list of possible modules. Consider the following examples:-
-
 ::
 
     module spider
-
+    
     -----------------------------------------------------------------------------------------------------------------------
     The following is a list of the modules currently available:
     -----------------------------------------------------------------------------------------------------------------------

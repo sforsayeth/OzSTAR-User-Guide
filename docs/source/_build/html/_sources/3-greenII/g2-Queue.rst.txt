@@ -7,7 +7,7 @@ The preferred method for utilising the Green II supercomputer is through the job
 
 The basic goal of a queue system is to maximize utilisation of the supercomputer and to do this in a way that is fair to all users. It should also ease the workload for users who do a lot of computation. Our queue system is based on PBS. It employs a queue manager called Torque and a scheduler system called Moab. `Torque <http://www.adaptivecomputing.com/products/open-source/torque/>`_ manages the resources of the supercomputer and monitors what is happenning on the nodes while `Moab <http://www.adaptivecomputing.com/products/hpc-products/moab-hpc-basic-edition/>`_ takes care of job scheduling. The latter is done in a fair manner so that those who have only used the supercomputer sparingly will find it easier to start a job than those who have used the cluster heavily. However, if resources are available and the scheduler has a job that can use those resources, then that job will be started regardless of the prior usage history of the user.
 
-All jobs are to be submitted from the head-node ``g2.hpc.swin.edu.au`` using the ``qsub`` command. When your job is submitted it will be assigned a jobid.
+All jobs are to be submitted from the head-node ``ozstar.swin.edu.au`` using the ``qsub`` command. When your job is submitted it will be assigned a jobid.
 
 **Do not run processes directly on the g2 headnode**. Instead use an **interactive node** (see the Hardware section) or launch an **interactive queue session** (see below). *Note: Processes that run on the g2 headnode will be automatically killed if they exceed defined cpu or memory limits.*
 

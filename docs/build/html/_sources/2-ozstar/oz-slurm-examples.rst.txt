@@ -274,6 +274,8 @@ A sample job file requesting a node with a GPU could look like this:
 
     myprog input.fits
 
+.. _interactive_jobs:
+
 Interactive jobs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

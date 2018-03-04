@@ -17,7 +17,7 @@ To access Green II, all access is through the head node ``ozstar.hpc.swin.edu.au
 
 **Green II**
 
-To access Green II, all access is through the head node ``g2.hpc.swin.edu.au``. From there you can submit jobs to the queue or login to one of the interactive nodes. You should not login directly to any other nodes unless otherwise advised.
+To access Green II, all access is through the head node ``ozstar.swin.edu.au``. From there you can submit jobs to the queue or login to one of the interactive nodes. You should not login directly to any other nodes unless otherwise advised.
 
 For more details, see the page :doc:`../1-getting_started/Access`.
 

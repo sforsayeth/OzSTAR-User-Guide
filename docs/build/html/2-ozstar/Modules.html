@@ -36,8 +36,8 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="OzSTAR User Guide  documentation" href="../index.html"/>
-        <link rel="next" title="Torque-Moab vs Slurm" href="torque-vs-slurm.html"/>
-        <link rel="prev" title="File systems" href="Filesystems.html"/> 
+        <link rel="next" title="Job Queues" href="oz-partition.html"/>
+        <link rel="prev" title="What’s new on OzSTAR?" href="../1a-oz_g2/what-s-new.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -57,7 +57,7 @@
 
       
         <!-- a href="../index.html" -->
-        <a href="http://supercomputing.swin.edu.au/" target="_blank">
+        <a href="http://136.186.1.220"><!-- target="_blank"-->
       
 
       
@@ -87,37 +87,40 @@
               
             
             
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
+              <p class="caption"><span class="caption-text">Index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to OzSTAR documentation!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Accounts.html">Accounts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Access.html">Access the supercomputer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Access.html">Access to the supercomputer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Linux.html">Linux tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/manual.html">How to use man pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1-getting_started/file-transfer.html">File Transfer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Profiling.html">Profiling your code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Swinburne-HPC.html">Swinburne HPC system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Filesystems.html">File systems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1-getting_started/FAQ.html">FAQ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OzSTAR vs Green II</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What&#8217;s new on OzSTAR?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Software</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="what-s-new.html">What&#8217;s new on OzSTAR?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Filesystems.html">File systems</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Environment Modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#ozstar-vs-green-ii">OzSTAR vs Green II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compiler-specific">Compiler specific</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="torque-vs-slurm.html">Torque-Moab vs Slurm</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Jobs on OzSTAR</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-partition.html">Job Queues on OzSTAR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-slurm-basics.html">Slurm: basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-slurm-details.html">Slurm: gathering information</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-slurm-create.html">Slurm: Creating a job</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-slurm-examples.html">Slurm: script examples</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Jobs on Green II</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../3-greenII/g2-Queue.html">Job Queues on Green II</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3-greenII/g2-qsub.html">Submitting Jobs on Green II (qsub)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oz-partition.html">Job Queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oz-slurm-basics.html">Slurm: basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oz-slurm-details.html">Slurm: gathering information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oz-slurm-create.html">Slurm: Creating a job</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oz-slurm-examples.html">Slurm: script examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torque-vs-slurm.html">Torque-Moab vs Slurm</a></li>
 </ul>
 
             
@@ -181,7 +184,7 @@
             
   <div class="section" id="environment-modules">
 <h1>Environment Modules<a class="headerlink" href="#environment-modules" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="http://modules.sourceforge.net/">Environment modules</a> allow for dynamically modifying ones shell environment to provide access to required packages. Managing your environment manually can be cumbersome, using modules is highly recommended and is standard practice on gStar.</p>
+<p><a class="reference external" href="http://modules.sourceforge.net/">Environment modules</a> allow for dynamically modifying ones shell environment to provide access to required packages. Managing your environment manually can be cumbersome, using modules is highly recommended and is standard practice on OzSTAR.</p>
 <p>The structure of a module command is:</p>
 <div class="highlight-rst"><div class="highlight"><pre><span></span>module &lt;command&gt; [arguments]
 </pre></div>
@@ -206,9 +209,8 @@
 <div class="highlight-rst"><div class="highlight"><pre><span></span>module load openmpi
 </pre></div>
 </div>
-<div class="section" id="ozstar-vs-green-ii">
-<h2>OzSTAR vs Green II<a class="headerlink" href="#ozstar-vs-green-ii" title="Permalink to this headline">¶</a></h2>
-<p>There exists slight differences between how modules are handled on OzSTAR and Green II.</p>
+<div class="section" id="compiler-specific">
+<h2>Compiler specific<a class="headerlink" href="#compiler-specific" title="Permalink to this headline">¶</a></h2>
 <p><strong>OzSTAR</strong> now includes groups of modules organised around a specific compiler (namely, intel and gcc). Each group provides
 modules compiled using one of these compiler. These are accessed via the following commands.</p>
 <p>For modules compiled with the intel compiler:</p>
@@ -298,21 +300,6 @@ Currently Loaded Modules:
    S:  Module is Sticky, requires --force to unload or purge
 </pre></div>
 </div>
-<p>On <strong>Green II</strong>, <code class="docutils literal"><span class="pre">module</span> <span class="pre">avail</span></code> will provide a list of all versions of available modules:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>% module avail
-
------------------------------------------------------------------------- /usr/local/modules/modulefiles ------------------------------------------------------------------------
-2dfdr/x86_64/5.35                                gromacs/x86_64/gnu/4.6.3-cpu                     openmpi/x86_64/gnu/1.10.2-psm
-2dfdr/x86_64/6.28                                gromacs/x86_64/gnu/5.0.5                         openmpi/x86_64/gnu/1.4.4
-adf/2013.01                                      gsl/x86_64/gnu/1.13-1                            openmpi/x86_64/gnu/1.4.5
-adf/2016.107                                     gsl/x86_64/gnu/1.15                              openmpi/x86_64/gnu/1.6
-(...)
-google-protocol-buffer/2.5                       opencv/x86_64/gnu/3.3.0                          xz/x86_64/5.2.2
-grace/x86_64/gnu/5.1.23                          OpenFOAM/x86_64/gnu/2.2.2                        yorick/x86_64/gnu/2.1
-gromacs/x86_64/gnu/4.6.1                         OpenFOAM/x86_64/gnu/2.4.0                        yorick/x86_64/gnu/2.1.06
-gromacs/x86_64/gnu/4.6.3                         OpenFOAM/x86_64/gnu/4.1.0
-</pre></div>
-</div>
 </div>
 </div>
 
@@ -326,10 +313,10 @@ gromacs/x86_64/gnu/4.6.3                         OpenFOAM/x86_64/gnu/4.1.0
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="torque-vs-slurm.html" class="btn btn-neutral float-right" title="Torque-Moab vs Slurm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="oz-partition.html" class="btn btn-neutral float-right" title="Job Queues" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Filesystems.html" class="btn btn-neutral" title="File systems" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../1a-oz_g2/what-s-new.html" class="btn btn-neutral" title="What’s new on OzSTAR?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

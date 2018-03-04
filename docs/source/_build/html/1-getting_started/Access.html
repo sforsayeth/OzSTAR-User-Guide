@@ -57,7 +57,7 @@
 
       
         <!-- a href="../index.html" -->
-        <a href="http://136.186.54.54"><!-- target="_blank"-->
+        <a href="http://136.186.1.220"><!-- target="_blank"-->
       
 
       
@@ -193,8 +193,8 @@
 </div>
 <div class="section" id="access-green-ii">
 <h2>Access Green II<a class="headerlink" href="#access-green-ii" title="Permalink to this headline">¶</a></h2>
-<p>Access to the supercomputer is available through Secure Shell (SSH) to g2.hpc.swin.edu.au for all users. i.e:</p>
-<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>ssh [your-username]@g2.hpc.swin.edu.au
+<p>Access to the supercomputer is available through Secure Shell (SSH) to ozstar.swin.edu.au for all users. i.e:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>ssh [your-username]@ozstar.swin.edu.au
 </pre></div>
 </div>
 <div class="admonition important">
@@ -208,22 +208,22 @@
 <p><strong>Please, do not use these interactive nodes to run long jobs or jobs with big computational requirements.</strong> Running such jobs in interactive mode can be done by requesting interactive nodes from the queue. Jobs running on interactive nodes can use up to 80% of the nodes total memory with a maximum of 4 GB of swap.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p>If you want to avoid having to type the rather long <code class="docutils literal notranslate"><span class="pre">[your-username]&#64;g2.hpc.swin.edu.au</span></code> every time you want to connect to the supercomputer, you can set an <a class="reference external" href="https://www.gnu.org/software/bash/manual/html_node/Aliases.html">alias</a>.</p>
+<p>If you want to avoid having to type the rather long <code class="docutils literal notranslate"><span class="pre">[your-username]&#64;ozstar.swin.edu.au</span></code> every time you want to connect to the supercomputer, you can set an <a class="reference external" href="https://www.gnu.org/software/bash/manual/html_node/Aliases.html">alias</a>.</p>
 <p>For example, if you are using the bash shell, you can set an alias in your bash configuration file (e.g. <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> or <code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code>) as follows:</p>
-<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>alias g2=&quot;[your-username]@g2.hpc.swin.edu.au&quot;
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>alias g2=&quot;[your-username]@ozstar.swin.edu.au&quot;
 </pre></div>
 </div>
 <p>Once set, you can directly use this alias in your commands. The following commands will produce the same outcome:</p>
 <p><strong>Connect to supercomputer</strong>:</p>
-<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>ssh [your-username]@g2.hpc.swin.edu.au
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>ssh [your-username]@ozstar.swin.edu.au
 
 ssh g2
 </pre></div>
 </div>
 <p><strong>Copy a local file to supercomputer</strong>:</p>
-<div class="last highlight-rst notranslate"><div class="highlight"><pre><span></span>scp myfile.txt [your-username]@g2.hpc.swin.edu.au:path/to/location/
+<div class="last highlight-rst notranslate"><div class="highlight"><pre><span></span>scp myfile.txt [your-username]@ozstar.swin.edu.au:path/to/location/
 
-scp myfile.txt g2:path/to/location/
+scp myfile.txt ozstar:path/to/location/
 </pre></div>
 </div>
 </div>
@@ -260,7 +260,7 @@ scp myfile.txt g2:path/to/location/
 <h3>X11 Windows Forwarding<a class="headerlink" href="#x11-windows-forwarding" title="Permalink to this headline">¶</a></h3>
 <p>If you prefer to use the graphical screen of your application rather than a terminal, the ability to forward a graphical screen from the application back to your home computer is available via X11 Windows Forwarding.</p>
 <p>With Linux and MacOS this can be done by login from the command line Secure Shell with the -X option (for X forwarding):</p>
-<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>ssh -X [username]@g2.hpc.swin.edu.au
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>ssh -X [username]@ozstar.swin.edu.au
 </pre></div>
 </div>
 <p>For <strong>MacOS</strong> you will first need to install <a class="reference external" href="https://www.xquartz.org/">XQuartz</a>.</p>
