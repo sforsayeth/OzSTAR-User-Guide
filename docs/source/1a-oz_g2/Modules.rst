@@ -41,40 +41,158 @@ OzSTAR vs Green II
 There exists slight differences between how modules are handled on OzSTAR and Green II.
 
 
-**OzSTAR** now includes groups of modules organised around a specific compiler (namely, intel and gcc). Each group provides
-modules compiled using one of these compiler. These are accessed via the following commands.
+**OzSTAR** uses *hierarchical* modules, what that means is that loading a module makes more modules available by updating the module path where the module manager looks for modules. This is especially useful to avoid dependency problems, and has been used on OzSTAR to avoid compiler and OpenMPI conflicts and incompatibilities.
 
-For modules compiled with the intel compiler:
+The following list summarises how modules work on OzSTAR:-
+
+* There are 3 distinct categories of modules, *Core Modules*, *Compiler Modules*, and *Compiler/OpenMPI Modules*
+* Core modules are meta modules, or modules built against the system compiler
+* Compiler modules are built against a specific compiler
+* Compiler/OpenMPI modules are built against a specific compiler/OpenMPI combination.
+* Loading a module on OzSTAR requires thte **use of a version identifier**. **There are no default modules**
+* Loading a module without a version identifier **will show the available versions of the module**
+* Loading an **ambigous module** (A module that is built against two different compiler or OpenMPI versions) requires first **loading the parent modules(s) first**
+* Loading an ambiguous module **will list the possible parent modules**
+* Loading a module that is not ambigous **will automatically load it's parent hierarchy of modules if one exists**
+* ```module avail``` with **no modules loaded** will list **all modules for all compiler combinations on the system**
+* ```module avail``` with **a compiler or compiler/OpenMPI module** loaded will only **list modules for that compiler or compiler/OpenMPI combination**
+
+
+Listing all available modules
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Hierarchical modules in the context of OzSTAR use compiler and OpenMPI modules as the parent *hierarchy*. These parent modules are referred to as **toolchains** henceforth in this document. Put simply **a toolchain is just a compiler or compiler/OpenMPI combination**. 
+
 ::
 
-    module load intel
-
-Then, if you run a ``module avail``, you should see at the beginning of the list of modules available specific to intel:
-::
+    module purge
 
     module avail
 
-    --------------------------------------------------- /apps/skylake/modulefiles/all/mpi/intel/2018.1.163-gcc-6.4.0/openmpi/3.0.0 ----------------------------------------------------
-       boost/1.66.0    hdf5/1.8.19    hdf5/1.10.1 (D)    imkl/2018.1.163 (L)    netcdf/4.5.0
+    -------------------------------------------------------------------- Compiler: gcc 5.5.0 OpenMPI: 3.0.0 --------------------------------------------------------------------
+    boost/1.66.0    fftw/2.1.5    fftw/3.3.7    hdf5/1.8.19    hdf5/1.10.1    netcdf/4.5.0    scalapack/2.0.2-openblas-0.2.20
 
-    -------------------------------------------------------- /apps/skylake/modulefiles/all/compiler/intel/2018.1.163-gcc-6.4.0 --------------------------------------------------------
-       openmpi/3.0.0 (L)
+    --------------------------------------------------------------------------- Compiler: gcc 5.5.0 ----------------------------------------------------------------------------
+    openblas/0.2.20    openmpi/3.0.0
 
     (...)
 
+*In this example there are two toolchain, GCC 5.5.0, and GCC 5.5.0 with OpenMPI 3.0.0*
 
-Similarly, for GCC, you can run the following:
+
+Listing toolchain specific modules
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Loading a toolchain make other modules available by extending the current module path that the module manager can find modules. On OzSTAR, loading a compiler or compiler/OpenMPI toolchain makes the modules listed by ```module avail``` list the modules available to (that is to say built or compiled against) that loaded toolchain. However ```module avail``` with no toolchain loaded, will list modules for all available toolchains on OzSTAR.
+
+:: 
+
+    module purge
+    
+    module load gcc/6.4.0
+
+    module avail
+
+    --------------------------------------------------------------------------- Compiler: gcc 6.4.0 ----------------------------------------------------------------------------
+    cfitsio/3.420                  ipython/5.5.0-python-3.6.4    protobuf-python/3.5.1-python-2.7.14    pyzmq/16.0.4-python-2.7.14-zmq4    vim/8.0-python-2.7.14
+    
+    (...)
+
+    ------------------------------------------------------------------------------- Core Modules -------------------------------------------------------------------------------
+    anaconda2/5.0.1        cudnn/7.0.5-cuda-9.0.176        gcccore/system        gnu/2018.0     icc/2016.2.181-gcc-6.4.0         intel/2016.2.181-gcc-6.4.0    szip/2.1.1
+
+    (...)
+
+*Here you can see that loading the GCC 6.4.0 toolchain now only list the modules available for GCC 6.4.0 and the Core Modules*
+
 ::
 
-    module load gcc
+    module load openmpi/3.0.0 
 
-And ``module avail`` should display something like the following:
+    module avail
+
+    -------------------------------------------------------------------- Compiler: gcc 6.4.0 OpenMPI: 3.0.0 --------------------------------------------------------------------
+    astropy/2.0.3-python-2.7.14    lalsuite-lalapps/6.21.0          lalsuite-lalxml/1.2.4                           scalapack/2.0.2-openblas-0.2.20
+
+    (...)
+
+    --------------------------------------------------------------------------- Compiler: gcc 6.4.0 ----------------------------------------------------------------------------
+    cfitsio/3.420                  ipython/5.5.0-python-3.6.4    protobuf-python/3.5.1-python-2.7.14    pyzmq/16.0.4-python-2.7.14-zmq4    vim/8.0-python-2.7.14
+
+    (...)
+
+    ------------------------------------------------------------------------------- Core Modules -------------------------------------------------------------------------------
+    anaconda2/5.0.1        cudnn/7.0.5-cuda-9.0.176        gcccore/system        gnu/2018.0     icc/2016.2.181-gcc-6.4.0         intel/2016.2.181-gcc-6.4.0    szip/2.1.1
+
+    (...)
+
+*Then if we load GCC 6.4.0's OpenMPI, we can see all modules available to the GCC 6.4.0 OpenMPI 3.0.0 toolchain*
+
+
+On OzSTAR, the following four toolchain combinations exist:-
+
+* GCC
+* GCC/OpenMPI
+* Intel
+* Intel/OpenMPI
+
+Loading modules
+^^^^^^^^^^^^^^^
+
+If a module is not ambigous, that is to say it only has one parent toolchain, then the module manager will automatically load the parent toolchain before loading your module. See below for loading ambigous modules. Just remember that you need to specify the version of the module. If you don't specify the version, the module manager will list the available versions.
+
 ::
 
-    ---------------------------------------------------------------- /apps/skylake/modulefiles/all/compiler/gcc/6.4.0 -----------------------------------------------------------------
-       cfitsio/3.420    clang/5.0.1    framel/8.30    gsl/2.4    llvm/5.0.1    openblas/0.2.20    openmpi/3.0.0    qt/4.8.7    sqlite/3.21.0
+    module purge
+    
+    module load python
 
-   (...)
+    Lmod has detected the following error:  Couldn't find module with name python, did you mean to load one of the following?
+        * python/2.7.14
+        * python/3.6.4
+
+*In this example you can see that the module manager has listed the available versions of python because we didn't specify the version*
+
+::
+
+    module purge
+    
+    module load python
+
+    module list
+
+**insert listed modules**
+    
+
+Loading ambiguous modules
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A module is considered ambigous if it has more than one parent hierarchy, and the module manager is unable to automotically load the parent hierarchy. In this case a ```module load``` will mention that the load is ambiguous and then list all parent toolchain combinations. You must then load the specific toolchain manually, before being able to load the original module.
+
+::
+
+    module purge
+
+    module load openblas/0.2.20 
+
+    Lmod has detected the following error:  Can't load openblas/0.2.20 because it has more than one parent hierarchy, making this load ambiguous.
+
+        Please load one of the following combinations before loading this module:
+        * gcc/6.4.0
+        * gcc/5.5.0
+        * gcc/7.3.0
+
+*In this example, we tried to load OpenBLAS, but it exists as a child of multiple GCC versions. In order to load this module, we first need to load the specific version of GCC we want before we can load the module*
+
+::
+
+    module purge
+
+    module load gcc/6.4.0
+
+    module load openblas/0.2.20
+
+    module list
+
+**insert listed modules**
 
 Please note the following useful commands: ``module purge`` will allow you to unload all modules currently loaded. It is
 also possible to switch between ``gcc`` and ``intel`` by typing:
