@@ -3,7 +3,7 @@
 Environment Modules
 ====================
 
-`Environment modules <http://modules.sourceforge.net/>`_ allow for dynamically modifying ones shell environment to provide access to required packages. Managing your environment manually can be cumbersome, using modules is highly recommended and is standard practice on OzSTAR.
+`Environment modules <http://modules.sourceforge.net/>`_ allow for dynamically modifying ones shell environment to provide access to required software packages. Managing your environment manually can be cumbersome, using modules is highly recommended and is standard practice on OzSTAR.
 
 The structure of a module command is:
 ::
@@ -80,7 +80,7 @@ The following list summarises how modules work on OzSTAR:-
 * Compiler/OpenMPI modules are built against a specific compiler/OpenMPI combination.
 * Loading a module on OzSTAR requires thte **use of a version identifier**. **There are no default modules**
 * Loading a module without a version identifier **will show the available versions of the module**
-* Loading an **ambigous module** (A module that is built against two different compiler or OpenMPI versions) requires first **loading the parent modules(s) first**
+* Loading an **ambigous module** (A module that is built against two different compiler or OpenMPI versions) requires first **loading the desired parent modules(s) first**
 * Loading an ambiguous module **will list the possible parent modules**
 * Loading a module that is not ambigous **will automatically load it's parent hierarchy of modules if one exists**
 * ```module avail``` with **no modules loaded** will list **all modules for all compiler combinations on the system**
@@ -105,12 +105,12 @@ Hierarchical modules in the context of OzSTAR use compiler and OpenMPI modules a
 
     (...)
 
-*In this example there are two toolchain, GCC 5.5.0, and GCC 5.5.0 with OpenMPI 3.0.0*
+*In this example there are two toolchains, GCC 5.5.0, and GCC 5.5.0 with OpenMPI 3.0.0*
 
 
 Listing toolchain specific modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Loading a toolchain make other modules available by extending the current module path that the module manager can find modules. On OzSTAR, loading a compiler or compiler/OpenMPI toolchain makes the modules listed by ```module avail``` list the modules available to (that is to say built or compiled against) that loaded toolchain. However ```module avail``` with no toolchain loaded, will list modules for all available toolchains on OzSTAR.
+Loading a toolchain makes other modules available by extending the current module path where the module manager can find modules. On OzSTAR, loading a compiler or compiler/OpenMPI toolchain makes the modules listed by ```module avail``` list the modules available to (that is to say built or compiled against) that loaded toolchain. However ```module avail``` with no toolchain loaded, will list modules for all available toolchains on OzSTAR.
 
 :: 
 
@@ -130,7 +130,7 @@ Loading a toolchain make other modules available by extending the current module
 
     (...)
 
-*Here you can see that loading the GCC 6.4.0 toolchain now only list the modules available for GCC 6.4.0 and the Core Modules*
+*Here you can see that loading the GCC 6.4.0 toolchain now only lists the modules available for GCC 6.4.0 and the Core Modules*
 
 ::
 
@@ -153,7 +153,7 @@ Loading a toolchain make other modules available by extending the current module
 
     (...)
 
-*Then if we load GCC 6.4.0's OpenMPI, we can see all modules available to the GCC 6.4.0 OpenMPI 3.0.0 toolchain*
+*Then if we load GCC 6.4.0's OpenMPI 3.0.0, we can see all modules available to the GCC 6.4.0 OpenMPI 3.0.0 toolchain*
 
 
 On OzSTAR, the following four toolchain combinations exist:-
@@ -200,7 +200,7 @@ If a module is not ambigous, that is to say it only has one parent toolchain, th
 Loading ambiguous modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A module is considered ambigous if it has more than one parent hierarchy, and the module manager is unable to automotically load the parent hierarchy. In this case a ```module load``` will mention that the load is ambiguous and then list all parent toolchain combinations. You must then load the specific toolchain manually, before being able to load the original module.
+A module is considered ambigous if it has more than one parent hierarchy, and the module manager is unable to automatically load the parent hierarchy. In this case a ```module load``` will mention that the load is ambiguous and then list all parent toolchain combinations. You must then load the specific toolchain you want to use manually, before being able to load the original module.
 
 ::
 
@@ -274,7 +274,7 @@ Another way to search for modules is with the ``module spider`` command. This co
 
     (...)
 
-*Here you can see module spider will list all commands available*
+*Here you can see module spider will list all modules available on OzSTAR*
 
 ::
 
@@ -304,7 +304,7 @@ Another way to search for modules is with the ``module spider`` command. This co
         $ module spider python/3.6.4
     -----------------------------------------------------------------------------------------------------------------------
 
-*Here you can see module spider can list information about a specific package*
+*Here you can see module spider can list information about a specific module*
 
 ::
 
@@ -340,6 +340,6 @@ Another way to search for modules is with the ``module spider`` command. This co
         pbr-3.1.1, pip-9.0.1, pycrypto-2.6.1, pytest-3.4.1, python-dateutil-2.6.1,
         pytz-2018.3, setuptools-38.4.0, six-1.11.0, virtualenv-15.1.0
 
-*Here you can see that module spider can list additional information about a specific version of a package. In this case it lists the home page of the package if one exists, as well as the included python packages (In this example)*
+*Here you can see that module spider can list additional information about a specific version of a module. In this case it lists the home page of the module if one exists, as well as the included python packages (In this example)*
 
-*NB. The above example with python does not list all available python packages. Some python packages such as mpy4py and numpy are their own modules on OzSTAR*
+*NB. The above example with python does not list all available python packages. Some python packages such as mpi4py and numpy are their own modules on OzSTAR*
