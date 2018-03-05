@@ -3,7 +3,7 @@
 File Transfer
 ======================================================
 
-In order to transfer files to and from the supercomputer (OzSTAR, Green II), a ssh-based file transfer utility is required. There are a variety of Options that you can use.
+In order to transfer files to and from the supercomputer (OzSTAR), a ssh-based file transfer utility is required. There are a variety of Options that you can use.
 
 +------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | Operating System | Terminal                                                                                                                                                                  |
@@ -27,7 +27,7 @@ The simplest way to copy a file to or from the supercomputer is to use the ``scp
 
     In the following examples, we assume an ``ozstar`` alias set to ``[your-username]@ozstar.swin.edu.au``.
 
-**Copying a local file to the Green II supercomputer**::
+**Copying a local file to the OzSTAR supercomputer**::
 
     scp ./file.txt ozstar:destination/path/
 
@@ -39,7 +39,7 @@ You can also copy a file from the supercomputer to your local machine (e.g. **do
 
     scp -r path/to/copy/ ozstar:destination/path/
 
-The above command will initiate a connection from your local environment to Green II (g2) directly.
+The above command will initiate a connection from your local environment to OzSTAR directly.
 
 Transferring a large number of small files
 --------------------------------------------

@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Slurm: Creating a job &mdash; OzSTAR User Guide  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="OzSTAR User Guide  documentation" href="../index.html"/>
+        <link rel="next" title="Slurm: script examples" href="oz-slurm-examples.html"/>
+        <link rel="prev" title="Slurm: gathering information" href="oz-slurm-details.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+      
+        <!-- a href="../index.html" -->
+        <a href="http://136.186.1.220"><!-- target="_blank"-->
+      
+
+      
+        
+        <img src="../_static/OzStar-FA-Mono-KEYLINE.png" class="logo" />
+      
+      </a>
+
+      
+
+      
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+      
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to OzSTAR documentation!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Access.html">Access to the supercomputer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Linux.html">Linux tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/manual.html">How to use man pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/file-transfer.html">File Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Swinburne-HPC.html">Swinburne HPC system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Filesystems.html">File systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/FAQ.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OzSTAR vs Green II</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What&#8217;s new on OzSTAR?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Software</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Modules.html">Environment Modules</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Jobs on OzSTAR</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="oz-partition.html">Job Queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oz-slurm-basics.html">Slurm: basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oz-slurm-details.html">Slurm: gathering information</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Slurm: Creating a job</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#job-steps-on-the-queue">Job steps on the queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#querying-job-state">Querying Job State</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#parallel-jobs">Parallel jobs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="oz-slurm-examples.html">Slurm: script examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torque-vs-slurm.html">Torque-Moab vs Slurm</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OzSTAR User Guide</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Slurm: Creating a job</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="slurm-creating-a-job">
+<h1>Slurm: Creating a job<a class="headerlink" href="#slurm-creating-a-job" title="Permalink to this headline">¶</a></h1>
+<p>A job is formed of two sections: <strong>resource requests</strong> and <strong>job steps</strong>. Resource requests involves specifying the required a number of CPUs/GPUs, expected job duration, amounts of RAM, disk space, and so on. Job steps involves describing what needs to be done (i.e. computing steps, which software to run, parameter space, etc.).</p>
+<p>Typically, a job is created via a <strong>submission script</strong>: a shell script. For example, comments are prefixed with <strong>SBATCH</strong> at the beginning of a Bash script are understood by Slurm as parameters describing resource requests and other submissions options. A complete list of parameters can be obtained from the sbatch manual page (<code class="docutils literal"><span class="pre">man</span> <span class="pre">sbatch</span></code>).</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">The very first line of the submission file has to be the <a class="reference external" href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang</a> (e.g. <code class="docutils literal"><span class="pre">#!/bin/bash</span></code>). Then, the next lines must be the <strong>SBATCH</strong> directives. Finally, you can input any other line.</p>
+</div>
+<p>The script itself is a job step. Other job steps are created with the <code class="docutils literal"><span class="pre">srun</span></code> command.</p>
+<p>For instance, the following script, hypothetically named myjob.sh,</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>#!/bin/bash
+#
+#SBATCH --job-name=test
+#SBATCH --output=res.txt
+#
+#SBATCH --ntasks=1
+#SBATCH --time=60:00
+#SBATCH --mem-per-cpu=200
+
+srun hostname
+srun sleep 60
+</pre></div>
+</div>
+<p>would request one CPU for 60 minutes, and 200 MB of RAM, in the default queue. When started, the job would run a first job step <code class="docutils literal"><span class="pre">srun</span> <span class="pre">hostname</span></code>, which will launch the UNIX command hostname on the node on which the requested CPU was allocated. Then, a second job step will start the <code class="docutils literal"><span class="pre">sleep</span></code> command. Note that the <code class="docutils literal"><span class="pre">--job-name</span></code> parameter lets give a meaningful name to the job and the <code class="docutils literal"><span class="pre">--output</span></code> parameter defines the file to which the output of the job must be sent.</p>
+<p>Once the submission script is correct, you need to submit it to slurm through the <code class="docutils literal"><span class="pre">sbatch</span></code> command, which, upon success, responds with the <code class="docutils literal"><span class="pre">jobid</span></code> attributed to the job. (The <code class="docutils literal"><span class="pre">%</span></code> sign below is the shell prompt)</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>% sbatch submit.sh
+sbatch: Submitted batch job 99999999
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is possible to submit a new job to the queue from an SBATCH script.</p>
+</div>
+<div class="section" id="job-steps-on-the-queue">
+<h2>Job steps on the queue<a class="headerlink" href="#job-steps-on-the-queue" title="Permalink to this headline">¶</a></h2>
+<p>Once a job has been submitted to a queue with <code class="docutils literal"><span class="pre">sbatch</span></code>, execution will follow these steps/states:</p>
+<ol class="arabic simple">
+<li><strong>PENDING</strong>: The job then enters the queue in the PENDING state.</li>
+<li><strong>RUNNING</strong>: Once resources become available and the job has highest priority, an allocation is created for it and it goes to the RUNNING state.</li>
+<li>If the job completes correctly, it goes to the <strong>COMPLETED</strong> state, otherwise, it is set to the <strong>FAILED</strong> state.</li>
+</ol>
+</div>
+<div class="section" id="querying-job-state">
+<h2>Querying Job State<a class="headerlink" href="#querying-job-state" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to query information about a job in near-realtime (memory consumption, etc.) with the <code class="docutils literal"><span class="pre">sstat</span></code> command, by introducing <code class="docutils literal"><span class="pre">sstat</span> <span class="pre">-j</span> <span class="pre">jobid</span></code>. It is possible to select specific information to output with <code class="docutils literal"><span class="pre">sstat</span></code> via the <code class="docutils literal"><span class="pre">--format</span></code> parameter. Refer to the manpage for more information <code class="docutils literal"><span class="pre">man</span> <span class="pre">sstat</span></code>.</p>
+<p>On completion, the output file contains the result of the commands run in the script file. Following the previous example, it is possible to view its results with <code class="docutils literal"><span class="pre">cat</span> <span class="pre">res.txt</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The previous example illustrates a serial job running on a single CPU, and on a single node, and therefore does not take advantage of multi-processor nodes or multiple compute nodes available with a cluster.</p>
+</div>
+<div class="section" id="parallel-jobs">
+<h3>Parallel jobs<a class="headerlink" href="#parallel-jobs" title="Permalink to this headline">¶</a></h3>
+<p>Parallel job (e.g. tasks ran simultaneously) can be created via different methods:</p>
+<ul class="simple">
+<li>by running a multi-process program (<a class="reference external" href="http://en.wikipedia.org/wiki/SPMD">Single Process, Multiple Data (SPMD)</a> paradigm, e.g. with <a class="reference external" href="http://en.wikipedia.org/wiki/Message_Passing_Interface">MPI</a>)</li>
+<li>by running a multi-threaded program (shared memory paradigm, e.g. with <a class="reference external" href="http://en.wikipedia.org/wiki/OpenMP">OpenMP</a> or <a class="reference external" href="http://en.wikipedia.org/wiki/Pthreads">pthreads</a>)</li>
+<li>by running several instances of a single-threaded program (<a class="reference external" href="https://en.wikipedia.org/wiki/Embarrassingly_parallel">Embarrassingly parallel paradigm</a> or a <em>job array</em>)</li>
+<li>by running one master program controlling several slave programs (<em>master/slave</em> paradigm)</li>
+</ul>
+<p>In the Slurm context, a task represents a <strong>process</strong>; a multi-process program is made of several tasks. By contrast, a multi-threaded program is composed of only one task, which uses several CPUs.</p>
+<p>Tasks are requested/created with the <code class="docutils literal"><span class="pre">--ntasks</span></code> option, while CPUs, for the multithreaded programs, are requested with the <code class="docutils literal"><span class="pre">--cpus-per-task</span></code> option. Tasks cannot be split across several compute nodes, so requesting several CPUs with the <code class="docutils literal"><span class="pre">--cpus-per-task</span></code> option will ensure all CPUs are allocated on the same compute node. By contrast, requesting the same amount of CPUs with the &#8211;ntasks option may lead to several CPUs being allocated on several, distinct compute nodes.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">On OzSTAR, while a single node has 36-cores, usage is limited to 32-cores per node for a single job. This is due to the need for leaving cores free to communicate with GPUs.</p>
+</div>
+<p>For different parallel job scripts, see the <a class="reference internal" href="oz-slurm-examples.html"><span class="doc">Slurm: script examples</span></a> page.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="oz-slurm-examples.html" class="btn btn-neutral float-right" title="Slurm: script examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="oz-slurm-details.html" class="btn btn-neutral" title="Slurm: gathering information" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+    
+      <style>
+        /* Sidebar header (and topbar for mobile) */
+        .wy-side-nav-search, .wy-nav-top {
+          background: #000000;
+        }
+        /* Sidebar */
+        /*.wy-nav-side {*/
+          /*background: #ff0000;*/
+        /*}*/
+      </style>
+    
+
+</body>
+</html>

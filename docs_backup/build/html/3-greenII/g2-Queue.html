@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Job Queues on Green II &mdash; OzSTAR User Guide  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="OzSTAR User Guide  documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+      
+        <!-- a href="../index.html" -->
+        <a href="http://136.186.1.220"><!-- target="_blank"-->
+      
+
+      
+        
+        <img src="../_static/OzStar-FA-Mono-KEYLINE.png" class="logo" />
+      
+      </a>
+
+      
+
+      
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+      
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Index</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to OzSTAR documentation!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Accounts.html">Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Access.html">Access to the supercomputer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Linux.html">Linux tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/manual.html">How to use man pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/file-transfer.html">File Transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Swinburne-HPC.html">Swinburne HPC system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Filesystems.html">File systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/FAQ.html">FAQ</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OzSTAR vs Green II</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What&#8217;s new on OzSTAR?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Software</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/Modules.html">Environment Modules</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Jobs on OzSTAR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-partition.html">Job Queues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-slurm-basics.html">Slurm: basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-slurm-details.html">Slurm: gathering information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-slurm-create.html">Slurm: Creating a job</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/oz-slurm-examples.html">Slurm: script examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2-ozstar/torque-vs-slurm.html">Torque-Moab vs Slurm</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OzSTAR User Guide</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Job Queues on Green II</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="job-queues-on-green-ii">
+<h1>Job Queues on Green II<a class="headerlink" href="#job-queues-on-green-ii" title="Permalink to this headline">¶</a></h1>
+<p>The preferred method for utilising the Green II supercomputer is through the job queue which accesses the majority of the compute nodes (all except the interactive nodes). The queue nodes are not available for direct login.</p>
+<p>The basic goal of a queue system is to maximize utilisation of the supercomputer and to do this in a way that is fair to all users. It should also ease the workload for users who do a lot of computation. Our queue system is based on PBS. It employs a queue manager called Torque and a scheduler system called Moab. <a class="reference external" href="http://www.adaptivecomputing.com/products/open-source/torque/">Torque</a> manages the resources of the supercomputer and monitors what is happenning on the nodes while <a class="reference external" href="http://www.adaptivecomputing.com/products/hpc-products/moab-hpc-basic-edition/">Moab</a> takes care of job scheduling. The latter is done in a fair manner so that those who have only used the supercomputer sparingly will find it easier to start a job than those who have used the cluster heavily. However, if resources are available and the scheduler has a job that can use those resources, then that job will be started regardless of the prior usage history of the user.</p>
+<p>All jobs are to be submitted from the head-node <code class="docutils literal"><span class="pre">ozstar.swin.edu.au</span></code> using the <code class="docutils literal"><span class="pre">qsub</span></code> command. When your job is submitted it will be assigned a jobid.</p>
+<p><strong>Do not run processes directly on the g2 headnode</strong>. Instead use an <strong>interactive node</strong> (see the Hardware section) or launch an <strong>interactive queue session</strong> (see below). <em>Note: Processes that run on the g2 headnode will be automatically killed if they exceed defined cpu or memory limits.</em></p>
+<div class="section" id="available-queues">
+<h2>Available queues<a class="headerlink" href="#available-queues" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="queue-name-gstar">
+<h3>Queue Name: gstar<a class="headerlink" href="#queue-name-gstar" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Nodes:</strong> gstar011 through to gstar058</li>
+<li><strong>Node Hardware Specifications:</strong> 12 cores, 48GB RAM, 2xC2070 GPUs per node</li>
+<li><strong>Per User Resource Limits:</strong> processors = 192, walltime = 7 days</li>
+<li><strong>User Restrictions:</strong> none</li>
+</ul>
+</div>
+<div class="section" id="queue-name-manygpu">
+<h3>Queue Name: manygpu<a class="headerlink" href="#queue-name-manygpu" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Nodes:</strong> gstar101, gstar102, gstar103</li>
+<li><strong>Node Hardware Specifications:</strong> 12 cores, 48GB RAM, 7xM2090 GPUs per node</li>
+<li><strong>Per User Resource Limits:</strong> nodes = 1, walltime = 7 days</li>
+<li><strong>User Restrictions:</strong> none</li>
+</ul>
+</div>
+<div class="section" id="queue-name-sstar">
+<h3>Queue Name: sstar<a class="headerlink" href="#queue-name-sstar" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Nodes:</strong> sstar011 to sstar030 and sstar101 to sstar162</li>
+<li><strong>Node Hardware Specifications:</strong> 16 cores, 64GB RAM, K10 GPUs in nodes sstar101-162</li>
+<li><strong>Per User Resource Limits:</strong> processors = 256, walltime = 7 days</li>
+<li><strong>User Restrictions:</strong> none (SUT prioritised)</li>
+</ul>
+<p><em>notes: include</em> <strong>gpus=1</strong> <em>or</em> <strong>gpus=2</strong> <em>in your resource list if you need a K10 node</em></p>
+</div>
+<div class="section" id="queue-name-largemem">
+<h3>Queue Name: largemem<a class="headerlink" href="#queue-name-largemem" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>Nodes:</strong> sstar201, sstar202, sstar203, sstar204</li>
+<li><strong>Node Hardware Specifications:</strong> 32 cores, 512GB RAM per node (no GPUs)</li>
+<li><strong>Resource Limits:</strong> processors = 64, walltime = 2 days</li>
+<li><strong>User Restrictions:</strong> SUT only</li>
+</ul>
+<p><em>Notes: previously accessed through the sstar queue by including largemem in your resource list but now these nodes have a dedicated queue.</em></p>
+</div>
+</div>
+<div class="section" id="queue-limits">
+<h2>Queue limits<a class="headerlink" href="#queue-limits" title="Permalink to this headline">¶</a></h2>
+<p>As well as the resource limits described above, there are also limits within Moab on the number of jobs that you can have within the queue and how these are managed. Currently the maximum number of jobs that you can have submitted at any point in time is 1000 (generally your instantaneous usage will be much less than this).</p>
+<p>Jobs will be classified as running (or active), idle (or eligible) or blocked. Idle jobs are next in line to run when resources become available. Currently we have a limit of 100 set on the number of idle jobs (in total for all users per queue) and when this becomes full jobs will then go into the blocked state. As idle jobs become active, jobs from the blocked state will move up to idle and so on.</p>
+<p>The maximum number of active jobs you can have at any one time is currently set at 64. The number of GPUs in use by one person is also set to 64.
+Note that if you are using the maximum number of GPUs then subsequent queued jobs will go into the blocked state but will be promoted when your GPU use count drops below the maximum.</p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+    
+      <style>
+        /* Sidebar header (and topbar for mobile) */
+        .wy-side-nav-search, .wy-nav-top {
+          background: #000000;
+        }
+        /* Sidebar */
+        /*.wy-nav-side {*/
+          /*background: #ff0000;*/
+        /*}*/
+      </style>
+    
+
+</body>
+</html>

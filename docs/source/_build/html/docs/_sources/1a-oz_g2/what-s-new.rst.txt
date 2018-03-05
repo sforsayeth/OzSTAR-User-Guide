@@ -8,6 +8,11 @@ Access
 
 Entry point is now ``ozstar.swin.edu.au``.
 
+Hardware
+----------
+
+Each node includes 36 CPU cores and 2 P100 GPUs. Interconnect is 100 Gb/s intel infiniband. `See here fore more details <https://136.186.1.220/ozstar/>`_.
+
 Interactive Nodes
 -------------------
 
@@ -17,14 +22,20 @@ node or start an interactive session via Slurm.
 Job Scheduling
 ----------------
 
-We will be using Slurm on OzSTAR. See :doc:`torque-vs-slurm` for a guide
-comparision between Moab and Slurm.
+We now use Slurm on OzSTAR. See :doc:`../2-ozstar/torque-vs-slurm` for a comparision between Moab and Slurm.
+
+Large memory nodes
+---------------------
+
+Standard nodes on OzSTAR have 192 GB of RAM. There are eight nodes with increased memory: four with 384 GB RAM, and four with 768 GB RAM. Each of these also has a 2 TB NVMe flash SSD drive available.
 
 Projects
 ------------
 
-You will be a member of a new project on OzSTAR as g2 projects are not rolled over. However you will have
-read access to your g2 projects via ???.
+You will be a member of a new project on OzSTAR as g2 projects are not rolled over. Currently, the prefered way to copy
+files and repositories from g2 to OzSTAR is with ``rsync``. For example, while logged on OzSTAR, you can bring files over via
+``rsync -av g2:/some/file .``.
+
 
 File System
 --------------
@@ -35,4 +46,4 @@ Home directory path is unchanged.
 Modules
 -----------
 
-OzSTAR now includes generic and optimized versions of modules. See :doc:`Modules` for more information.
+OzSTAR now includes generic and optimized versions of modules. See :doc:`../2-ozstar/Modules` for more information.

@@ -5,9 +5,9 @@ services:
     build: ./
     container_name: sphinx-server
     expose:
-      - 8000
+      - 8002
     ports:
-      - "8002:8000"
+      - "8002:8002"
     volumes:
       - ./docs/source:/docs
       #- ./docs/source:/web/docs

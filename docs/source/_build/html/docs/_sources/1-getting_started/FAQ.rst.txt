@@ -11,30 +11,16 @@ All Swinburne staff and students are eligible for accounts as are researchers in
 How do I access the facility?
 ------------------------------------------
 
-**OzSTAR**
-
-To access Green II, all access is through the head node ``ozstar.hpc.swin.edu.au``. From there you can submit jobs to the queue. You should not login directly to any other nodes unless otherwise advised.
-
-**Green II**
-
-To access Green II, all access is through the head node ``ozstar.swin.edu.au``. From there you can submit jobs to the queue or login to one of the interactive nodes. You should not login directly to any other nodes unless otherwise advised.
+To access OzSTAR, all access is down through the head node ``ozstar.hpc.swin.edu.au``. Upon login, you will be assigned to one of two nodes, namely ``farnarkle1`` and ``farnarkle2``, in a round robin fashion. From there you can submit jobs to the queue.
+These nodes can be used to run small tasks interactively. However, for larger jobs that require interaction, you should request an interactive node via Slurm (for more information, see :ref:`interactive_jobs`).
 
 For more details, see the page :doc:`../1-getting_started/Access`.
 
 What operating system is used?
 ------------------------------------------
 
-All nodes of the OzSTAR and Green II Supercomputers are running `CentOS <http://wiki.centos.org/Manuals/ReleaseNotes/>`_ (version 7 and 6 respectively) as the main operating system. As such, we advise that you get yourself familiar with the Linux operating system and the use of command line before using the supercomputer.
+All nodes of OzSTAR are running `CentOS 7 <http://wiki.centos.org/Manuals/ReleaseNotes/>`_ as the main operating system. As such, we advise that you get yourself familiar with the Linux operating system and the use of command line before using the supercomputer.
 
-Where can I learn more about Linux?
-------------------------------------------
-
-You can find a comprehensive Unix/Linux tutorial on http://www.ee.surrey.ac.uk/Teaching/Unix/. You can find a list of recommended Linux/unix books on the following link http://www.ee.surrey.ac.uk/Teaching/Unix/books-uk.html.
-
-How do I differentiate between gSTAR and swinSTAR nodes?
-------------------------------------------------------------------------------------
-
-All gSTAR nodes are denoted gstarXXX and all swinSTAR nodes as sstarXXX, where XXX is a 3-digit node number.
 
 How do I change my login password?
 ------------------------------------------
