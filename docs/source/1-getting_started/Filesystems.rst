@@ -41,7 +41,7 @@ Note that because of filesystem compression (see below) it's common to store mor
 
 To check your quota on any node, type: ::
 
-``quota``
+    quota
 
 
 Transparent Compression

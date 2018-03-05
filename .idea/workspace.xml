@@ -4,36 +4,11 @@
     <list default="true" id="ac0058f5-9218-46ab-b486-7c43c32ba912" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/docs/build/doctrees/1-getting_started/Filesystems.doctree" afterPath="$PROJECT_DIR$/docs/build/doctrees/1-getting_started/Filesystems.doctree" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/2-ozstar/Modules.doctree" afterPath="$PROJECT_DIR$/docs/build/doctrees/2-ozstar/Modules.doctree" />
       <change beforePath="$PROJECT_DIR$/docs/build/doctrees/environment.pickle" afterPath="$PROJECT_DIR$/docs/build/doctrees/environment.pickle" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/1-getting_started/Access.html" afterPath="$PROJECT_DIR$/docs/build/html/1-getting_started/Access.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/1-getting_started/Accounts.html" afterPath="$PROJECT_DIR$/docs/build/html/1-getting_started/Accounts.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/1-getting_started/FAQ.html" afterPath="$PROJECT_DIR$/docs/build/html/1-getting_started/FAQ.html" />
       <change beforePath="$PROJECT_DIR$/docs/build/html/1-getting_started/Filesystems.html" afterPath="$PROJECT_DIR$/docs/build/html/1-getting_started/Filesystems.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/1-getting_started/Linux.html" afterPath="$PROJECT_DIR$/docs/build/html/1-getting_started/Linux.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/1-getting_started/Profiling.html" afterPath="$PROJECT_DIR$/docs/build/html/1-getting_started/Profiling.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/1-getting_started/Swinburne-HPC.html" afterPath="$PROJECT_DIR$/docs/build/html/1-getting_started/Swinburne-HPC.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/1-getting_started/file-transfer.html" afterPath="$PROJECT_DIR$/docs/build/html/1-getting_started/file-transfer.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/1-getting_started/manual.html" afterPath="$PROJECT_DIR$/docs/build/html/1-getting_started/manual.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/1a-oz_g2/what-s-new.html" afterPath="$PROJECT_DIR$/docs/build/html/1a-oz_g2/what-s-new.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/2-ozstar/Modules.html" afterPath="$PROJECT_DIR$/docs/build/html/2-ozstar/Modules.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/2-ozstar/oz-SlurmFAQ.html" afterPath="$PROJECT_DIR$/docs/build/html/2-ozstar/oz-SlurmFAQ.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/2-ozstar/oz-partition.html" afterPath="$PROJECT_DIR$/docs/build/html/2-ozstar/oz-partition.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/2-ozstar/oz-slurm-basics.html" afterPath="$PROJECT_DIR$/docs/build/html/2-ozstar/oz-slurm-basics.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/2-ozstar/oz-slurm-create.html" afterPath="$PROJECT_DIR$/docs/build/html/2-ozstar/oz-slurm-create.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/2-ozstar/oz-slurm-details.html" afterPath="$PROJECT_DIR$/docs/build/html/2-ozstar/oz-slurm-details.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/2-ozstar/oz-slurm-examples.html" afterPath="$PROJECT_DIR$/docs/build/html/2-ozstar/oz-slurm-examples.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/2-ozstar/torque-vs-slurm.html" afterPath="$PROJECT_DIR$/docs/build/html/2-ozstar/torque-vs-slurm.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/3-greenII/g2-Queue.html" afterPath="$PROJECT_DIR$/docs/build/html/3-greenII/g2-Queue.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/3-greenII/g2-qsub.html" afterPath="$PROJECT_DIR$/docs/build/html/3-greenII/g2-qsub.html" />
       <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/1-getting_started/Filesystems.rst.txt" afterPath="$PROJECT_DIR$/docs/build/html/_sources/1-getting_started/Filesystems.rst.txt" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/2-ozstar/Modules.rst.txt" afterPath="$PROJECT_DIR$/docs/build/html/_sources/2-ozstar/Modules.rst.txt" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/genindex.html" afterPath="$PROJECT_DIR$/docs/build/html/genindex.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/index.html" afterPath="$PROJECT_DIR$/docs/build/html/index.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/objects.inv" afterPath="$PROJECT_DIR$/docs/build/html/objects.inv" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/search.html" afterPath="$PROJECT_DIR$/docs/build/html/search.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/searchindex.js" afterPath="$PROJECT_DIR$/docs/build/html/searchindex.js" />
       <change beforePath="$PROJECT_DIR$/docs/source/1-getting_started/Filesystems.rst" afterPath="$PROJECT_DIR$/docs/source/1-getting_started/Filesystems.rst" />
+      <change beforePath="$PROJECT_DIR$/server.py" afterPath="$PROJECT_DIR$/server.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -64,12 +39,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Filesystems.rst" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Filesystems.rst" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/source/1-getting_started/Filesystems.rst">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="91" column="21" lean-forward="false" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
+            <state relative-caret-position="-1048">
+              <caret line="46" column="23" lean-forward="false" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="245">
+              <caret line="58" column="53" lean-forward="false" selection-start-line="58" selection-start-column="53" selection-end-line="58" selection-end-column="53" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -83,6 +70,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/docs/source/1-getting_started/Filesystems.rst" />
+        <option value="$PROJECT_DIR$/server.py" />
       </list>
     </option>
   </component>
@@ -147,32 +135,6 @@
               <item name="user_guide" type="462c0819:PsiDirectoryNode" />
               <item name="docs" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="user_guide" type="b2602c69:ProjectViewProjectNode" />
-              <item name="user_guide" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="user_guide" type="b2602c69:ProjectViewProjectNode" />
-              <item name="user_guide" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="user_guide" type="b2602c69:ProjectViewProjectNode" />
-              <item name="user_guide" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="source" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="user_guide" type="b2602c69:ProjectViewProjectNode" />
-              <item name="user_guide" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-              <item name="source" type="462c0819:PsiDirectoryNode" />
-              <item name="1-getting_started" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -219,13 +181,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="834" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32882273" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32882273" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2532189" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -286,9 +249,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/source/1-getting_started/Filesystems.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="91" column="21" lean-forward="false" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
+        <state relative-caret-position="-1048">
+          <caret line="46" column="23" lean-forward="false" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="58" column="53" lean-forward="false" selection-start-line="58" selection-start-column="53" selection-end-line="58" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
