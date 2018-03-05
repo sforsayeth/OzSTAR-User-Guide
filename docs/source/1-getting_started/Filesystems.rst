@@ -1,12 +1,17 @@
 .. highlight:: rst
 
-File systems
-=============
+File systems and I/O
+=====================
+
+The main OzSTAR filesystem is >5 Petabytes (approx 5 PiB) of diskspace in ``/fred``. This filesystem has more than 30 GB/s of aggregate bandwidth. It is a Lustre + ZFS filesystem with high redundancy.
+
+There are a few other smaller filesystems in the cluster. Of these, ``/home`` and the local ``$JOBFS`` filesystems on SSDs in compute nodes are also worth of discussion. ``/home`` is a Lustre + ZFS filesystem and ``$JOBFS`` is XFS.
+
 
 Directories
 -------------
 
-On OzSTAR, the two main directories are: ::
+On OzSTAR, the two main cluster-wide directories are: ::
 
     /home/<username>
 
@@ -14,76 +19,86 @@ and ::
 
     /fred/<project_id>
 
-noting that ``/home`` is for personal access and ``/fred`` is for project access.
+``/fred`` is vastly bigger and faster in (almost) every way than ``/home``, but it is **NOT** backed up. ``/fred`` is meant for large data files and most or all jobs should use this.
 
-Both ``/home`` and ``/fred`` directores are using the Lustre filesystem. The ``/home`` directory is backed up. It has a 10GB quota, and 100,000 files. The ``/fred`` directory is where all of your project data should be stored. There is **NO backup for** ``/fred`` **and the user must take responsibility for backing up any data that is important (somewhere other than OzSTAR).**
+The ``/home`` directory is backed up. ``/home`` is meant for small source files and important scripts and input.
 
-You are free to create new repositories inside ``/home/<username>`` (e.g. ``/home/<username>/my_code``). Similarly, you can create directories for project use inside ``/fred/<project_id>`` (e.g. ``/fred/<project_id>/my_project_code/``).
+Once again - there is **NO backup for** ``/fred`` **and the user must take responsibility for backing up any data that is important (to somewhere other than OzSTAR).**
 
-Lustre
-------
+Typically projects will create directories for each of their members inside ``/fred/<project_id>`` (e.g. ``/fred/<project_id>/<username>``). If a user is a member of multiple projects then they will have access to multiple areas in ``/fred``.
 
-OzSTAR includes ~5 Petabytes of Lustre-zfs Filesystem for the nodes. The achievable bandwidth into each OSS (Object Storage Server) is approximately 30 Gb/s.
-
-Lustre manuals are at `Intel HPDD Wiki <https://wiki.hpdd.intel.com/display/PUB/Documentation>`_
-
-Dealing with Lustre
--------------------
 
 Quota
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Quotas have been enabled on OzSTAR.
+Disk quotas are enabled on OzSTAR.
 
-The default quota is 10TB for projects, and 100,000*10 files for projects. If you need extra storage, please contact hpc-support@swin.edu.au
+``/home`` has a per-user limit of 10GB blocks and 100,000 files. This will not be raised. These numbers are set so that backups are feasible.
 
-To check your quota:
+``/fred`` has a per-project limit of 10TB blocks and 1M files. If you need extra storage, please contact hpc-support@swin.edu.au
 
-``lfs quota /fred``
+Note that because of filesystem compression (see below) it's common to store more data than this, and remain under quota. This is because quotas count only actual blocks used on disk.
 
-Output:
-::
+To check your quota on any node, type: ::
 
-    [username@pbs ~]$ lfs quota /fred
-    Disk quotas for usr username (uid 1000):
-         Filesystem    kbytes    quota   limit   grace   files   quota   limit   grace
-              /fred [1041408]  5242880 6291456       -     [0]       0       0       -
+``quota``
 
-.. There is also a helpful command for checking the usage of all projects you are associated with. Just type ``user-quota``
-(this needs to be done on the head node).
 
-.. Free space
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    The lfs df command shows available disk space on the mounted Lustre file system and space consumption per OST. If multiple Lustre file systems are mounted, a path may be specified, but is not required.
-
-    ::
-
-        root@pbs [~] ->lfs df -h
-        UUID                       bytes        Used   Available Use% Mounted on
-        lustre-MDT0000_UUID         1.0T        7.4G      968.6G   1% /lustre[MDT:0]
-        lustre-OST0000_UUID        14.5T      295.4G       13.5T   2% /lustre[OST:0]
-        lustre-OST0001_UUID        14.5T      310.0G       13.5T   2% /lustre[OST:1]
-        lustre-OST0002_UUID        14.5T      324.4G       13.5T   2% /lustre[OST:2]
-        lustre-OST0003_UUID        14.5T      278.8G       13.5T   2% /lustre[OST:3]
-        lustre-OST0004_UUID        14.5T      253.1G       13.6T   2% /lustre[OST:4]
-        lustre-OST0005_UUID        14.5T      238.5G       13.6T   2% /lustre[OST:5]
-        lustre-OST0006_UUID        14.5T      281.1G       13.5T   2% /lustre[OST:6]
-        lustre-OST0007_UUID        14.5T      293.7G       13.5T   2% /lustre[OST:7]
-        lustre-OST0008_UUID        14.5T      261.1G       13.6T   2% /lustre[OST:8]
-        lustre-OST0009_UUID        14.5T      330.0G       13.5T   2% /lustre[OST:9]
-        lustre-OST000a_UUID        14.5T      287.7G       13.5T   2% /lustre[OST:10]
-        (the actual output is longer).
-
-Optimising I/O
+Transparent Compression
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The best way to get good performance to any filesystem (not just Lustre) is to do reads and writes in large chunks and to use large files rather than many small files.
+The ``/fred`` and ``/home`` filesystems have transparent compression turned on. This means that all files (regardless of type) are internally compressed by the filesystem before being stored on disk, and are automatically uncompressed by the filesystem as they are read. This means that you will *NOT* save diskspace if you gzip your files on OzSTAR. This is unintuitive to many users. eg.
 
-What is “large” in each context? For Lustre, reads and writes of >1MB are ideal. 10 MB and above is best. Small (eg. < 100 kB) reads and writes and especially 4k random writes are a horrible thing to do to any file system and should be avoided if at all possible. They cause a lot of seeking and obtain low i/o performance from the underlying disks. Small sequential reads are often optimised by read-ahead in block devices or Lustre or on the OSTs so may perform ok, but they’re still not a great idea.
+For a highly compressible file like a typical ASCII input file:
+::
 
-Optimal file sizes are usually between 10 MB and 100 GB. Using anything smaller than 10 MB files risks having its i/o time dominated by open()/close() operations, of which there are a limited amount available to the entire file system. A pathologically bad file usage pattern would be a code that uses 100,000 files, each of <8k in size. This will perform extremely badly on anything except a local SSD in your laptop. It is not a suitable usage model for a large shared supercomputer file system. Similarly, writing a code that has open()/close() in a tight inner loop will be completely dominated by the metadata operations to the Lustre MDS, will perform terribly, and will also impact the use of the cluster for all users because the MDS is a shared resource and can only do a finite number of operations per second.
+    % ls -ls input 
+    1 -rw-r--r-- 1 root root 39894 Mar  5 17:36 input
 
-The best way to get high I/O performance when reading or writing lots of data (eg. a checkpoint) from a large parallel code is generally to write one large O(GB) file per process, or if the number of processes is very large, then one file per node. This will send I/O to all or many of the OSTs that make up the filesystem and so could run as fast as 30 GB/s.
+the file is ~40KB in size, but it uses less than 1KB on disk (the first column).
 
-File lock bouncing is also an issue that can affect POSIX parallel file systems. This typically occurs when multiple nodes are appending to the same shared “log” file. However by its very nature the contents of the file are undefined, so it is really a “junk” file. However Lustre will valiantly attempt to interlace I/O from each appending node at the exact moment it writes, leading to a vast amount of “write lock bouncing” between all the appending nodes. This kills the performance all the processes appending, from the nodes doing the appending, and (worst of all) increases the load on the MDS greatly. Do not append to any shared files from multiple nodes. Do not write to any shared files from multiple nodes unless you are going via a library like MPI IO.
+For a typical binary output file that is somewhat compressible:
+::
+    % ls -lsh output
+    7.8M -rw-rw-r-- 1 root root 33M Feb 20 18:25 output
+
+so 7.8MB of space on disk is used to store this 33MB file.
+
+This means that although the nominal capacity of ``/fred`` is ~5 PiB (output from ``df`` is somewhat pessimistic), the amount of data that can be stored is greater than this. How much depends upon compressibility of typical data.
+
+Note: If you are transferring files over the network to other machines then it would still make sense to have your files compressed (gzip, bzip, xz etc.) in order to minimise network bandwidth and diskspace at the other end, but internally to OzSTAR there is no need to compress data. Doing so is fine, but unnecessary - it will just result in the data being slightly larger because it is compressed twice by slightly different algorithms.
+
+Hints for Optimising Lustre I/O
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The best way to get good performance to any filesystem (not just Lustre) is to do reads and writes in large chunks and to use large files rather than many small files. Performing many IOPS should be avoided, which often means the same thing.
+
+What is “large”?
+
+For Lustre, reads and writes of >4MB are ideal. 10 MB and above is best. Small (eg. < 100 kB) reads and writes and especially 4k random writes should be avoided. These cause seeking and obtain low i/o performance from the underlying raids and disks. Small sequential reads are often optimised by read-ahead in block devices or Lustre or ZFS so may perform acceptably, but it's unlikely.
+
+The best way to get high I/O performance from large parallel codes (eg. a checkpoint) is generally to read or write one large O(GB) file per process, or if the number of processes is very large, then one large file per node. This will send I/O to all or many of the 16 large fast OSTs that make up the ``/fred`` filesystem and so could run at over 30 GB/s (not including speed-ups from transparent filesystem compression).
+
+Each of the 16 individual OSTs (Object Storage Target) in the ``/fred`` (dagg) filesystem is composed of 4 large raidz3's in a zpool and capable of several GB/s. Because each OST is large and fast there is no reason to use any sort of Lustre striping. Lustre file striping is therefore strongly discouraged for this machine.
+
+What are IOPS?
+
+IOPS are Input/Output Operations per Second. i/o operations are things like open, close, seek, read, write, stat, etc.. IOPS is the rate at which these occur.
+Optimal cluster file sizes are usually between 10 MB and 100 GB. Using anything smaller than 10 MB files risks having its i/o time dominated by open()/close() operations (IOPS), of which there are a limited amount available to the entire file system. A pathologically bad file usage pattern would be a code that accesses 100,000 files in a row, each of <8k in size. This will perform extremely badly on anything except a local disk. It is not a suitable usage model for a large shared supercomputer file system. Similarly, writing a code that has open()/close() in a tight inner loop will be dominated by the metadata operations to the Lustre MDSs (MetaData Servers), will perform badly, and will also impact the use of the cluster for all users because the MDS is a shared resource and can only do a finite number of operations per second (approx 100k).
+
+Other things to avoid:
+
+File lock bouncing is also an issue that can affect POSIX parallel file systems. This typically occurs when multiple nodes are appending to the same shared “log” file. However by its very nature the order of the contents of such a file are undefined - it is really a “junk” file. However Lustre will valiantly attempt to interlace I/O from each appending node at the exact moment it writes, leading to a vast amount of “write lock bouncing” between all the appending nodes. This kills the performance all the processes appending, from the nodes doing the appending, and increases the load on the MDS greatly. Do not append to any shared files from multiple nodes. In general a good rule of thumb is to not write at all to the same file from multiple nodes unless it's via a library like MPI IO.
+
+
+Local disks
+-----------
+
+Each compute node has 350GB of local SSD (fast disk) that is accessible from batch jobs. If the i/o patterns in your workflow are inefficient on the usual cluster filesystems, then you should consider using these local disks.
+
+The ``$JOBFS`` environment variable in each job points at a per-job directory on the local SSD. Space on local disks is requested from ``slurm`` with eg. ``#SBATCH --tmp=20GB``. The ``$JOBFS`` directory is automatically created before each job starts, and deleted after the job ends.
+
+A typical workflow that uses local disks would be to copy tar files from ``/fred`` to ``$JOBFS``, untar, do processing on many small files using many IOPS, tar up the output, copy results back to ``fred``.
+
+OzSTAR also has 8 large NVME drives that are bigger and faster than these SSDs. Please contact hpc-support@swin.edu.au for information on how to access these.
+
