@@ -59,6 +59,7 @@ the file is ~40KB in size, but it uses less than 1KB on disk (the first column).
 
 For a typical binary output file that is somewhat compressible:
 ::
+
     % ls -lsh output
     7.8M -rw-rw-r-- 1 root root 33M Feb 20 18:25 output
 
@@ -74,6 +75,7 @@ Hints for Optimising Lustre I/O
 The best way to get good performance to any filesystem (not just Lustre) is to do reads and writes in large chunks and to use large files rather than many small files. Performing many IOPS should be avoided, which often means the same thing.
 
 What is “large”?
+********************
 
 For Lustre, reads and writes of >4MB are ideal. 10 MB and above is best. Small (eg. < 100 kB) reads and writes and especially 4k random writes should be avoided. These cause seeking and obtain low i/o performance from the underlying raids and disks. Small sequential reads are often optimised by read-ahead in block devices or Lustre or ZFS so may perform acceptably, but it's unlikely.
 
@@ -82,11 +84,13 @@ The best way to get high I/O performance from large parallel codes (eg. a checkp
 Each of the 16 individual OSTs (Object Storage Target) in the ``/fred`` (dagg) filesystem is composed of 4 large raidz3's in a zpool and capable of several GB/s. Because each OST is large and fast there is no reason to use any sort of Lustre striping. Lustre file striping is therefore strongly discouraged for this machine.
 
 What are IOPS?
+********************
 
 IOPS are Input/Output Operations per Second. i/o operations are things like open, close, seek, read, write, stat, etc.. IOPS is the rate at which these occur.
 Optimal cluster file sizes are usually between 10 MB and 100 GB. Using anything smaller than 10 MB files risks having its i/o time dominated by open()/close() operations (IOPS), of which there are a limited amount available to the entire file system. A pathologically bad file usage pattern would be a code that accesses 100,000 files in a row, each of <8k in size. This will perform extremely badly on anything except a local disk. It is not a suitable usage model for a large shared supercomputer file system. Similarly, writing a code that has open()/close() in a tight inner loop will be dominated by the metadata operations to the Lustre MDSs (MetaData Servers), will perform badly, and will also impact the use of the cluster for all users because the MDS is a shared resource and can only do a finite number of operations per second (approx 100k).
 
-Other things to avoid:
+Other things to avoid
+************************
 
 File lock bouncing is also an issue that can affect POSIX parallel file systems. This typically occurs when multiple nodes are appending to the same shared “log” file. However by its very nature the order of the contents of such a file are undefined - it is really a “junk” file. However Lustre will valiantly attempt to interlace I/O from each appending node at the exact moment it writes, leading to a vast amount of “write lock bouncing” between all the appending nodes. This kills the performance all the processes appending, from the nodes doing the appending, and increases the load on the MDS greatly. Do not append to any shared files from multiple nodes. In general a good rule of thumb is to not write at all to the same file from multiple nodes unless it's via a library like MPI IO.
 
