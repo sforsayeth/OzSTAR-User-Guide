@@ -109,7 +109,14 @@
 <p class="caption"><span class="caption-text">Software</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Environment Modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#compiler-specific">Compiler specific</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ozstar-module-documentation">OzSTAR Module Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#listing-all-available-modules">Listing all available modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#listing-toolchain-specific-modules">Listing toolchain specific modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loading-modules">Loading modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loading-ambiguous-modules">Loading ambiguous modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-useful-commands">Other useful commands</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -201,104 +208,278 @@
 <div class="highlight-rst"><div class="highlight"><pre><span></span>module load &lt;package name&gt;
 </pre></div>
 </div>
-<p>For example, if I wanted to use a 64bit version of OpenMPI compiled with the GNU tool chain, I could use:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>module load openmpi/x86_64/gnu/1.4.4
+<p>The OzSTAR module manager (Lmod) also has a a convenient tool called <code class="docutils literal"><span class="pre">`ml`</span></code> (taken from <a class="reference external" href="http://lmod.readthedocs.io/en/latest/010_user.html#ml-a-convenient-tool">http://lmod.readthedocs.io/en/latest/010_user.html#ml-a-convenient-tool</a>)</p>
+<p>For those of you who can’t type the mdoule, moduel, err module command correctly, Lmod has a tool for you. With ml you won’t have to type the module command again. The two most common commands are <code class="docutils literal"><span class="pre">`module</span> <span class="pre">list`</span></code> and <code class="docutils literal"><span class="pre">`module</span> <span class="pre">load</span> <span class="pre">&lt;something&gt;`</span></code> and ml does both:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>ml
 </pre></div>
 </div>
-<p>You’ll notice that, after running “module avail”, some of the package names have “(default)” written next to them. This indicates that you don’t need to type the whole name to enable that package. Using the previous OpenMPI example, I could achieve the same results by running:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>module load openmpi
+<p>means module list. And:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>ml foo
 </pre></div>
 </div>
-<div class="section" id="compiler-specific">
-<h2>Compiler specific<a class="headerlink" href="#compiler-specific" title="Permalink to this headline">¶</a></h2>
-<p><strong>OzSTAR</strong> now includes groups of modules organised around a specific compiler (namely, intel and gcc). Each group provides
-modules compiled using one of these compiler. These are accessed via the following commands.</p>
-<p>For modules compiled with the intel compiler:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>module load intel
+<p>means module load foo while:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>ml -bar
 </pre></div>
 </div>
-<p>Then, if you run a <code class="docutils literal"><span class="pre">module</span> <span class="pre">avail</span></code>, you should see at the beginning of the list of modules available specific to intel:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>module avail
+<p>means module unload bar. It won’t come as a surprise that you can combine them:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>ml foo -bar
+</pre></div>
+</div>
+<p>means module unload bar; module load foo. You can do all the module commands:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>ml spider
+ml avail
+ml show foo
+</pre></div>
+</div>
+<p>If you ever have to load a module name spider you can do:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>ml load spider
+</pre></div>
+</div>
+<div class="section" id="ozstar-module-documentation">
+<h2>OzSTAR Module Documentation<a class="headerlink" href="#ozstar-module-documentation" title="Permalink to this headline">¶</a></h2>
+<p><strong>OzSTAR</strong> uses <em>hierarchical</em> modules, what that means is that loading a module makes more modules available by updating the module path where the module manager looks for modules. This is especially useful to avoid dependency problems, and has been used on OzSTAR to avoid compiler and OpenMPI conflicts and incompatibilities.</p>
+<p>The following list summarises how modules work on OzSTAR:-</p>
+<ul class="simple">
+<li>There are 3 distinct categories of modules, <em>Core Modules</em>, <em>Compiler Modules</em>, and <em>Compiler/OpenMPI Modules</em></li>
+<li>Core modules are meta modules, or modules built against the system compiler</li>
+<li>Compiler modules are built against a specific compiler</li>
+<li>Compiler/OpenMPI modules are built against a specific compiler/OpenMPI combination.</li>
+<li>Loading a module on OzSTAR requires thte <strong>use of a version identifier</strong>. <strong>There are no default modules</strong></li>
+<li>Loading a module without a version identifier <strong>will show the available versions of the module</strong></li>
+<li>Loading an <strong>ambigous module</strong> (A module that is built against two different compiler or OpenMPI versions) requires first <strong>loading the parent modules(s) first</strong></li>
+<li>Loading an ambiguous module <strong>will list the possible parent modules</strong></li>
+<li>Loading a module that is not ambigous <strong>will automatically load it&#8217;s parent hierarchy of modules if one exists</strong></li>
+<li><code class="docutils literal"><span class="pre">`module</span> <span class="pre">avail`</span></code> with <strong>no modules loaded</strong> will list <strong>all modules for all compiler combinations on the system</strong></li>
+<li><code class="docutils literal"><span class="pre">`module</span> <span class="pre">avail`</span></code> with <strong>a compiler or compiler/OpenMPI module</strong> loaded will only <strong>list modules for that compiler or compiler/OpenMPI combination</strong></li>
+</ul>
+<div class="section" id="listing-all-available-modules">
+<h3>Listing all available modules<a class="headerlink" href="#listing-all-available-modules" title="Permalink to this headline">¶</a></h3>
+<p>Hierarchical modules in the context of OzSTAR use compiler and OpenMPI modules as the parent <em>hierarchy</em>. These parent modules are referred to as <strong>toolchains</strong> henceforth in this document. Put simply <strong>a toolchain is just a compiler or compiler/OpenMPI combination</strong>.</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>module purge
 
---------------------------------------------------- /apps/skylake/modulefiles/all/mpi/intel/2018.1.163-gcc-6.4.0/openmpi/3.0.0 ----------------------------------------------------
-   boost/1.66.0    hdf5/1.8.19    hdf5/1.10.1 (D)    imkl/2018.1.163 (L)    netcdf/4.5.0
+module avail
 
--------------------------------------------------------- /apps/skylake/modulefiles/all/compiler/intel/2018.1.163-gcc-6.4.0 --------------------------------------------------------
-   openmpi/3.0.0 (L)
+-------------------------------------------------------------------- Compiler: gcc 5.5.0 OpenMPI: 3.0.0 --------------------------------------------------------------------
+boost/1.66.0    fftw/2.1.5    fftw/3.3.7    hdf5/1.8.19    hdf5/1.10.1    netcdf/4.5.0    scalapack/2.0.2-openblas-0.2.20
+
+--------------------------------------------------------------------------- Compiler: gcc 5.5.0 ----------------------------------------------------------------------------
+openblas/0.2.20    openmpi/3.0.0
 
 (...)
 </pre></div>
 </div>
-<p>Similarly, for GCC, you can run the following:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>module load gcc
-</pre></div>
+<p><em>In this example there are two toolchain, GCC 5.5.0, and GCC 5.5.0 with OpenMPI 3.0.0</em></p>
 </div>
-<p>And <code class="docutils literal"><span class="pre">module</span> <span class="pre">avail</span></code> should display something like the following:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span> ---------------------------------------------------------------- /apps/skylake/modulefiles/all/compiler/gcc/6.4.0 -----------------------------------------------------------------
-    cfitsio/3.420    clang/5.0.1    framel/8.30    gsl/2.4    llvm/5.0.1    openblas/0.2.20    openmpi/3.0.0    qt/4.8.7    sqlite/3.21.0
+<div class="section" id="listing-toolchain-specific-modules">
+<h3>Listing toolchain specific modules<a class="headerlink" href="#listing-toolchain-specific-modules" title="Permalink to this headline">¶</a></h3>
+<p>Loading a toolchain make other modules available by extending the current module path that the module manager can find modules. On OzSTAR, loading a compiler or compiler/OpenMPI toolchain makes the modules listed by <code class="docutils literal"><span class="pre">`module</span> <span class="pre">avail`</span></code> list the modules available to (that is to say built or compiled against) that loaded toolchain. However <code class="docutils literal"><span class="pre">`module</span> <span class="pre">avail`</span></code> with no toolchain loaded, will list modules for all available toolchains on OzSTAR.</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>module purge
+
+module load gcc/6.4.0
+
+module avail
+
+--------------------------------------------------------------------------- Compiler: gcc 6.4.0 ----------------------------------------------------------------------------
+cfitsio/3.420                  ipython/5.5.0-python-3.6.4    protobuf-python/3.5.1-python-2.7.14    pyzmq/16.0.4-python-2.7.14-zmq4    vim/8.0-python-2.7.14
+
+(...)
+
+------------------------------------------------------------------------------- Core Modules -------------------------------------------------------------------------------
+anaconda2/5.0.1        cudnn/7.0.5-cuda-9.0.176        gcccore/system        gnu/2018.0     icc/2016.2.181-gcc-6.4.0         intel/2016.2.181-gcc-6.4.0    szip/2.1.1
 
 (...)
 </pre></div>
 </div>
-<p>Please note the following useful commands: <code class="docutils literal"><span class="pre">module</span> <span class="pre">purge</span></code> will allow you to unload all modules currently loaded. It is
-also possible to switch between <code class="docutils literal"><span class="pre">gcc</span></code> and <code class="docutils literal"><span class="pre">intel</span></code> by typing:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>module swap gcc intel
+<p><em>Here you can see that loading the GCC 6.4.0 toolchain now only list the modules available for GCC 6.4.0 and the Core Modules</em></p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>module load openmpi/3.0.0
+
+module avail
+
+-------------------------------------------------------------------- Compiler: gcc 6.4.0 OpenMPI: 3.0.0 --------------------------------------------------------------------
+astropy/2.0.3-python-2.7.14    lalsuite-lalapps/6.21.0          lalsuite-lalxml/1.2.4                           scalapack/2.0.2-openblas-0.2.20
+
+(...)
+
+--------------------------------------------------------------------------- Compiler: gcc 6.4.0 ----------------------------------------------------------------------------
+cfitsio/3.420                  ipython/5.5.0-python-3.6.4    protobuf-python/3.5.1-python-2.7.14    pyzmq/16.0.4-python-2.7.14-zmq4    vim/8.0-python-2.7.14
+
+(...)
+
+------------------------------------------------------------------------------- Core Modules -------------------------------------------------------------------------------
+anaconda2/5.0.1        cudnn/7.0.5-cuda-9.0.176        gcccore/system        gnu/2018.0     icc/2016.2.181-gcc-6.4.0         intel/2016.2.181-gcc-6.4.0    szip/2.1.1
+
+(...)
 </pre></div>
 </div>
-<p>which is equivalent to typing:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>module unload gcc
-module load intel
+<p><em>Then if we load GCC 6.4.0&#8217;s OpenMPI, we can see all modules available to the GCC 6.4.0 OpenMPI 3.0.0 toolchain</em></p>
+<p>On OzSTAR, the following four toolchain combinations exist:-</p>
+<ul class="simple">
+<li>GCC</li>
+<li>GCC/OpenMPI</li>
+<li>Intel</li>
+<li>Intel/OpenMPI</li>
+</ul>
+</div>
+<div class="section" id="loading-modules">
+<h3>Loading modules<a class="headerlink" href="#loading-modules" title="Permalink to this headline">¶</a></h3>
+<p>If a module is not ambigous, that is to say it only has one parent toolchain, then the module manager will automatically load the parent toolchain before loading your module. See below for loading ambigous modules. Just remember that you need to specify the version of the module. If you don&#8217;t specify the version, the module manager will list the available versions.</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>module purge
+
+module load python
+
+Lmod has detected the following error:  Couldn&#39;t find module with name python, did you mean to load one of the following?
+    * python/2.7.14
+    <span class="m">*</span> python/3.6.4
 </pre></div>
 </div>
-<p>Another way to search for modules is with the <code class="docutils literal"><span class="pre">module</span> <span class="pre">spider</span></code> command. This command searches the entire list of possible modules.</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>module spider
-</pre></div>
-</div>
-<p>This can be practical if you are looking for a specific module. Consider the following example of commands:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span> $ module purge
+<p><em>In this example you can see that the module manager has listed the available versions of python because we didn&#8217;t specify the version</em></p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>module purge
 
- $ module python
- Lmod has detected the following error:  These module(s) exist but cannot be loaded as requested: &quot;python&quot;
-Try: &quot;module spider python&quot; to see how to load the module(s).
-</pre></div>
-</div>
-<p>You can therefore look for more information to load the module correctly:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>$ module spider python
+module load python/2.7.14
 
-<span class="gh">------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
-<span class="gh">  python: python/2.7.14</span>
-<span class="gh">------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</span>
-Description:
-  Python is a programming language that lets you work more quickly and integrate your systems more effectively.
-
-
- Other possible modules matches:
-    ipython, protobuf-python
-
-You will need to load all module(s) on any one of the lines below before the &quot;python/2.7.14&quot; module is available to load.
-
-  gcc/6.4.0  openmpi/3.0.0
-
-Help:
-
-  Description
-  ===========
-  Python is a programming language that lets you work more quickly and integrate your systems
-   more effectively.
-</pre></div>
-</div>
-<p>And now, we know how to load the module!</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>$ module load gcc/6.4.0  openmpi/3.0.0 python/2.7.14
-
-$ module list
+module list
 
 Currently Loaded Modules:
-  1) nvidia/384.90 (S)   3) binutils/2.30   5) gcc/6.4.0   7) openmpi/3.0.0     9) fftw/3.3.7                       11) sqlite/3.21.0
-  <span class="m">2)</span> slurm/17.11.2 (S)   4) gcccore/6.4.0   6) ucx/1.2.1   8) openblas/0.2.20  10) scalapack/2.0.2-openblas-0.2.20  12) python/2.7.14
+  1) nvidia/.384.90 (H,S)   3) binutils/2.30   5) gcc/6.4.0       7) python/2.7.14
+  <span class="m">2)</span> slurm/.latest  (H,S)   4) gcccore/6.4.0   6) sqlite/3.21.0
+
+Where:
+ S:  Module is Sticky, requires --force to unload or purge
+ H:             Hidden Module
+</pre></div>
+</div>
+</div>
+<div class="section" id="loading-ambiguous-modules">
+<h3>Loading ambiguous modules<a class="headerlink" href="#loading-ambiguous-modules" title="Permalink to this headline">¶</a></h3>
+<p>A module is considered ambigous if it has more than one parent hierarchy, and the module manager is unable to automotically load the parent hierarchy. In this case a <code class="docutils literal"><span class="pre">`module</span> <span class="pre">load`</span></code> will mention that the load is ambiguous and then list all parent toolchain combinations. You must then load the specific toolchain manually, before being able to load the original module.</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>module purge
+
+module load openblas/0.2.20
+
+Lmod has detected the following error:  Can&#39;t load openblas/0.2.20 because it has more than one parent hierarchy, making this load ambiguous.
+
+    Please load one of the following combinations before loading this module:
+    <span class="m">*</span> gcc/6.4.0
+    <span class="m">*</span> gcc/5.5.0
+    <span class="m">*</span> gcc/7.3.0
+</pre></div>
+</div>
+<p><em>In this example, we tried to load OpenBLAS, but it exists as a child of multiple GCC versions. In order to load this module, we first need to load the specific version of GCC we want before we can load the module</em></p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>module purge
+
+module load gcc/6.4.0
+
+module load openblas/0.2.20
+
+module list
+
+Currently Loaded Modules:
+  1) slurm/.latest  (H,S)   3) binutils/2.30   5) gcc/6.4.0
+  <span class="m">2)</span> nvidia/.384.90 (H,S)   4) gcccore/6.4.0   6) openblas/0.2.20
 
   Where:
    S:  Module is Sticky, requires --force to unload or purge
+   H:             Hidden Module
 </pre></div>
+</div>
+</div>
+<div class="section" id="other-useful-commands">
+<h3>Other useful commands<a class="headerlink" href="#other-useful-commands" title="Permalink to this headline">¶</a></h3>
+<p>Please note the following useful commands: <code class="docutils literal"><span class="pre">module</span> <span class="pre">purge</span></code> will allow you to unload all modules currently loaded. It is
+also possible to switch between <code class="docutils literal"><span class="pre">gcc</span></code> and <code class="docutils literal"><span class="pre">intel</span></code> by typing:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>module swap gcc/6.4.0 intel/2018.1.163-gcc-6.4.0
+</pre></div>
+</div>
+<p>which is equivalent to typing:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>module unload gcc/6.4.0
+module load intel/2018.1.163-gcc-6.4.0
+</pre></div>
+</div>
+<p>Another way to search for modules is with the <code class="docutils literal"><span class="pre">module</span> <span class="pre">spider</span></code> command. This command searches the entire list of possible modules. Consider the following examples:-</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>module spider
+
+<span class="gh">-----------------------------------------------------------------------------------------------------------------------</span>
+<span class="gh">The following is a list of the modules currently available:</span>
+<span class="gh">-----------------------------------------------------------------------------------------------------------------------</span>
+  anaconda2: anaconda2/5.0.1
+    Built to complement the rich, open source Python community, the Anaconda platform provides an enterprise-ready
+    data analytics platform that empowers companies to adopt a modern open data science analytics architecture.
+
+  anaconda3: anaconda3/5.0.1
+    Built to complement the rich, open source Python community, the Anaconda platform provides an enterprise-ready
+    data analytics platform that empowers companies to adopt a modern open data science analytics architecture.
+
+  astropy: astropy/2.0.3-python-2.7.14, astropy/2.0.3-python-3.6.4
+    The Astropy Project is a community effort to develop a single core package for Astronomy in Python and foster
+    interoperability between Python astronomy packages.
+
+(...)
+</pre></div>
+</div>
+<p><em>Here you can see module spider will list all commands available</em></p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>module spider python
+
+<span class="gh">-----------------------------------------------------------------------------------------------------------------------</span>
+<span class="gh">  python:</span>
+<span class="gh">-----------------------------------------------------------------------------------------------------------------------</span>
+    Description:
+      Python is a programming language that lets you work more quickly and integrate your systems more effectively.
+
+    Versions:
+        python/2.7.14
+        python/3.6.4
+    Other possible modules matches:
+    ipython  protobuf-python
+
+-----------------------------------------------------------------------------------------------------------------------
+To find other possible module matches execute:
+
+    $ module -r spider &#39;.<span class="ge">*python.*</span>&#39;
+
+-----------------------------------------------------------------------------------------------------------------------
+  For detailed information about a specific &quot;python&quot; module (including how to load the modules) use the module&#39;s full name.
+  For example:
+
+    $ module spider python/3.6.4
+-----------------------------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<p><em>Here you can see module spider can list information about a specific package</em></p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>module spider python/2.7.14
+
+<span class="gh">-----------------------------------------------------------------------------------------------------------------------</span>
+<span class="gh">  python: python/2.7.14</span>
+<span class="gh">-----------------------------------------------------------------------------------------------------------------------</span>
+  Description:
+    Python is a programming language that lets you work more quickly and integrate your systems more effectively.
+
+
+  You will need to load all module(s) on any one of the lines below before the &quot;python/2.7.14&quot; module is available to load.
+
+    gcc/6.4.0
+
+  Help:
+
+    Description
+    ===========
+    Python is a programming language that lets you work more quickly and integrate your systems
+     more effectively.
+
+
+    More information
+    ================
+     <span class="m">-</span> Homepage: http://python.org/
+
+
+    Included extensions
+    ===================
+    cryptography-2.1.4, Cython-0.27.3, funcsigs-1.0.2, mock-2.0.0, paramiko-2.4.0,
+    pbr-3.1.1, pip-9.0.1, pycrypto-2.6.1, pytest-3.4.1, python-dateutil-2.6.1,
+    pytz-2018.3, setuptools-38.4.0, six-1.11.0, virtualenv-15.1.0
+</pre></div>
+</div>
+<p><em>Here you can see that module spider can list additional information about a specific version of a package. In this case it lists the home page of the package if one exists, as well as the included python packages (In this example)</em></p>
+<p><em>NB. The above example with python does not list all available python packages. Some python packages such as mpy4py and numpy are their own modules on OzSTAR</em></p>
 </div>
 </div>
 </div>

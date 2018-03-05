@@ -230,8 +230,8 @@ scp myfile.txt ozstar:path/to/location/
 <p>A terminal is required to access OzSTAR via Secure Shell (SSH) and issue command line instructions.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="23%" />
-<col width="78%" />
+<col width="14%" />
+<col width="86%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Operating System</th>
@@ -246,7 +246,9 @@ scp myfile.txt ozstar:path/to/location/
 <td>Available by default</td>
 </tr>
 <tr class="row-even"><td>Windows</td>
-<td>The recommended software is Putty</td>
+<td>The recommended software is Putty. Windows users with updated
+versions of Windows 10 may use the Windows Subsystem for
+Linux. More info available <a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">here</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -261,8 +263,9 @@ scp myfile.txt ozstar:path/to/location/
 <p>For <strong>MacOS</strong> you will first need to install <a class="reference external" href="https://www.xquartz.org/">XQuartz</a>.</p>
 <p>For <strong>Windows</strong> you will need to install an X11 Server implementation. The following options can be used:</p>
 <ul class="simple">
-<li><a class="reference external" href="http://x.cygwin.com/">Cygwin/X</a></li>
-<li><a class="reference external" href="http://sourceforge.net/projects/xming/files/Xming/">Xming</a></li>
+<li><a class="reference external" href="https://sourceforge.net/projects/vcxsrv/">VcXsrv</a> (Recommended, frequently updated at time of writing)</li>
+<li><a class="reference external" href="http://x.cygwin.com/">Cygwin/X</a> (Difficult to set up for everyday users)</li>
+<li><a class="reference external" href="http://sourceforge.net/projects/xming/files/Xming/">Xming</a> (Not recommended, very old and no longer updated)</li>
 </ul>
 <p>You will need also enable X11 forward from Putty, before connecting, This can be done through <strong>connection &gt; SSH &gt; X11</strong> by selecting “<strong>Enable X11 Forwarding</strong>”.</p>
 </div>

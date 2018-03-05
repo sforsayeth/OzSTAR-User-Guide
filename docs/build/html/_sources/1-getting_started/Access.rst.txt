@@ -52,15 +52,17 @@ Terminal
 
 A terminal is required to access OzSTAR via Secure Shell (SSH) and issue command line instructions.
 
-+------------------+--------------------------------------------------------------+
-| Operating System | Terminal                                                     |
-+==================+==============================================================+
-| Mac              | Available by default via Applications > Utilities > Terminal |
-+------------------+--------------------------------------------------------------+
-| Linux            | Available by default                                         |
-+------------------+--------------------------------------------------------------+
-| Windows          | The recommended software is Putty                            |
-+------------------+--------------------------------------------------------------+
++------------------+------------------------------------------------------------------------------------------------------------+
+| Operating System | Terminal                                                                                                   |
++==================+============================================================================================================+
+| Mac              | Available by default via Applications > Utilities > Terminal                                               |
++------------------+------------------------------------------------------------------------------------------------------------+
+| Linux            | Available by default                                                                                       |
++------------------+------------------------------------------------------------------------------------------------------------+
+| Windows          | The recommended software is Putty. Windows users with updated                                              |
+|                  | versions of Windows 10 may use the Windows Subsystem for                                                   |
+|                  | Linux. More info available `here <https://docs.microsoft.com/en-us/windows/wsl/install-win10>`__.          |
++------------------+------------------------------------------------------------------------------------------------------------+
 
 X11 Windows Forwarding
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -77,7 +79,8 @@ For **MacOS** you will first need to install `XQuartz <https://www.xquartz.org/>
 
 For **Windows** you will need to install an X11 Server implementation. The following options can be used:
 
-- `Cygwin/X <http://x.cygwin.com/>`_
-- `Xming <http://sourceforge.net/projects/xming/files/Xming/>`_
+- `VcXsrv <https://sourceforge.net/projects/vcxsrv/>`_ (Recommended, frequently updated at time of writing)
+- `Cygwin/X <http://x.cygwin.com/>`_ (Difficult to set up for everyday users)
+- `Xming <http://sourceforge.net/projects/xming/files/Xming/>`_ (Not recommended, very old and no longer updated)
 
 You will need also enable X11 forward from Putty, before connecting, This can be done through **connection > SSH > X11** by selecting “**Enable X11 Forwarding**”.
