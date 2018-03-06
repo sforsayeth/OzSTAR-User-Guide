@@ -47,6 +47,7 @@ File System
 
 The main filesystem is again Lustre-based. Your root project directory on lustre is now ``/fred/<project_id>``.
 Home directory path is unchanged.
+The filesystem automatically and transparently compresses all your files to save diskspace and improve data throughput.
 
 Modules
 -----------
