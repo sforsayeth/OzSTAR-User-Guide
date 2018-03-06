@@ -79,6 +79,7 @@ If a transfer is interrupted, you might end up with part of the files being tran
 
 Synchronising with a local directory
 --------------------------------------------
-If you want to keep two directories (one on your local computer, and one on the supercomputer) in sync, you can do that with rsync using its ``--delete`` option. But that is only one-way so you need to really think in what direction you do it, and it does not scale beyond two synchronized directories.
+If you want to keep two directories (one on your local computer, and one on the supercomputer) in sync, you can do that with rsync using its ``--delete`` option. But that is only one-way so you need to really think in what direction you do it, and it does not scale beyond two synchronized directory trees.
 
-A real option is to use Unison, a piece of software that can detect and handle conflicts (incompatible changes made to the same file in the two directories that must be kept in sync.)
+Another potential option is to use `Unison <https://www.cis.upenn.edu/~bcpierce/unison/>`__, a piece of software that can detect and handle conflicts (incompatible changes made to the same file in the two directories that must be kept in sync.)
+

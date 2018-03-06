@@ -8,7 +8,7 @@ Terascale Open-source Resource and QUEue Manager (Torque) and the Moab Cluster S
 If so, please note that OzSTAR makes use of the Simple Linux Utility For Resource Management (Slurm).
 
 To ease your transition from one model to the other, you can find a list of equivalencies (where applicable) below.
-Also, yhe Slurm developers maintain a ‘Rosetta stone of Workload manager‘ which gives the correspondences between the options of several job schedulers. You can access the `PDF here <https://slurm.schedmd.com/rosetta.pdf>`__.
+Also, the Slurm developers maintain a ‘Rosetta stone of Workload manager‘ which gives the correspondences between the options of several job schedulers. You can access the `PDF here <https://slurm.schedmd.com/rosetta.pdf>`__.
 
 Torque/Moab vs Slurm Environment Variables
 --------------------------------------------------------------------------------
@@ -61,7 +61,7 @@ Torque vs Slurm Commmands
 +----------------------+--------------------------------------+----------------------------------------------------------------+
 | Node Count           | -l nodes=[count]                     | --nodes=[count]  or -N [count]                                 |
 +----------------------+--------------------------------------+----------------------------------------------------------------+
-| Tasks per node       | -l ppn=[count] or -l mppnppn=[count] | --ntasks-per-node=[count]                                      |
+| Tasks per node       | -l ppn=[count]                       | --ntasks-per-node=[count]                                      |
 +----------------------+--------------------------------------+----------------------------------------------------------------+
 | Wall Clock Limit     | -l walltime=[hh:mm:ss]               | --time=[min] or --time=[days-hh:mm:ss] or -t [nn:nn:nn]        |
 +----------------------+--------------------------------------+----------------------------------------------------------------+
@@ -77,7 +77,7 @@ Torque vs Slurm Commmands
 +----------------------+--------------------------------------+----------------------------------------------------------------+
 | Job Name             | -N [name]                            | --job-name=[name] or -J [name]                                 |
 +----------------------+--------------------------------------+----------------------------------------------------------------+
-| Job restart          | -r [y\n] (default set to n at NERSC) | --requeue OR -no-requeue (default set to -no-requeue at NERSC) |
+| Job restart          | -r [y\n] (default n)                 | --requeue OR -no-requeue (default set to -no-requeue)          |
 +----------------------+--------------------------------------+----------------------------------------------------------------+
 | Working directory    | N/A                                  | --workdir=[dir_name] or -D [directory]                         |
 +----------------------+--------------------------------------+----------------------------------------------------------------+
