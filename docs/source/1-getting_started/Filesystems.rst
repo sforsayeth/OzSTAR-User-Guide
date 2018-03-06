@@ -8,7 +8,18 @@ The main OzSTAR filesystem is >5 Petabytes (approx 5 PiB) of diskspace in ``/fre
 There are a few other smaller filesystems in the cluster. Of these, ``/home`` and the local ``$JOBFS`` filesystems on SSDs in compute nodes are also worth of discussion. ``/home`` is a Lustre + ZFS filesystem and ``$JOBFS`` is XFS.
 
 
-Directories
+Local disks
+-----------
+
+Each compute node has 350GB of local SSD (fast disk) that is accessible from batch jobs. If the i/o patterns in your workflow are inefficient on the usual cluster filesystems, then you should consider using these local disks.
+
+The ``$JOBFS`` environment variable in each job points at a per-job directory on the local SSD. Space on local disks is requested from ``slurm`` with eg. ``#SBATCH --tmp=20GB``. The ``$JOBFS`` directory is automatically created before each job starts, and deleted after the job ends.
+
+A typical workflow that uses local disks would be to copy tar files from ``/fred`` to ``$JOBFS``, untar, do processing on many small files using many IOPS, tar up the output, copy results back to ``fred``.
+
+OzSTAR also has 8 large NVME drives that are bigger and faster than these SSDs. Please contact hpc-support@swin.edu.au for information on how to access these.
+
+Lustre
 -------------
 
 On OzSTAR, the two main cluster-wide directories are: ::
@@ -93,16 +104,4 @@ Other things to avoid
 ************************
 
 File lock bouncing is also an issue that can affect POSIX parallel file systems. This typically occurs when multiple nodes are appending to the same shared “log” file. However by its very nature the order of the contents of such a file are undefined - it is really a “junk” file. However Lustre will valiantly attempt to interlace I/O from each appending node at the exact moment it writes, leading to a vast amount of “write lock bouncing” between all the appending nodes. This kills the performance all the processes appending, from the nodes doing the appending, and increases the load on the MDS greatly. Do not append to any shared files from multiple nodes. In general a good rule of thumb is to not write at all to the same file from multiple nodes unless it's via a library like MPI IO.
-
-
-Local disks
------------
-
-Each compute node has 350GB of local SSD (fast disk) that is accessible from batch jobs. If the i/o patterns in your workflow are inefficient on the usual cluster filesystems, then you should consider using these local disks.
-
-The ``$JOBFS`` environment variable in each job points at a per-job directory on the local SSD. Space on local disks is requested from ``slurm`` with eg. ``#SBATCH --tmp=20GB``. The ``$JOBFS`` directory is automatically created before each job starts, and deleted after the job ends.
-
-A typical workflow that uses local disks would be to copy tar files from ``/fred`` to ``$JOBFS``, untar, do processing on many small files using many IOPS, tar up the output, copy results back to ``fred``.
-
-OzSTAR also has 8 large NVME drives that are bigger and faster than these SSDs. Please contact hpc-support@swin.edu.au for information on how to access these.
 
