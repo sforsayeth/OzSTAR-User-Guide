@@ -11,18 +11,23 @@ Entry point is now ``ozstar.swin.edu.au``.
 Hardware
 ----------
 
-Each node includes 36 CPU cores and 2 P100 GPUs. Interconnect is 100 Gb/s intel infiniband. `See here fore more details <https://136.186.1.220/ozstar/>`_.
+Each node includes 36 CPU cores and 2 P100 GPUs. Interconnect is 100 Gb/s Intel infiniband. `See here for more details <https://136.186.1.220/ozstar/>`_.
 
 Interactive Nodes
 -------------------
 
-There are no dedicated interactive nodes on OzSTAR. However, you can compile and run test jobs on the login
-node or start an interactive session via Slurm.
+There are no dedicated interactive nodes on OzSTAR. However, you can compile and run test jobs on the two login
+nodes or start an interactive session via Slurm.
 
 Job Scheduling
 ----------------
 
-We now use Slurm on OzSTAR. See :doc:`../2-ozstar/torque-vs-slurm` for a comparision between Moab and Slurm.
+We now use Slurm on OzSTAR. See :doc:`../2-ozstar/torque-vs-slurm` for a comparision between Torque/Moab and Slurm.
+
+Memory Requests
+----------------
+
+Job memory limits are enforced by Slurm. The default is 100MB of RAM. If you require more you can request it with eg. ``--mem=20g`` or ``--mem-per-cpu=2g``, up to the per-node limit (on the majority of nodes) of ``--mem=186g`` or ``--mem=191000`` (MB). Do not request more than you need as it will stop other people's jobs from running.
 
 Large memory nodes
 ---------------------
@@ -42,8 +47,14 @@ File System
 
 The main filesystem is again Lustre-based. Your root project directory on lustre is now ``/fred/<project_id>``.
 Home directory path is unchanged.
+The filesystem automatically and transparently compresses all your files to save diskspace and improve data throughput.
 
 Modules
 -----------
 
 OzSTAR now includes generic and optimized versions of modules. See :doc:`../2-ozstar/Modules` for more information.
+
+Names
+--------
+
+All components of the OzSTAR cluster are named in memory of the late satirist, actor, comedian, and writer John Clarke. Login nodes are farnarkle. login node cgroups are grommet. The main filesysem is Dagg mounted at Fred. Lustre servers are arkle, warble, umlaut. The majority of compute nodes are called John, with high memory nodes being Bryan, and KNL nodes Gina. Unfortunately the mighty Dave Sorenson does not get a guernsey - he might be out injured.

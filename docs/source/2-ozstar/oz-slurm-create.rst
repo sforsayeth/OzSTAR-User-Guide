@@ -54,7 +54,7 @@ Querying Job State
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 It is possible to query information about a job in near-realtime (memory consumption, etc.) with the ``sstat`` command, by introducing ``sstat -j jobid``. It is possible to select specific information to output with ``sstat`` via the ``--format`` parameter. Refer to the manpage for more information ``man sstat``.
 
-On completion, the output file contains the result of the commands run in the script file. Following the previous example, it is possible to view its results with ``cat res.txt``.
+The output file contains the result of the commands run in the script file. Following the previous example, it is possible to view its results with ``cat res.txt``. Slurm appends to the job output file while the job is running which makes it easy to see job progress.
 
 .. note::
 
