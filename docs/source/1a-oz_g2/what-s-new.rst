@@ -24,6 +24,11 @@ Job Scheduling
 
 We now use Slurm on OzSTAR. See :doc:`../2-ozstar/torque-vs-slurm` for a comparision between Torque/Moab and Slurm.
 
+Memory Requests
+----------------
+
+Job memory limits are enforced by Slurm. The default is 100MB of RAM. If you require more you can request it with eg. ``--mem=20g`` or ``--mem-per-cpu=2g``, up to the per-node limit (on the majority of nodes) of ``--mem=186g`` or ``--mem=191000`` (MB). Do not request more than you need as it will stop other people's jobs from running.
+
 Large memory nodes
 ---------------------
 
