@@ -32,7 +32,7 @@ How do I change my login password?
 How can I change my login shell?
 ------------------------------------------
 
-You can change your login shell, just type ``/home/changeShell`` in your terminal. This information will take a few minutes to propagate, and you will have to login again for it to take effect.
+You can change your login shell, just type ``changeShell`` in your terminal. This information will take a few minutes to propagate, and you will have to login again for it to take effect.
 
 How can I avoid session timeouts?
 ------------------------------------------
