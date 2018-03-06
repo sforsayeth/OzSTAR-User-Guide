@@ -13,23 +13,29 @@ Also, the Slurm developers maintain a ‘Rosetta stone of Workload manager‘ wh
 Torque/Moab vs Slurm Environment Variables
 --------------------------------------------------------------------------------
 
-+---------------------+-----------------+----------------------+
-| **Description**     | **Moab/Torque** | **Slurm**            |
-+=====================+=================+======================+
-| Job Id              | $PBS_JOBID      | $SLURM_JOB_ID        |
-+---------------------+-----------------+----------------------+
-| Job Name            | $PBS_JOBNAME    | $SLURM_JOB_NAME      |
-+---------------------+-----------------+----------------------+
-| Submit Directory    | $PBS_O_WORKDIR  | $SLURM_SUBMIT_DIR    |
-+---------------------+-----------------+----------------------+
-| Node List           | $PBS_NODEFILE   | $SLURM_NODELIST      |
-+---------------------+-----------------+----------------------+
-| Host submitted from | $PBS_O_HOST     | $SLURM_SUBMIT_HOST   |
-+---------------------+-----------------+----------------------+
-| Nodes allocated     | $PBS_NUM_NODES  | $SLURM_JOB_NUM_NODES |
-+---------------------+-----------------+----------------------+
-| Number cores/nodes  | $PBS_NUM_PPN    | $SLURM_CPUS_ON_NODE  |
-+---------------------+-----------------+----------------------+
+(Mostly swiped from `NERSC <http://www.nersc.gov/>`__)
+
++--------------------------+-----------------+----------------------+
+| **Description**          | **Moab/Torque** | **Slurm**            |
++==========================+=================+======================+
+| Job Id                   | $PBS_JOBID      | $SLURM_JOB_ID        |
++--------------------------+-----------------+----------------------+
+| Job Name                 | $PBS_JOBNAME    | $SLURM_JOB_NAME      |
++--------------------------+-----------------+----------------------+
+| Submit Directory         | $PBS_O_WORKDIR  | $SLURM_SUBMIT_DIR    |
++--------------------------+-----------------+----------------------+
+| Node List                | $PBS_NODEFILE   | $SLURM_NODELIST      |
++--------------------------+-----------------+----------------------+
+| GPU List                 | $PBS_GPUFILE    | n/a
++--------------------------+-----------------+----------------------+
+| Host submitted from      | $PBS_O_HOST     | $SLURM_SUBMIT_HOST   |
++--------------------------+-----------------+----------------------+
+| Nodes allocated          | $PBS_NUM_NODES  | $SLURM_JOB_NUM_NODES |
++--------------------------+-----------------+----------------------+
+| Number cores/nodes       | $PBS_NUM_PPN    | $SLURM_CPUS_ON_NODE  |
++--------------------------+-----------------+----------------------+
+| Node local scratch space | $PBS_JOBFS      | $JOBFS               |
++--------------------------+-----------------+----------------------+
 
 
 Torque vs Slurm Commmands
