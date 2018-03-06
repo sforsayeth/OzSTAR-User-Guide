@@ -78,7 +78,7 @@ The following list summarises how modules work on OzSTAR:-
 * Core modules are meta modules, or modules built against the system compiler
 * Compiler modules are built against a specific compiler
 * Compiler/OpenMPI modules are built against a specific compiler/OpenMPI combination.
-* Loading a module on OzSTAR requires thte **use of a version identifier**. **There are no default modules**
+* Loading a module on OzSTAR requires the **use of a version identifier**. **There are no default modules**
 * Loading a module without a version identifier **will show the available versions of the module**
 * Loading an **ambigous module** (A module that is built against two different compiler or OpenMPI versions) requires first **loading the desired parent modules(s) first**
 * Loading an ambiguous module **will list the possible parent modules**
