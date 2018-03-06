@@ -53,3 +53,8 @@ Modules
 -----------
 
 OzSTAR now includes generic and optimized versions of modules. See :doc:`../2-ozstar/Modules` for more information.
+
+Names
+--------
+
+All components of the OzSTAR cluster are named in memory of the late satirist, actor, comedian, and writer John Clarke. Login nodes are farnarkle. login node cgroups are grommet. The main filesysem is Dagg mounted at Fred. Lustre servers are arkle, warble, umlaut. The majority of compute nodes are called John, with high memory nodes being Bryan, and KNL nodes Gina. Unfortunately the mighty Dave Sorenson does not get a guernsey - he might be out injured.
