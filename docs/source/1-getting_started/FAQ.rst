@@ -63,61 +63,9 @@ Another great starting point is to go to the `GPU Technology Conference <GPU Tec
 Why am I getting “Disk quota exceeded” message?
 ---------------------------------------------------
 
-As an OzSTAR or gSTAR/SwinSTAR user, you may be a member of more than one group. In order to list these groups, you can use the command
+Type the following command on any node ::
 
-::
+    quota
 
-    groups
+and it will highlight which of your project or home quotas you are exceeding.
 
-Each group has its own storage quota, which is shared between its members. If you want to get the quota information of a specific group on lustre, you can use
-
-::
-
-    lfs quota -g  /lustre
-
-The problem for some users recently has been that the files or directories created under a project directory (e.g ``/lustre/projects/``) have not been created with the correct group ownership because of either they inherit wrong group ownership, or they have incorrect group association. The following commands might help you to fix this issue:
-
-- To find the files and the folders owned by a specific group, you can use
-
-::
-
-    find  ­group
-
-- In order to map the contents of a certain folder to a specific group you can use
-
-::
-
-    chgrp -R  /path/to/folder
-
-This will change the group ownership of all files and folders (including sub-folder) within a particular directory.
-
-In order to ensure that new files and folders are created with your project group ownership, you can use
-::
-
-    find . /path/to/folder -type d -exec chmod g+s ‘{}’ \;
-
-This will set a special permission so that new files are created with the assigned group owner of that folder. The path used for ‘path/to/folder’ would typically be your working directory.
-
-You will probably face the disk quota exceeded issue because one or more of your directories are associated to the general group “cas”. In order to find all the files and the directories associated to “cas” in a specific path and change them to your group you can use
-::
-
-    find /path/to/folder -group cas -exec chgrp  ‘{}’ \;
-
-Also, Users should be aware that just because a folder is owned by the correct group does not mean that files created under that folder will be. An example of this would be:
-::
-
-    drwxrwxr-x 1 joe p001_swin 4096 Jul 10 12:00 temp_folder
-
-versus:
-::
-
-    drwxrwsr-x 1 joe p001_swin 4096 Jul 10 12:00 temp_folder
-
-Only in the second example, new files and folders will be created under the ownership of the “p001_swin” group. The important permission here is the group stickybit. This is set easily with
-::
-
-    chmod g+s /path/to/folder
-
-Any user with write access will be allowed to change this bit.
-
-The other thing that you should be aware of is the use of ``rsync``. A very typical ``rsync`` command method is to simply use the ``-av`` options. This is a preset for archive, which includes a particular flag for permission preservation. What happens with this is that new writes or syncs of existing files will carry the permission bits of the source files and directories, which may overwrite the existing permission where we have already set the stickybit for inheritance on lustre or on nfs cluster. If you are writing data into some of these directories via rsync, you should ensure your source files also have at least the stickybit applied before transferring, or you could rsync without the ``-p`` option in your command to inherit the destination.
