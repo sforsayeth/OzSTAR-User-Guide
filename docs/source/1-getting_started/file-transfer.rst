@@ -83,3 +83,5 @@ If you want to keep two directories (one on your local computer, and one on the 
 
 Another potential option is to use `Unison <https://www.cis.upenn.edu/~bcpierce/unison/>`__, a piece of software that can detect and handle conflicts (incompatible changes made to the same file in the two directories that must be kept in sync.)
 
+Please note that the supercomputer is **NOT** a place to use as a backup for your laptop or workstation's holiday snaps and emails.
+
