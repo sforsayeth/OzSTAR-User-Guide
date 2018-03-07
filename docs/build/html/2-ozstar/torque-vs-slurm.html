@@ -98,12 +98,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../1-getting_started/manual.html">How to use man pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1-getting_started/file-transfer.html">File Transfer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Swinburne-HPC.html">Swinburne HPC system</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Filesystems.html">File systems and I/O</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1-getting_started/FAQ.html">FAQ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OzSTAR vs Green II</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What&#8217;s new on OzSTAR?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Storage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Filesystems.html">File systems and I/O</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software</span></p>
 <ul>
@@ -189,14 +192,15 @@
 Terascale Open-source Resource and QUEue Manager (Torque) and the Moab Cluster Suite (e.g. PBS scripts; <code class="docutils literal"><span class="pre">qsub</span></code>).
 If so, please note that OzSTAR makes use of the Simple Linux Utility For Resource Management (Slurm).</p>
 <p>To ease your transition from one model to the other, you can find a list of equivalencies (where applicable) below.
-Also, yhe Slurm developers maintain a ‘Rosetta stone of Workload manager‘ which gives the correspondences between the options of several job schedulers. You can access the <a class="reference external" href="https://slurm.schedmd.com/rosetta.pdf">PDF here</a>.</p>
+Also, the Slurm developers maintain a ‘Rosetta stone of Workload manager‘ which gives the correspondences between the options of several job schedulers. You can access the <a class="reference external" href="https://slurm.schedmd.com/rosetta.pdf">PDF here</a>.</p>
 <div class="section" id="torque-moab-vs-slurm-environment-variables">
 <h2>Torque/Moab vs Slurm Environment Variables<a class="headerlink" href="#torque-moab-vs-slurm-environment-variables" title="Permalink to this headline">¶</a></h2>
+<p>(Mostly swiped from <a class="reference external" href="http://www.nersc.gov/">NERSC</a>)</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="35%" />
-<col width="28%" />
-<col width="37%" />
+<col width="40%" />
+<col width="26%" />
+<col width="34%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head"><strong>Description</strong></th>
@@ -221,17 +225,25 @@ Also, yhe Slurm developers maintain a ‘Rosetta stone of Workload manager‘ wh
 <td>$PBS_NODEFILE</td>
 <td>$SLURM_NODELIST</td>
 </tr>
-<tr class="row-even"><td>Host submitted from</td>
+<tr class="row-even"><td>GPU List</td>
+<td>$PBS_GPUFILE</td>
+<td>n/a</td>
+</tr>
+<tr class="row-odd"><td>Host submitted from</td>
 <td>$PBS_O_HOST</td>
 <td>$SLURM_SUBMIT_HOST</td>
 </tr>
-<tr class="row-odd"><td>Nodes allocated</td>
+<tr class="row-even"><td>Nodes allocated</td>
 <td>$PBS_NUM_NODES</td>
 <td>$SLURM_JOB_NUM_NODES</td>
 </tr>
-<tr class="row-even"><td>Number cores/nodes</td>
+<tr class="row-odd"><td>Number cores/nodes</td>
 <td>$PBS_NUM_PPN</td>
 <td>$SLURM_CPUS_ON_NODE</td>
+</tr>
+<tr class="row-even"><td>Node local scratch space</td>
+<td>$PBS_JOBFS</td>
+<td>$JOBFS</td>
 </tr>
 </tbody>
 </table>
@@ -309,7 +321,7 @@ Also, yhe Slurm developers maintain a ‘Rosetta stone of Workload manager‘ wh
 <td>&#8211;nodes=[count]  or -N [count]</td>
 </tr>
 <tr class="row-odd"><td>Tasks per node</td>
-<td>-l ppn=[count] or -l mppnppn=[count]</td>
+<td>-l ppn=[count]</td>
 <td>&#8211;ntasks-per-node=[count]</td>
 </tr>
 <tr class="row-even"><td>Wall Clock Limit</td>
@@ -341,8 +353,8 @@ Also, yhe Slurm developers maintain a ‘Rosetta stone of Workload manager‘ wh
 <td>&#8211;job-name=[name] or -J [name]</td>
 </tr>
 <tr class="row-odd"><td>Job restart</td>
-<td>-r [yn] (default set to n at NERSC)</td>
-<td>&#8211;requeue OR -no-requeue (default set to -no-requeue at NERSC)</td>
+<td>-r [yn] (default n)</td>
+<td>&#8211;requeue OR -no-requeue (default set to -no-requeue)</td>
 </tr>
 <tr class="row-even"><td>Working directory</td>
 <td>N/A</td>

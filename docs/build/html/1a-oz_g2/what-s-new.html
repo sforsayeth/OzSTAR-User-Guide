@@ -36,7 +36,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="OzSTAR User Guide  documentation" href="../index.html"/>
-        <link rel="next" title="Environment Modules" href="../2-ozstar/Modules.html"/>
+        <link rel="next" title="File systems and I/O" href="../1-getting_started/Filesystems.html"/>
         <link rel="prev" title="FAQ" href="../1-getting_started/FAQ.html"/> 
 
   
@@ -99,7 +99,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../1-getting_started/manual.html">How to use man pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1-getting_started/file-transfer.html">File Transfer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Swinburne-HPC.html">Swinburne HPC system</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Filesystems.html">File systems and I/O</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1-getting_started/FAQ.html">FAQ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OzSTAR vs Green II</span></p>
@@ -109,12 +108,18 @@
 <li class="toctree-l2"><a class="reference internal" href="#hardware">Hardware</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#interactive-nodes">Interactive Nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#job-scheduling">Job Scheduling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memory-requests">Memory Requests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#large-memory-nodes">Large memory nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#projects">Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-system">File System</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#modules">Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#names">Names</a></li>
 </ul>
 </li>
+</ul>
+<p class="caption"><span class="caption-text">Storage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Filesystems.html">File systems and I/O</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software</span></p>
 <ul>
@@ -197,16 +202,20 @@
 </div>
 <div class="section" id="hardware">
 <h2>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h2>
-<p>Each node includes 36 CPU cores and 2 P100 GPUs. Interconnect is 100 Gb/s intel infiniband. <a class="reference external" href="https://136.186.1.220/ozstar/">See here fore more details</a>.</p>
+<p>Each node includes 36 CPU cores and 2 P100 GPUs. Interconnect is 100 Gb/s Intel infiniband. <a class="reference external" href="https://136.186.1.220/ozstar/">See here for more details</a>.</p>
 </div>
 <div class="section" id="interactive-nodes">
 <h2>Interactive Nodes<a class="headerlink" href="#interactive-nodes" title="Permalink to this headline">¶</a></h2>
-<p>There are no dedicated interactive nodes on OzSTAR. However, you can compile and run test jobs on the login
-node or start an interactive session via Slurm.</p>
+<p>There are no dedicated interactive nodes on OzSTAR. However, you can compile and run test jobs on the two login
+nodes or start an interactive session via Slurm.</p>
 </div>
 <div class="section" id="job-scheduling">
 <h2>Job Scheduling<a class="headerlink" href="#job-scheduling" title="Permalink to this headline">¶</a></h2>
-<p>We now use Slurm on OzSTAR. See <a class="reference internal" href="../2-ozstar/torque-vs-slurm.html"><span class="doc">Torque-Moab vs Slurm</span></a> for a comparision between Moab and Slurm.</p>
+<p>We now use Slurm on OzSTAR. See <a class="reference internal" href="../2-ozstar/torque-vs-slurm.html"><span class="doc">Torque-Moab vs Slurm</span></a> for a comparision between Torque/Moab and Slurm.</p>
+</div>
+<div class="section" id="memory-requests">
+<h2>Memory Requests<a class="headerlink" href="#memory-requests" title="Permalink to this headline">¶</a></h2>
+<p>Job memory limits are enforced by Slurm. The default is 100MB of RAM. If you require more you can request it with eg. <code class="docutils literal"><span class="pre">--mem=20g</span></code> or <code class="docutils literal"><span class="pre">--mem-per-cpu=2g</span></code>, up to the per-node limit (on the majority of nodes) of <code class="docutils literal"><span class="pre">--mem=186g</span></code> or <code class="docutils literal"><span class="pre">--mem=191000</span></code> (MB). Do not request more than you need as it will stop other people&#8217;s jobs from running.</p>
 </div>
 <div class="section" id="large-memory-nodes">
 <h2>Large memory nodes<a class="headerlink" href="#large-memory-nodes" title="Permalink to this headline">¶</a></h2>
@@ -221,11 +230,16 @@ files and repositories from g2 to OzSTAR is with <code class="docutils literal">
 <div class="section" id="file-system">
 <h2>File System<a class="headerlink" href="#file-system" title="Permalink to this headline">¶</a></h2>
 <p>The main filesystem is again Lustre-based. Your root project directory on lustre is now <code class="docutils literal"><span class="pre">/fred/&lt;project_id&gt;</span></code>.
-Home directory path is unchanged.</p>
+Home directory path is unchanged.
+The filesystem automatically and transparently compresses all your files to save diskspace and improve data throughput.</p>
 </div>
 <div class="section" id="modules">
 <h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
 <p>OzSTAR now includes generic and optimized versions of modules. See <a class="reference internal" href="../2-ozstar/Modules.html"><span class="doc">Environment Modules</span></a> for more information.</p>
+</div>
+<div class="section" id="names">
+<h2>Names<a class="headerlink" href="#names" title="Permalink to this headline">¶</a></h2>
+<p>All components of the OzSTAR cluster are named in memory of the late satirist, actor, comedian, and writer John Clarke. Login nodes are farnarkle. login node cgroups are grommet. The main filesysem is Dagg mounted at Fred. Lustre servers are arkle, warble, umlaut. The majority of compute nodes are called John, with high memory nodes being Bryan, and KNL nodes Gina. Unfortunately the mighty Dave Sorenson does not get a guernsey - he might be out injured.</p>
 </div>
 </div>
 
@@ -239,7 +253,7 @@ Home directory path is unchanged.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../2-ozstar/Modules.html" class="btn btn-neutral float-right" title="Environment Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../1-getting_started/Filesystems.html" class="btn btn-neutral float-right" title="File systems and I/O" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../1-getting_started/FAQ.html" class="btn btn-neutral" title="FAQ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

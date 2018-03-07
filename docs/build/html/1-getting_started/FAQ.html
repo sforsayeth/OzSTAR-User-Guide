@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="OzSTAR User Guide  documentation" href="../index.html"/>
         <link rel="next" title="What’s new on OzSTAR?" href="../1a-oz_g2/what-s-new.html"/>
-        <link rel="prev" title="File systems and I/O" href="Filesystems.html"/> 
+        <link rel="prev" title="Swinburne HPC system" href="Swinburne-HPC.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -99,7 +99,6 @@
 <li class="toctree-l1"><a class="reference internal" href="manual.html">How to use man pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file-transfer.html">File Transfer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Swinburne-HPC.html">Swinburne HPC system</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Filesystems.html">File systems and I/O</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">FAQ</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#who-is-eligible-for-an-account-on-the-facility">Who is eligible for an account on the facility?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-do-i-access-the-facility">How do I access the facility?</a></li>
@@ -115,6 +114,10 @@
 <p class="caption"><span class="caption-text">OzSTAR vs Green II</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What&#8217;s new on OzSTAR?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Storage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Filesystems.html">File systems and I/O</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software</span></p>
 <ul>
@@ -214,7 +217,7 @@ These nodes can be used to run small tasks interactively. However, for larger jo
 </div>
 <div class="section" id="how-can-i-change-my-login-shell">
 <h2>How can I change my login shell?<a class="headerlink" href="#how-can-i-change-my-login-shell" title="Permalink to this headline">¶</a></h2>
-<p>You can change your login shell, just type <code class="docutils literal"><span class="pre">/home/changeShell</span></code> in your terminal. This information will take a few minutes to propagate, and you will have to login again for it to take effect.</p>
+<p>You can change your login shell, just type <code class="docutils literal"><span class="pre">changeShell</span></code> in your terminal. This information will take a few minutes to propagate, and you will have to login again for it to take effect.</p>
 </div>
 <div class="section" id="how-can-i-avoid-session-timeouts">
 <h2>How can I avoid session timeouts?<a class="headerlink" href="#how-can-i-avoid-session-timeouts" title="Permalink to this headline">¶</a></h2>
@@ -237,51 +240,11 @@ These nodes can be used to run small tasks interactively. However, for larger jo
 </div>
 <div class="section" id="why-am-i-getting-disk-quota-exceeded-message">
 <h2>Why am I getting “Disk quota exceeded” message?<a class="headerlink" href="#why-am-i-getting-disk-quota-exceeded-message" title="Permalink to this headline">¶</a></h2>
-<p>As an OzSTAR or gSTAR/SwinSTAR user, you may be a member of more than one group. In order to list these groups, you can use the command</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>groups
+<p>Type the following command on any node</p>
+<div class="highlight-rst"><div class="highlight"><pre><span></span>quota
 </pre></div>
 </div>
-<p>Each group has its own storage quota, which is shared between its members. If you want to get the quota information of a specific group on lustre, you can use</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>lfs quota -g  /lustre
-</pre></div>
-</div>
-<p>The problem for some users recently has been that the files or directories created under a project directory (e.g <code class="docutils literal"><span class="pre">/lustre/projects/</span></code>) have not been created with the correct group ownership because of either they inherit wrong group ownership, or they have incorrect group association. The following commands might help you to fix this issue:</p>
-<ul class="simple">
-<li>To find the files and the folders owned by a specific group, you can use</li>
-</ul>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>find  ­group
-</pre></div>
-</div>
-<ul class="simple">
-<li>In order to map the contents of a certain folder to a specific group you can use</li>
-</ul>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>chgrp -R  /path/to/folder
-</pre></div>
-</div>
-<p>This will change the group ownership of all files and folders (including sub-folder) within a particular directory.</p>
-<p>In order to ensure that new files and folders are created with your project group ownership, you can use</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>find . /path/to/folder -type d -exec chmod g+s ‘{}’ \;
-</pre></div>
-</div>
-<p>This will set a special permission so that new files are created with the assigned group owner of that folder. The path used for ‘path/to/folder’ would typically be your working directory.</p>
-<p>You will probably face the disk quota exceeded issue because one or more of your directories are associated to the general group “cas”. In order to find all the files and the directories associated to “cas” in a specific path and change them to your group you can use</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>find /path/to/folder -group cas -exec chgrp  ‘{}’ \;
-</pre></div>
-</div>
-<p>Also, Users should be aware that just because a folder is owned by the correct group does not mean that files created under that folder will be. An example of this would be:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>drwxrwxr-x 1 joe p001_swin 4096 Jul 10 12:00 temp_folder
-</pre></div>
-</div>
-<p>versus:</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>drwxrwsr-x 1 joe p001_swin 4096 Jul 10 12:00 temp_folder
-</pre></div>
-</div>
-<p>Only in the second example, new files and folders will be created under the ownership of the “p001_swin” group. The important permission here is the group stickybit. This is set easily with</p>
-<div class="highlight-rst"><div class="highlight"><pre><span></span>chmod g+s /path/to/folder
-</pre></div>
-</div>
-<p>Any user with write access will be allowed to change this bit.</p>
-<p>The other thing that you should be aware of is the use of <code class="docutils literal"><span class="pre">rsync</span></code>. A very typical <code class="docutils literal"><span class="pre">rsync</span></code> command method is to simply use the <code class="docutils literal"><span class="pre">-av</span></code> options. This is a preset for archive, which includes a particular flag for permission preservation. What happens with this is that new writes or syncs of existing files will carry the permission bits of the source files and directories, which may overwrite the existing permission where we have already set the stickybit for inheritance on lustre or on nfs cluster. If you are writing data into some of these directories via rsync, you should ensure your source files also have at least the stickybit applied before transferring, or you could rsync without the <code class="docutils literal"><span class="pre">-p</span></code> option in your command to inherit the destination.</p>
+<p>and it will highlight which of your project or home quotas you are exceeding.</p>
 </div>
 </div>
 
@@ -298,7 +261,7 @@ These nodes can be used to run small tasks interactively. However, for larger jo
         <a href="../1a-oz_g2/what-s-new.html" class="btn btn-neutral float-right" title="What’s new on OzSTAR?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="Filesystems.html" class="btn btn-neutral" title="File systems and I/O" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="Swinburne-HPC.html" class="btn btn-neutral" title="Swinburne HPC system" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

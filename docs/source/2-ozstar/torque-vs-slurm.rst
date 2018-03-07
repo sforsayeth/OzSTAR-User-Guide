@@ -26,7 +26,7 @@ Torque/Moab vs Slurm Environment Variables
 +--------------------------+-----------------+----------------------+
 | Node List                | $PBS_NODEFILE   | $SLURM_NODELIST      |
 +--------------------------+-----------------+----------------------+
-| GPU List                 | $PBS_GPUFILE    | n/a
+| GPU List                 | $PBS_GPUFILE    | n/a                  |
 +--------------------------+-----------------+----------------------+
 | Host submitted from      | $PBS_O_HOST     | $SLURM_SUBMIT_HOST   |
 +--------------------------+-----------------+----------------------+

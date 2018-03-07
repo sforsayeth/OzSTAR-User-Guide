@@ -106,12 +106,15 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Swinburne-HPC.html">Swinburne HPC system</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Filesystems.html">File systems and I/O</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FAQ.html">FAQ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OzSTAR vs Green II</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What&#8217;s new on OzSTAR?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Storage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Filesystems.html">File systems and I/O</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software</span></p>
 <ul>
@@ -256,8 +259,9 @@
 </div>
 <div class="section" id="synchronising-with-a-local-directory">
 <h2>Synchronising with a local directory<a class="headerlink" href="#synchronising-with-a-local-directory" title="Permalink to this headline">¶</a></h2>
-<p>If you want to keep two directories (one on your local computer, and one on the supercomputer) in sync, you can do that with rsync using its <code class="docutils literal"><span class="pre">--delete</span></code> option. But that is only one-way so you need to really think in what direction you do it, and it does not scale beyond two synchronized directories.</p>
-<p>A real option is to use Unison, a piece of software that can detect and handle conflicts (incompatible changes made to the same file in the two directories that must be kept in sync.)</p>
+<p>If you want to keep two directories (one on your local computer, and one on the supercomputer) in sync, you can do that with rsync using its <code class="docutils literal"><span class="pre">--delete</span></code> option. But that is only one-way so you need to really think in what direction you do it, and it does not scale beyond two synchronized directory trees.</p>
+<p>Another potential option is to use <a class="reference external" href="https://www.cis.upenn.edu/~bcpierce/unison/">Unison</a>, a piece of software that can detect and handle conflicts (incompatible changes made to the same file in the two directories that must be kept in sync.)</p>
+<p>Please note that the supercomputer is <strong>NOT</strong> a place to use as a backup for your laptop or workstation&#8217;s holiday snaps and emails.</p>
 </div>
 </div>
 

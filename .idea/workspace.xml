@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac0058f5-9218-46ab-b486-7c43c32ba912" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/1-getting_started/Filesystems.doctree" afterPath="$PROJECT_DIR$/docs/build/doctrees/1-getting_started/Filesystems.doctree" />
-      <change beforePath="$PROJECT_DIR$/docs/build/doctrees/environment.pickle" afterPath="$PROJECT_DIR$/docs/build/doctrees/environment.pickle" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/1-getting_started/Filesystems.html" afterPath="$PROJECT_DIR$/docs/build/html/1-getting_started/Filesystems.html" />
-      <change beforePath="$PROJECT_DIR$/docs/build/html/_sources/1-getting_started/Filesystems.rst.txt" afterPath="$PROJECT_DIR$/docs/build/html/_sources/1-getting_started/Filesystems.rst.txt" />
-      <change beforePath="$PROJECT_DIR$/docs/source/1-getting_started/Filesystems.rst" afterPath="$PROJECT_DIR$/docs/source/1-getting_started/Filesystems.rst" />
-      <change beforePath="$PROJECT_DIR$/server.py" afterPath="$PROJECT_DIR$/server.py" />
+      <change beforePath="$PROJECT_DIR$/README.md" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />

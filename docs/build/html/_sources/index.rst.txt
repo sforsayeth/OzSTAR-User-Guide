@@ -27,7 +27,6 @@ If you are after g2 user information, please go to `https://136.186.1.220/g2/ <h
    1-getting_started/manual
    1-getting_started/file-transfer
    1-getting_started/Swinburne-HPC
-   1-getting_started/Filesystems
    1-getting_started/FAQ
 
 
@@ -36,6 +35,12 @@ If you are after g2 user information, please go to `https://136.186.1.220/g2/ <h
    :caption: OzSTAR vs Green II
 
    1a-oz_g2/what-s-new
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Storage
+
+   1-getting_started/Filesystems
 
 .. toctree::
    :maxdepth: 1

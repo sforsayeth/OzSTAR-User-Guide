@@ -99,12 +99,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../1-getting_started/manual.html">How to use man pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1-getting_started/file-transfer.html">File Transfer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Swinburne-HPC.html">Swinburne HPC system</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Filesystems.html">File systems and I/O</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1-getting_started/FAQ.html">FAQ</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OzSTAR vs Green II</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What&#8217;s new on OzSTAR?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Storage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1-getting_started/Filesystems.html">File systems and I/O</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software</span></p>
 <ul>
@@ -231,7 +234,7 @@ sbatch: Submitted batch job 99999999
 <div class="section" id="querying-job-state">
 <h2>Querying Job State<a class="headerlink" href="#querying-job-state" title="Permalink to this headline">¶</a></h2>
 <p>It is possible to query information about a job in near-realtime (memory consumption, etc.) with the <code class="docutils literal"><span class="pre">sstat</span></code> command, by introducing <code class="docutils literal"><span class="pre">sstat</span> <span class="pre">-j</span> <span class="pre">jobid</span></code>. It is possible to select specific information to output with <code class="docutils literal"><span class="pre">sstat</span></code> via the <code class="docutils literal"><span class="pre">--format</span></code> parameter. Refer to the manpage for more information <code class="docutils literal"><span class="pre">man</span> <span class="pre">sstat</span></code>.</p>
-<p>On completion, the output file contains the result of the commands run in the script file. Following the previous example, it is possible to view its results with <code class="docutils literal"><span class="pre">cat</span> <span class="pre">res.txt</span></code>.</p>
+<p>The output file contains the result of the commands run in the script file. Following the previous example, it is possible to view its results with <code class="docutils literal"><span class="pre">cat</span> <span class="pre">res.txt</span></code>. Slurm appends to the job output file while the job is running which makes it easy to see job progress.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The previous example illustrates a serial job running on a single CPU, and on a single node, and therefore does not take advantage of multi-processor nodes or multiple compute nodes available with a cluster.</p>
