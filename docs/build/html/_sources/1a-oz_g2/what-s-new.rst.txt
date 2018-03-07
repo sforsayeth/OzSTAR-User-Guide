@@ -11,7 +11,7 @@ Entry point is now ``ozstar.swin.edu.au``.
 Hardware
 ----------
 
-Each node includes 36 CPU cores and 2 P100 GPUs. Interconnect is 100 Gb/s Intel infiniband. `See here for more details <https://136.186.1.220/ozstar/>`_.
+Each node includes 36 CPU cores and 2 P100 GPUs. Interconnect is 100 Gb/s Intel infiniband. `See here for more details <https://supercomputing.swin.edu.au/ozstar/>`_.
 
 Interactive Nodes
 -------------------

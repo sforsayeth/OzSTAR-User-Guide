@@ -6,9 +6,9 @@
 Welcome to OzSTAR documentation!
 =============================================
 
-All technical specifications of the OzSTAR hardware are described at `https://136.186.1.220/ozstar/ <https://136.186.1.220/ozstar/>`_. Here, you will find all technical information needed to run jobs on the hardware.
+All technical specifications of the OzSTAR hardware are described at `https://supercomputing.swin.edu.au/ozstar/ <https://supercomputing.swin.edu.au/ozstar/>`_. Here, you will find all technical information needed to run jobs on the hardware.
 
-If you are after g2 user information, please go to `https://136.186.1.220/g2/ <https://136.186.1.220/ozstar/>`_.
+If you are after g2 user information, please go to `https://supercomputing.swin.edu.au/g2/ <https://supercomputing.swin.edu.au/ozstar/>`_.
 
 .. toctree::
    :hidden:
