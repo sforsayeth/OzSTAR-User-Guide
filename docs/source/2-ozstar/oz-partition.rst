@@ -3,9 +3,9 @@
 Job Queues
 ==================================
 
-The preferred method for utilising the supercomputer is through the job queue which accesses the majority of the compute nodes (all except the interactive nodes). The queue nodes are not available for direct login.
+The preferred method for utilising the supercomputer is through submitting batch jobs to the Slurm scheduling system which governs accesses to the compute nodes. The queue nodes are not available for direct login.
 
-The basic goal of a queue system is to maximize utilisation of the supercomputer and to do this in a way that is fair to all users. It should also ease the workload for users who do a lot of computation. The queue system on OzSTAR is based on `Slurm <https://slurm.schedmd.com>`__. Slurm is a resource manager, job scheduler, and much more. Slurm was first developed at the Livermore Computing Center, and has grown into a complete open-source software backed up by a large community, commercially supported by the original developers, and used by many of the Top500 supercomputers. It is therefore worth learning its mechanisms.
+The basic goal of a queue system is to maximize utilisation of the supercomputer and to do this in a way that is fair to all users. It should also ease the workload for users who do a lot of computation. The queue system on OzSTAR is `Slurm <https://slurm.schedmd.com>`__. Slurm is a resource manager, job scheduler, and much more. Slurm was first developed at the Livermore Computing Center, and has grown into a complete open-source software backed up by a large community, commercially supported by the original developers, and used by many of the Top500 supercomputers. It is therefore worth learning its mechanisms.
 
 .. Available Partitions
     -----------------------------------------------
