@@ -20,6 +20,8 @@ Slurm's *partitions* are comparable to Moab's *queues* (e.g. :doc:`torque-vs-slu
 - ``skylake-gpu`` for GPU jobs only on ordinary Skylake CPU nodes
 - ``knl`` for Intel Xeon Phi Knights Landing (KNL) nodes
 
+Note that jobs manually directed to the ``skylake`` or ``skylake-gpu`` partitions will be examined and redirected if they are not appropriate for that partition.
+
 Memory Requests
 ---------------
 On OzStar you must request the amount of memory that your job needs.  The default allocation is 100MB per CPU core requested which is unlikely to be enough to achieve much and is intended to encourage you to pick a good value.  The more accurate your estimate can be the more likely your job is to be scheduled quickly as Slurm will be better able to fill up available slots in its schedule with it.
