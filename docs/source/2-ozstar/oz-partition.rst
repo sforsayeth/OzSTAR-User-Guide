@@ -22,6 +22,10 @@ Slurm's *partitions* are comparable to Moab's *queues* (e.g. :doc:`torque-vs-slu
 
 Note that generally you do not need to specify any partition. ``skylake`` is the default, and gpu jobs are automatically redirected to ``skylake-gpu``. Jobs manually directed to the ``skylake`` or ``skylake-gpu`` partitions will be examined and redirected if they are not appropriate for that partition.
 
+Slurm Options
+-------------
+Options to Slurm can be specified on the ``sbatch`` or ``srun`` command lines like ``sbatch --time=1:00:00 ...`` or in lines at the top of the batch script as ``#SBATCH --time=1:00:00``. In the below we mostly use the command line versions for brevity, but typically these options will all be written into the top of your batch script. Your batch script is then submitted to Slurm with ``sbatch my_script``.
+
 Memory Requests
 ---------------
 On OzStar you must request the amount of memory that your job needs.  The default allocation is 100MB per CPU core requested which is unlikely to be enough to achieve much and is intended to encourage you to pick a good value.  The more accurate your estimate can be the more likely your job is to be scheduled quickly as Slurm will be better able to fill up available slots in its schedule with it.
