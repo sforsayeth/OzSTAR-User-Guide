@@ -63,4 +63,4 @@ In both the above examples you can pass the ``--x11`` option to ``srun`` or ``si
 
 Requesting Local Scratch Space
 ------------------------------
-All jobs on OzStar get allocated their own private ``/tmp`` and ``/var/tmp`` which are cleaned up at the end of very job.  By default you get a ``100MB`` allocation of space, to request more you need to ask for it with the ``--tmp`` option, so for example to request 4GB of space you would do ``--tmp=4G``.
+All jobs on OzStar get allocated their own private area on local disk which is pointed to by the environment variable ``$JOBFS``. These are cleaned up at the end of every job.  By default you get a ``100MB`` allocation of space, to request more you need to ask for it with the ``--tmp`` option to ``sbatch``, so for example to request 4GB of local scratch disk space you would use ``--tmp=4G``.
