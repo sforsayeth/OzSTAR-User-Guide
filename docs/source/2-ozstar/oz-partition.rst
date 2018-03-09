@@ -20,7 +20,7 @@ Slurm's *partitions* are comparable to Moab's *queues* (e.g. :doc:`torque-vs-slu
 - ``skylake-gpu`` for GPU jobs only on ordinary Skylake CPU nodes
 - ``knl`` for Intel Xeon Phi Knights Landing (KNL) nodes
 
-Note that jobs manually directed to the ``skylake`` or ``skylake-gpu`` partitions will be examined and redirected if they are not appropriate for that partition.
+Note that generally you do not need to specify any partition. ``skylake`` is the default, and gpu jobs are automatically redirected to ``skylake-gpu``. Jobs manually directed to the ``skylake`` or ``skylake-gpu`` partitions will be examined and redirected if they are not appropriate for that partition.
 
 Memory Requests
 ---------------
