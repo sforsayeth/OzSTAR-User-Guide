@@ -10,7 +10,7 @@ The basic goal of a queue system is to maximize utilisation of the supercomputer
 Key Slurm Information
 ---------------------
 
-Slurm on OzStar splits nodes into partitions (which can overlap) in order to give prioritisation and classifcation of nodes. Slurm will direct most jobs correctly to the requested partition, but the Knights Landing nodes will need attention by the user.
+Slurm on OzStar splits nodes into partitions (which can overlap) in order to give prioritisation and classification of nodes. Slurm will direct most jobs correctly to the requested partition, but the Knights Landing nodes will need attention by the user.
 
 Available Partitions
 --------------------
