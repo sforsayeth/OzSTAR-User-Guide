@@ -20,13 +20,19 @@ Slurm's *partitions* are comparable to Moab's *queues* (e.g. :doc:`torque-vs-slu
 - ``skylake-gpu`` for GPU jobs only on ordinary Skylake CPU nodes
 - ``knl`` for Intel Xeon Phi Knights Landing (KNL) nodes
 
-Note that jobs manually directed to the ``skylake`` or ``skylake-gpu`` partitions will be examined and redirected if they are not appropriate for that partition.
+Note that generally you do not need to specify any partition. ``skylake`` is the default, and gpu jobs are automatically redirected to ``skylake-gpu``. Jobs manually directed to the ``skylake`` or ``skylake-gpu`` partitions will be examined and redirected if they are not appropriate for that partition.
+
+Slurm Options
+-------------
+Options to Slurm can be specified on the ``sbatch`` or ``srun`` command lines like ``sbatch --time=1:00:00 ...`` or in lines at the top of the batch script as ``#SBATCH --time=1:00:00``. In the below we mostly use the command line versions for brevity, but typically these options will all be written into the top of your batch script. Your batch script is then submitted to Slurm with ``sbatch my_script``.
 
 Memory Requests
 ---------------
-On OzStar you must request the amount of memory that your job needs.  The default allocation is 100MB per CPU core requested which is unlikely to be enough to achieve much and is intended to encourage you to pick a good value.  The more accurate your estimate can be the more likely your job is to be scheduled quickly as Slurm will be better able to fill up available slots in its schedule with it.
+On OzStar you must request the amount of memory that your job needs.  The default allocation is ``100MB`` per CPU core requested which is unlikely to be enough to achieve much and is intended to encourage you to pick a good value.  The more accurate your estimate can be the more likely your job is to be scheduled quickly as Slurm will be better able to fill up available slots in its schedule with it. Note that you should only request the amount of memory that you are going to use. Requesting more will stop other peoples jobs from running.
 
 For instance if your job needs 2GB per CPU core then you would ask for ``--mem-per-cpu=2G``.  If your job needs needs around 1.5GB you could ask for ``--mem-per-cpu=1500M``.
+
+The maximum memory request for the vast majority of nodes (``John`` in ``skylake``) is one of ``--mem=186g``, ``--mem=191000`` (MB), ``--mem-per-cpu=5G``, ``--mem-per-cpu=5968`` (MB). If you ask for more memory than this then your job will be automatically redirected one of the ``Bryan`` nodes which have more RAM available. However there are only few high memory nodes so your job throughput will be low. Again, do not request more than you need as it will also stop other people's jobs from running.
 
 Slurm enforces this memory request by using the Linux kernels ``cgroup`` support which will limit the memory it can use on the node. If your job exceeds that value then the kernel will kill a process which will usually lead to the failure of your job.
 
@@ -57,4 +63,4 @@ In both the above examples you can pass the ``--x11`` option to ``srun`` or ``si
 
 Requesting Local Scratch Space
 ------------------------------
-All jobs on OzStar get allocated their own private ``/tmp`` and ``/var/tmp`` which are cleaned up at the end of very job.  By default you get a ``100MB`` allocation of space, to request more you need to ask for it with the ``--tmp`` option, so for example to request 4GB of space you would do ``--tmp=4G``.
+All jobs on OzStar get allocated their own private area on local disk which is pointed to by the environment variable ``$JOBFS``. These are cleaned up at the end of every job.  By default you get a ``100MB`` allocation of space, to request more you need to ask for it with the ``--tmp`` option to ``sbatch``, so for example to request 4GB of local scratch disk space you would use ``--tmp=4G``.
