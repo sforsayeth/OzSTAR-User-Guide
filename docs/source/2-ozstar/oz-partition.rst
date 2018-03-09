@@ -28,9 +28,11 @@ Options to Slurm can be specified on the ``sbatch`` or ``srun`` command lines li
 
 Memory Requests
 ---------------
-On OzStar you must request the amount of memory that your job needs.  The default allocation is 100MB per CPU core requested which is unlikely to be enough to achieve much and is intended to encourage you to pick a good value.  The more accurate your estimate can be the more likely your job is to be scheduled quickly as Slurm will be better able to fill up available slots in its schedule with it.
+On OzStar you must request the amount of memory that your job needs.  The default allocation is ``100MB`` per CPU core requested which is unlikely to be enough to achieve much and is intended to encourage you to pick a good value.  The more accurate your estimate can be the more likely your job is to be scheduled quickly as Slurm will be better able to fill up available slots in its schedule with it. Note that you should only request the amount of memory that you are going to use. Requesting more will stop other peoples jobs from running.
 
 For instance if your job needs 2GB per CPU core then you would ask for ``--mem-per-cpu=2G``.  If your job needs needs around 1.5GB you could ask for ``--mem-per-cpu=1500M``.
+
+The maximum memory request for the vast majority of nodes (``John`` in ``skylake``) is one of ``--mem=186g``, ``--mem=191000`` (MB), ``--mem-per-cpu=5G``, ``--mem-per-cpu=5968`` (MB). If you ask for more memory than this then your job will be automatically redirected one of the ``Bryan`` nodes which have more RAM available. However there are only few high memory nodes so your job throughput will be low. Again, do not request more than you need as it will also stop other people's jobs from running.
 
 Slurm enforces this memory request by using the Linux kernels ``cgroup`` support which will limit the memory it can use on the node. If your job exceeds that value then the kernel will kill a process which will usually lead to the failure of your job.
 
