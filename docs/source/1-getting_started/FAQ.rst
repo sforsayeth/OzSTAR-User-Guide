@@ -69,3 +69,9 @@ Type the following command on any node ::
 
 and it will highlight which of your project or home quotas you are exceeding.
 
+Why don't some nvidia and slurm commands, or srun/sinteractive gpu jobs work from my screen session?
+-------------------------------------------------------------------------------------------------------
+
+``screen`` is old and weird and setgid. Linux unsets ``LD_LIBRARY_PATH`` for security reasons when running setgid executables, which breaks our pre-loaded ``slurm`` and ``nvidia`` modules. Interactive slurm jobs started from screen sessions inherit this broken environment.
+
+The simple workaround is to run ``bash -l`` or ``tcsh -l`` in each screen window you open, or to use ``tmux`` instead.
