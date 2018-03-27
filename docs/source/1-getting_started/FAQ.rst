@@ -11,7 +11,7 @@ All Swinburne staff and students are eligible for accounts as are researchers in
 How do I access the facility?
 ------------------------------------------
 
-To access OzSTAR, all access is down through the head node ``ozstar.hpc.swin.edu.au``. Upon login, you will be assigned to one of two nodes, namely ``farnarkle1`` and ``farnarkle2``, in a round robin fashion. From there you can submit jobs to the queue.
+To access OzSTAR, all access is down through the head node ``ozstar.swin.edu.au``. Upon login, you will be assigned to one of two nodes, namely ``farnarkle1`` and ``farnarkle2``, in a round robin fashion. From there you can submit jobs to the queue.
 These nodes can be used to run small tasks interactively. However, for larger jobs that require interaction, you should request an interactive node via Slurm (for more information, see :ref:`interactive_jobs`).
 
 For more details, see the page :doc:`../1-getting_started/Access`.
