@@ -37,7 +37,7 @@ You can change your login shell, just type ``changeShell`` in your terminal. Thi
 How can I avoid session timeouts?
 ------------------------------------------
 
-There are a few ways to do this but a simple method is to go to the .ssh directory on your host machine and create a file called “config”. In that file place the line
+There are a few ways to do this but a simple method is to go to the .ssh directory on your laptop or desktop machine and create a file called “config”. In that file place the line
 ::
 
     ServerAliveInterval 120
