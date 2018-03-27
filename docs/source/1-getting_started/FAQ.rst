@@ -75,3 +75,10 @@ Why don't some nvidia and slurm commands, or srun/sinteractive gpu jobs work fro
 ``screen`` is old and weird and setgid. Linux unsets ``LD_LIBRARY_PATH`` for security reasons when running setgid executables, which breaks our pre-loaded ``slurm`` and ``nvidia`` modules. Interactive slurm jobs started from screen sessions inherit this broken environment.
 
 The simple workaround is to run ``bash -l`` or ``tcsh -l`` in each screen window you open, or to use ``tmux`` instead.
+
+What's with the weird machine names?
+--------------------------------------
+
+All components of the OzSTAR cluster are named in memory of the late satirist, actor, comedian, and writer `John Clarke <https://en.wikipedia.org/wiki/John_Clarke_(satirist)>`.
+
+Login nodes are farnarkle. login node cgroups are grommet. The main filesysem is Dagg mounted at Fred. Lustre servers are arkle, warble, umlaut. The majority of compute nodes are called John, with high memory nodes being Bryan, and the KNL nodes Gina. Unfortunately the mighty Dave Sorenson does not get a guernsey - he might be out injured.
