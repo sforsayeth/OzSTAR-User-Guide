@@ -115,7 +115,18 @@
 </ul>
 <p class="caption"><span class="caption-text">Jobs on OzSTAR</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Job Queues</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Job Queues</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#key-slurm-information">Key Slurm Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#available-partitions">Available Partitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#slurm-options">Slurm Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#memory-requests">Memory Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requesting-gpus">Requesting GPUs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interactive-jobs-running-a-program-on-a-compute-node-but-with-output-on-the-login-node">Interactive Jobs - Running a program on a compute node but with output on the login node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interactive-jobs-getting-a-shell-prompt-on-a-compute-node">Interactive Jobs - Getting a shell prompt on a compute node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interactive-jobs-using-x11-applications">Interactive Jobs - Using X11 applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requesting-local-scratch-space">Requesting Local Scratch Space</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="oz-slurm-basics.html">Slurm: basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="oz-slurm-details.html">Slurm: gathering information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="oz-slurm-create.html">Slurm: Creating a job</a></li>
@@ -184,8 +195,59 @@
             
   <div class="section" id="job-queues">
 <h1>Job Queues<a class="headerlink" href="#job-queues" title="Permalink to this headline">¶</a></h1>
-<p>The preferred method for utilising the supercomputer is through the job queue which accesses the majority of the compute nodes (all except the interactive nodes). The queue nodes are not available for direct login.</p>
-<p>The basic goal of a queue system is to maximize utilisation of the supercomputer and to do this in a way that is fair to all users. It should also ease the workload for users who do a lot of computation. The queue system on OzSTAR is based on <a class="reference external" href="https://slurm.schedmd.com">Slurm</a>. Slurm is a resource manager, job scheduler, and much more. Slurm was first developed at the Livermore Computing Center, and has grown into a complete open-source software backed up by a large community, commercially supported by the original developers, and used by many of the Top500 supercomputers. It is therefore worth learning its mechanisms.</p>
+<p>The preferred method for utilising the supercomputer is through submitting batch jobs to the Slurm scheduling system which governs accesses to the compute nodes. The queue nodes are not available for direct login.</p>
+<p>The basic goal of a queue system is to maximize utilisation of the supercomputer and to do this in a way that is fair to all users. It should also ease the workload for users who do a lot of computation. The queue system on OzSTAR is <a class="reference external" href="https://slurm.schedmd.com">Slurm</a>. Slurm is a resource manager, job scheduler, and much more. Slurm was first developed at the <a class="reference external" href="https://hpc.llnl.gov/">Livermore Computing Center</a>, and has grown into a complete open-source software backed up by a large community, commercially supported by the original developers, and used by many of the Top500 supercomputers. It is therefore worth learning its mechanisms.</p>
+<div class="section" id="key-slurm-information">
+<h2>Key Slurm Information<a class="headerlink" href="#key-slurm-information" title="Permalink to this headline">¶</a></h2>
+<p>Slurm on OzStar splits nodes into partitions (which can overlap) in order to give prioritisation and classification of nodes. Slurm will direct most jobs correctly to the requested partition, but the Knights Landing nodes will need attention by the user.</p>
+</div>
+<div class="section" id="available-partitions">
+<h2>Available Partitions<a class="headerlink" href="#available-partitions" title="Permalink to this headline">¶</a></h2>
+<p>Slurm&#8217;s <em>partitions</em> are comparable to Moab&#8217;s <em>queues</em> (e.g. <a class="reference internal" href="torque-vs-slurm.html"><span class="doc">Torque-Moab vs Slurm</span></a>). Currently available partitions are:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">skylake</span></code> for non-GPU jobs on ordinary Skylake CPU nodes</li>
+<li><code class="docutils literal"><span class="pre">skylake-gpu</span></code> for GPU jobs only on ordinary Skylake CPU nodes</li>
+<li><code class="docutils literal"><span class="pre">knl</span></code> for Intel Xeon Phi Knights Landing (KNL) nodes</li>
+</ul>
+<p>Note that generally you do not need to specify any partition. <code class="docutils literal"><span class="pre">skylake</span></code> is the default, and gpu jobs are automatically redirected to <code class="docutils literal"><span class="pre">skylake-gpu</span></code>. Jobs manually directed to the <code class="docutils literal"><span class="pre">skylake</span></code> or <code class="docutils literal"><span class="pre">skylake-gpu</span></code> partitions will be examined and redirected if they are not appropriate for that partition.</p>
+</div>
+<div class="section" id="slurm-options">
+<h2>Slurm Options<a class="headerlink" href="#slurm-options" title="Permalink to this headline">¶</a></h2>
+<p>Options to Slurm can be specified on the <code class="docutils literal"><span class="pre">sbatch</span></code> or <code class="docutils literal"><span class="pre">srun</span></code> command lines like <code class="docutils literal"><span class="pre">sbatch</span> <span class="pre">--time=1:00:00</span> <span class="pre">...</span></code> or in lines at the top of the batch script as <code class="docutils literal"><span class="pre">#SBATCH</span> <span class="pre">--time=1:00:00</span></code>. In the below we mostly use the command line versions for brevity, but typically these options will all be written into the top of your batch script. Your batch script is then submitted to Slurm with <code class="docutils literal"><span class="pre">sbatch</span> <span class="pre">my_script</span></code>.</p>
+</div>
+<div class="section" id="memory-requests">
+<h2>Memory Requests<a class="headerlink" href="#memory-requests" title="Permalink to this headline">¶</a></h2>
+<p>On OzStar you must request the amount of memory that your job needs.  The default allocation is <code class="docutils literal"><span class="pre">100MB</span></code> per CPU core requested which is unlikely to be enough to achieve much and is intended to encourage you to pick a good value.  The more accurate your estimate can be the more likely your job is to be scheduled quickly as Slurm will be better able to fill up available slots in its schedule with it. Note that you should only request the amount of memory that you are going to use. Requesting more will stop other peoples jobs from running.</p>
+<p>For instance if your job needs 2GB per CPU core then you would ask for <code class="docutils literal"><span class="pre">--mem-per-cpu=2G</span></code>.  If your job needs needs around 1.5GB you could ask for <code class="docutils literal"><span class="pre">--mem-per-cpu=1500M</span></code>.</p>
+<p>The maximum memory request for the vast majority of nodes (<code class="docutils literal"><span class="pre">John</span></code> in <code class="docutils literal"><span class="pre">skylake</span></code>) is one of <code class="docutils literal"><span class="pre">--mem=186g</span></code>, <code class="docutils literal"><span class="pre">--mem=191000</span></code> (MB), <code class="docutils literal"><span class="pre">--mem-per-cpu=5G</span></code>, <code class="docutils literal"><span class="pre">--mem-per-cpu=5968</span></code> (MB). If you ask for more memory than this then your job will be automatically redirected one of the <code class="docutils literal"><span class="pre">Bryan</span></code> nodes which have more RAM available. However there are only few high memory nodes so your job throughput will be low. Again, do not request more than you need as it will also stop other people&#8217;s jobs from running.</p>
+<p>Slurm enforces this memory request by using the Linux kernels <code class="docutils literal"><span class="pre">cgroup</span></code> support which will limit the memory it can use on the node. If your job exceeds that value then the kernel will kill a process which will usually lead to the failure of your job.</p>
+</div>
+<div class="section" id="requesting-gpus">
+<h2>Requesting GPUs<a class="headerlink" href="#requesting-gpus" title="Permalink to this headline">¶</a></h2>
+<p>If your application uses GPUs then you will need to request them to be able to access them.  To request a GPU you need to ask for <code class="docutils literal"><span class="pre">generic</span> <span class="pre">resources</span></code> by doing <code class="docutils literal"><span class="pre">--gres=gpu</span></code>.  You can request 2 GPUs on a node with <code class="docutils literal"><span class="pre">gres=gpu:2</span></code>.  This will request will ensure that for each node you are allocated you will have sole access to that number of GPUs.  Access is controlled via the Linux kernel <code class="docutils literal"><span class="pre">cgroup</span></code> mechanism which locks out any other processes from accessing your allocated GPU.</p>
+<p>Note that whilst we reserve 4 CPUs per node for GPU tasks we cannot currently guarantee they have optimal locality and so you may find performance varies across jobs depending on which core and which GPU you are allocated.</p>
+</div>
+<div class="section" id="interactive-jobs-running-a-program-on-a-compute-node-but-with-output-on-the-login-node">
+<h2>Interactive Jobs - Running a program on a compute node but with output on the login node<a class="headerlink" href="#interactive-jobs-running-a-program-on-a-compute-node-but-with-output-on-the-login-node" title="Permalink to this headline">¶</a></h2>
+<p>If you need to run a program on a compute node that will ask questions, or you would like to watch its output in real time, then you can use the <code class="docutils literal"><span class="pre">srun</span></code> command to achieve this, in the same way you would use it to launch an MPI program from within a Slurm batch script.  To run an MPI program interactively you could do:</p>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">srun</span> <span class="pre">--time=4:0:0</span> <span class="pre">--cpus-per-task=4</span> <span class="pre">--ntasks=4</span> <span class="pre">--mem-per-cpu=2G</span> <span class="pre">./my-interactive-mpi-program</span></code></div></blockquote>
+<p>You would then have to wait until the job started and then be able to interact with it as if you were running it on the login node.</p>
+</div>
+<div class="section" id="interactive-jobs-getting-a-shell-prompt-on-a-compute-node">
+<h2>Interactive Jobs - Getting a shell prompt on a compute node<a class="headerlink" href="#interactive-jobs-getting-a-shell-prompt-on-a-compute-node" title="Permalink to this headline">¶</a></h2>
+<p>OzStar has no dedicated interactive nodes, instead you can request them using the <code class="docutils literal"><span class="pre">sinteractive</span></code> command which will give you a shell on a compute node as part of a job.  It takes all the usual options that the Slurm <code class="docutils literal"><span class="pre">srun</span></code> command takes to allow you to specify the run time of your job, how much memory it needs and how many cores it needs on the node. Again you will need to wait until the job this generates starts before being able to do anything.</p>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">sinteractive</span> <span class="pre">--time=1:0:0</span> <span class="pre">--mem=4g</span> <span class="pre">--cpus-per-task=4</span></code></div></blockquote>
+</div>
+<div class="section" id="interactive-jobs-using-x11-applications">
+<h2>Interactive Jobs - Using X11 applications<a class="headerlink" href="#interactive-jobs-using-x11-applications" title="Permalink to this headline">¶</a></h2>
+<p>In both the above examples you can pass the <code class="docutils literal"><span class="pre">--x11</span></code> option to <code class="docutils literal"><span class="pre">srun</span></code> or <code class="docutils literal"><span class="pre">sinteractive</span></code> to request X11 forwarding.  Please note that this will not work if you try and run this inside of <code class="docutils literal"><span class="pre">screen</span></code> or <code class="docutils literal"><span class="pre">tmux</span></code>!</p>
+</div>
+<div class="section" id="requesting-local-scratch-space">
+<h2>Requesting Local Scratch Space<a class="headerlink" href="#requesting-local-scratch-space" title="Permalink to this headline">¶</a></h2>
+<p>All jobs on OzStar get allocated their own private area on local disk which is pointed to by the environment variable <code class="docutils literal"><span class="pre">$JOBFS</span></code>. These are cleaned up at the end of every job.  By default you get a <code class="docutils literal"><span class="pre">100MB</span></code> allocation of space, to request more you need to ask for it with the <code class="docutils literal"><span class="pre">--tmp</span></code> option to <code class="docutils literal"><span class="pre">sbatch</span></code>, so for example to request 4GB of local scratch disk space you would use <code class="docutils literal"><span class="pre">--tmp=4G</span></code>.</p>
+</div>
 </div>
 
 

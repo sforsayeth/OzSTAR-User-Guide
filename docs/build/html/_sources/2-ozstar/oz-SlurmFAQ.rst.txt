@@ -29,7 +29,7 @@ Yes, you do not need to specify the -np nor the -host, or hostfile options to mp
 
 assuming you requested several cores with ``--ntasks``
 
-Do not forget to set the environment correctly with something like ``module load openmpi/gcc`` if necessary.
+Do not forget to set the environment correctly with something like ``module load gcc/6.4.0 openmpi/3.0.0`` if necessary.
 
 How do I know how much memory my job is using or has used ?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

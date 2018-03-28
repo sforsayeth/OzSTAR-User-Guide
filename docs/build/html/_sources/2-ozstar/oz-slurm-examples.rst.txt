@@ -16,7 +16,8 @@ Message passing example (MPI)
     #SBATCH --time=10:00
     #SBATCH --mem-per-cpu=100
 
-    module load OpenMPI
+    module load gcc/6.4.0
+    module load openmpi/3.0.0
     srun hello.mpi
 
 Request four cores on the cluster for 10 minutes, using 100 MB of RAM per core. Assuming ``hello.mpi`` was compiled with MPI support, ``srun`` will create four instances of it, on the nodes allocated by Slurm.
@@ -24,7 +25,8 @@ Request four cores on the cluster for 10 minutes, using 100 MB of RAM per core. 
 You can try the above example by downloading the `example hello world program from Wikipedia <http://en.wikipedia.org/wiki/Message_Passing_Interface#Example_program>`_ (for example, you can name it wiki_mpi_example.c), and compiling it with
 ::
 
-    module load openmpi
+    module load gcc/6.4.0
+    module load openmpi/3.0.0
     mpicc wiki_mpi_example.c -o hello.mpi
 
 The ``res_mpi.txt`` file should look something like this:
