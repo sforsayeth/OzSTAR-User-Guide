@@ -11,7 +11,7 @@ All Swinburne staff and students are eligible for accounts as are researchers in
 How do I access the facility?
 ------------------------------------------
 
-To access OzSTAR, all access is down through the head node ``ozstar.hpc.swin.edu.au``. Upon login, you will be assigned to one of two nodes, namely ``farnarkle1`` and ``farnarkle2``, in a round robin fashion. From there you can submit jobs to the queue.
+To access OzSTAR, all access is down through the head node ``ozstar.swin.edu.au``. Upon login, you will be assigned to one of two nodes, namely ``farnarkle1`` and ``farnarkle2``, in a round robin fashion. From there you can submit jobs to the queue.
 These nodes can be used to run small tasks interactively. However, for larger jobs that require interaction, you should request an interactive node via Slurm (for more information, see :ref:`interactive_jobs`).
 
 For more details, see the page :doc:`../1-getting_started/Access`.
@@ -37,7 +37,7 @@ You can change your login shell, just type ``changeShell`` in your terminal. Thi
 How can I avoid session timeouts?
 ------------------------------------------
 
-There are a few ways to do this but a simple method is to go to the .ssh directory on your host machine and create a file called “config”. In that file place the line
+There are a few ways to do this but a simple method is to go to the .ssh directory on your laptop or desktop machine and create a file called “config”. In that file place the line
 ::
 
     ServerAliveInterval 120
@@ -69,3 +69,16 @@ Type the following command on any node ::
 
 and it will highlight which of your project or home quotas you are exceeding.
 
+Why don't some nvidia and slurm commands, or srun/sinteractive gpu jobs work from my screen session?
+-------------------------------------------------------------------------------------------------------
+
+``screen`` is old and weird and setgid. Linux unsets ``LD_LIBRARY_PATH`` for security reasons when running setgid executables, which breaks our pre-loaded ``slurm`` and ``nvidia`` modules. Interactive slurm jobs started from screen sessions inherit this broken environment.
+
+The simple workaround is to run ``bash -l`` or ``tcsh -l`` in each screen window you open, or to use ``tmux`` instead.
+
+What's with the weird machine names?
+--------------------------------------
+
+All components of the OzSTAR cluster are named in memory of the late satirist, actor, comedian, and writer `John Clarke <https://en.wikipedia.org/wiki/John_Clarke_(satirist)>`.
+
+Login nodes are farnarkle. login node cgroups are grommet. The main filesysem is Dagg mounted at Fred. Lustre servers are arkle, warble, umlaut. The majority of compute nodes are called John, with high memory nodes being Bryan, and the KNL nodes Gina. Unfortunately the mighty Dave Sorenson does not get a guernsey - he might be out injured.
