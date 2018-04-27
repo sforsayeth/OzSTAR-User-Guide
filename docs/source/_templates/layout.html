@@ -24,7 +24,7 @@
 
       {% if logo %}
         {# Not strictly valid HTML, but it's the only way to display/scale it properly, without weird scripting or heaps of work #}
-        <img src="{{ pathto('_static/' + logo, 1) }}" class="logo" />
+        <img src="{{ pathto('_static/' + logo, 1) }}" class="logo" style="width: 100%; height: auto; max-width: 100%;"/>
       {% endif %}
       </a>
 
