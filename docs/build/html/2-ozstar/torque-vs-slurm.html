@@ -196,98 +196,98 @@ Also, the Slurm developers maintain a ‘Rosetta stone of Workload manager‘ wh
 <div class="section" id="torque-moab-vs-slurm-environment-variables">
 <h2>Torque/Moab vs Slurm Environment Variables<a class="headerlink" href="#torque-moab-vs-slurm-environment-variables" title="Permalink to this headline">¶</a></h2>
 <p>(Mostly swiped from <a class="reference external" href="http://www.nersc.gov/">NERSC</a>)</p>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
-<col width="40%" />
-<col width="26%" />
-<col width="34%" />
+<col width="35%" />
+<col width="32%" />
+<col width="32%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><strong>Description</strong></th>
-<th class="head"><strong>Moab/Torque</strong></th>
-<th class="head"><strong>Slurm</strong></th>
+<tr class="row-odd"><th class="head">Description</th>
+<th class="head">Moab/Torque</th>
+<th class="head">Slurm</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Job Id</td>
-<td>$PBS_JOBID</td>
-<td>$SLURM_JOB_ID</td>
+<td><cite>$PBS_JOBID</cite></td>
+<td><cite>$SLURM_JOB_ID</cite></td>
 </tr>
 <tr class="row-odd"><td>Job Name</td>
-<td>$PBS_JOBNAME</td>
-<td>$SLURM_JOB_NAME</td>
+<td><cite>$PBS_JOBNAME</cite></td>
+<td><cite>$SLURM_JOB_NAME</cite></td>
 </tr>
 <tr class="row-even"><td>Submit Directory</td>
-<td>$PBS_O_WORKDIR</td>
-<td>$SLURM_SUBMIT_DIR</td>
+<td><cite>$PBS_O_WORKDIR</cite></td>
+<td><cite>$SLURM_SUBMIT_DIR</cite></td>
 </tr>
 <tr class="row-odd"><td>Node List</td>
-<td>$PBS_NODEFILE</td>
-<td>$SLURM_NODELIST</td>
+<td><cite>$PBS_NODEFILE</cite></td>
+<td><cite>$SLURM_NODELIST</cite></td>
 </tr>
 <tr class="row-even"><td>GPU List</td>
-<td>$PBS_GPUFILE</td>
+<td><cite>$PBS_GPUFILE</cite></td>
 <td>n/a</td>
 </tr>
 <tr class="row-odd"><td>Host submitted from</td>
-<td>$PBS_O_HOST</td>
-<td>$SLURM_SUBMIT_HOST</td>
+<td><cite>$PBS_O_HOST</cite></td>
+<td><cite>$SLURM_SUBMIT_HOST</cite></td>
 </tr>
 <tr class="row-even"><td>Nodes allocated</td>
-<td>$PBS_NUM_NODES</td>
-<td>$SLURM_JOB_NUM_NODES</td>
+<td><cite>$PBS_NUM_NODES</cite></td>
+<td><cite>$SLURM_JOB_NUM_NODES</cite></td>
 </tr>
 <tr class="row-odd"><td>Number cores/nodes</td>
-<td>$PBS_NUM_PPN</td>
-<td>$SLURM_CPUS_ON_NODE</td>
+<td><cite>$PBS_NUM_PPN</cite></td>
+<td><cite>$SLURM_CPUS_ON_NODE</cite></td>
 </tr>
 <tr class="row-even"><td>Node local scratch space</td>
-<td>$PBS_JOBFS</td>
-<td>$JOBFS</td>
+<td><cite>$PBS_JOBFS</cite></td>
+<td><cite>$JOBFS</cite></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="torque-vs-slurm-commmands">
 <h2>Torque vs Slurm Commmands<a class="headerlink" href="#torque-vs-slurm-commmands" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
-<col width="20%" />
-<col width="15%" />
-<col width="39%" />
-<col width="25%" />
+<col width="27%" />
+<col width="24%" />
+<col width="24%" />
+<col width="24%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><strong>Description</strong></th>
-<th class="head"><strong>PBS</strong></th>
-<th class="head"><strong>Slurm</strong></th>
-<th class="head"><strong>Notes/Examples</strong></th>
+<tr class="row-odd"><th class="head">Description</th>
+<th class="head">PBS</th>
+<th class="head">Slurm</th>
+<th class="head">Notes/Examples</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Cancel a job</td>
-<td>qdel</td>
-<td>scancel</td>
-<td>scancel -i 23447</td>
+<td><cite>qdel</cite></td>
+<td><cite>scancel</cite></td>
+<td><cite>scancel -i 23447</cite></td>
 </tr>
 <tr class="row-odd"><td>Job submission</td>
-<td>qsub [file]</td>
-<td>sbatch [file]</td>
-<td>sbatch ./a.out</td>
+<td><cite>qsub [file]</cite></td>
+<td><cite>sbatch [file]</cite></td>
+<td><cite>sbatch ./a.out</cite></td>
 </tr>
 <tr class="row-even"><td>Job hold</td>
-<td>qhold jobid</td>
-<td>scontrol hold jobid</td>
-<td>scontrol hold 23447</td>
+<td><cite>qhold jobid</cite></td>
+<td><cite>scontrol hold jobid</cite></td>
+<td><cite>scontrol hold 23447</cite></td>
 </tr>
 <tr class="row-odd"><td>Job release</td>
-<td>qrls jobid</td>
-<td>scontrol release</td>
+<td><cite>qrls jobid</cite></td>
+<td><cite>scontrol release</cite></td>
 <td>&#160;</td>
 </tr>
 <tr class="row-even"><td>Nodes list</td>
-<td>pbsnodes -l</td>
-<td>sinfo -N or scontrol show nodes</td>
+<td><cite>pbsnodes -l</cite></td>
+<td><cite>sinfo -N</cite> or <cite>scontrol show nodes</cite></td>
 <td>&#160;</td>
 </tr>
 </tbody>
@@ -295,86 +295,86 @@ Also, the Slurm developers maintain a ‘Rosetta stone of Workload manager‘ wh
 </div>
 <div class="section" id="pbs-vs-sbatch-script-directives">
 <h2>#PBS vs #SBATCH SCRIPT DIRECTIVES<a class="headerlink" href="#pbs-vs-sbatch-script-directives" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table border="1" class="colwidths-given docutils">
 <colgroup>
-<col width="18%" />
-<col width="31%" />
-<col width="52%" />
+<col width="35%" />
+<col width="32%" />
+<col width="32%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><strong>Script directive</strong></th>
-<th class="head"><strong>#PBS</strong></th>
-<th class="head"><strong>#SBATCH</strong></th>
+<tr class="row-odd"><th class="head">Script directive</th>
+<th class="head">#PBS</th>
+<th class="head">#SBATCH</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Queue</td>
-<td>-q [queue]</td>
-<td>&#8211;partition=[queue] or -p [queue]</td>
+<td><cite>-q [queue]</cite></td>
+<td><cite>&#8211;partition=[queue]</cite> or <cite>-p [queue]</cite></td>
 </tr>
 <tr class="row-odd"><td>Number of tasks</td>
 <td>&#160;</td>
-<td>&#8211;ntasks=[count] or -n [count]</td>
+<td><cite>&#8211;ntasks=[count]</cite> or <cite>-n [count]</cite></td>
 </tr>
 <tr class="row-even"><td>Node Count</td>
-<td>-l nodes=[count]</td>
-<td>&#8211;nodes=[count]  or -N [count]</td>
+<td><cite>-l nodes=[count]</cite></td>
+<td><cite>&#8211;nodes=[count]</cite>  or <cite>-N [count]</cite></td>
 </tr>
 <tr class="row-odd"><td>Tasks per node</td>
-<td>-l ppn=[count]</td>
-<td>&#8211;ntasks-per-node=[count]</td>
+<td><cite>-l ppn=[count]</cite></td>
+<td><cite>&#8211;ntasks-per-node=[count]</cite></td>
 </tr>
 <tr class="row-even"><td>Wall Clock Limit</td>
-<td>-l walltime=[hh:mm:ss]</td>
-<td>&#8211;time=[min] or &#8211;time=[days-hh:mm:ss] or -t [nn:nn:nn]</td>
+<td><cite>-l walltime=[hh:mm:ss]</cite></td>
+<td><cite>&#8211;time=[min]</cite> or <cite>&#8211;time=[days-hh:mm:ss]</cite> or <cite>-t [nn:nn:nn]</cite></td>
 </tr>
 <tr class="row-odd"><td>Standard output file</td>
-<td>-o [file]</td>
-<td>&#8211;output=[file] or -o [file]</td>
+<td><cite>-o [file]</cite></td>
+<td><cite>&#8211;output=[file]</cite> or <cite>-o [file]</cite></td>
 </tr>
 <tr class="row-even"><td>Standard error file</td>
-<td>-e [file]</td>
-<td>&#8211;error=[file] or -e [file]</td>
+<td><cite>-e [file]</cite></td>
+<td><cite>&#8211;error=[file]</cite> or <cite>-e [file]</cite></td>
 </tr>
 <tr class="row-odd"><td>Combine stdout/err</td>
-<td>-j oe (both to stdout)</td>
-<td>default if no &#8211;error (-e)</td>
+<td><cite>-j oe</cite> (both to stdout)</td>
+<td>default if no <cite>&#8211;error</cite> (<cite>-e</cite>)</td>
 </tr>
 <tr class="row-even"><td>Event notification</td>
-<td>-m abe</td>
-<td>&#8211;mail-type=[events]</td>
+<td><cite>-m abe</cite></td>
+<td><cite>&#8211;mail-type=[events]</cite></td>
 </tr>
 <tr class="row-odd"><td>Email address</td>
-<td>-M [address]</td>
-<td>&#8211;mail-user=[address]</td>
+<td><cite>-M [address]</cite></td>
+<td><cite>&#8211;mail-user=[address]</cite></td>
 </tr>
 <tr class="row-even"><td>Job Name</td>
-<td>-N [name]</td>
-<td>&#8211;job-name=[name] or -J [name]</td>
+<td><cite>-N [name]</cite></td>
+<td><cite>&#8211;job-name=[name]</cite> or <cite>-J [name]</cite></td>
 </tr>
 <tr class="row-odd"><td>Job restart</td>
-<td>-r [yn] (default n)</td>
-<td>&#8211;requeue OR -no-requeue (default set to -no-requeue)</td>
+<td><cite>-r</cite> [<cite>y</cite>`n`] (default <cite>n</cite>)</td>
+<td><cite>&#8211;requeue</cite> or <cite>-no-requeue</cite> (default set to <cite>-no-requeue</cite>)</td>
 </tr>
 <tr class="row-even"><td>Working directory</td>
 <td>N/A</td>
-<td>&#8211;workdir=[dir_name] or -D [directory]</td>
+<td><cite>&#8211;workdir=[dir_name]</cite> or <cite>-D [directory]</cite></td>
 </tr>
 <tr class="row-odd"><td>Account to charge</td>
-<td>-W group_list=[account]</td>
-<td>&#8211;account=[account] or -A [account]</td>
+<td><cite>-W group_list=[account]</cite></td>
+<td><cite>&#8211;account=[account]</cite> or <cite>-A [account]</cite></td>
 </tr>
 <tr class="row-even"><td>CPUs per task</td>
 <td>&#160;</td>
-<td>&#8211;cpus-per-task=[count] or -c [count]</td>
+<td><cite>&#8211;cpus-per-task=[count]</cite> or <cite>-c [count]</cite></td>
 </tr>
 <tr class="row-odd"><td>Job dependency</td>
-<td>-d [jobid]</td>
-<td>&#8211;dependency=[state:jobid] or -d [dependency list]</td>
+<td><cite>-d [jobid]</cite></td>
+<td><cite>&#8211;dependency=[state:jobid]</cite> or <cite>-d [dependency list]</cite></td>
 </tr>
 <tr class="row-even"><td>Job arrays</td>
-<td>-t [array_spec]</td>
-<td>&#8211;array=array_spec or -a [indexes]</td>
+<td><cite>-t [array_spec]</cite></td>
+<td><cite>&#8211;array=array_spec</cite> or <cite>-a [indexes]</cite></td>
 </tr>
 </tbody>
 </table>

@@ -41,6 +41,19 @@ You will be a member of a new project on OzSTAR as g2 projects are not rolled ov
 files and repositories from g2 to OzSTAR is with ``rsync``. For example, while logged on OzSTAR, you can bring files over via
 ``rsync -av g2:/some/file .``.
 
+Limitations
+-----------
+
+- Maximum wall time **for a job** is 7 days.
+- Maximum CPUs **per project** is 2500.
+- Maximum GPUs **per project** is 100.
+
+Queues
+-------
+
+As opposed to GREEN II, you do not need to specify the queue on OzSTAR. This is now managed by Slurm. If you ask for a
+GPU you be automatically directed into the GPU queue, if you ask for a lot of memory you will be directed onto a large
+memory node, etc.
 
 File System
 --------------

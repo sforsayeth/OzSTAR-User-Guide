@@ -111,6 +111,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#memory-requests">Memory Requests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#large-memory-nodes">Large memory nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#projects">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#limitations">Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#queues">Queues</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#file-system">File System</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#modules">Modules</a></li>
 </ul>
@@ -225,6 +227,20 @@ nodes or start an interactive session via Slurm.</p>
 <p>You will be a member of a new project on OzSTAR as g2 projects are not rolled over. Currently, the prefered way to copy
 files and repositories from g2 to OzSTAR is with <code class="docutils literal"><span class="pre">rsync</span></code>. For example, while logged on OzSTAR, you can bring files over via
 <code class="docutils literal"><span class="pre">rsync</span> <span class="pre">-av</span> <span class="pre">g2:/some/file</span> <span class="pre">.</span></code>.</p>
+</div>
+<div class="section" id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Maximum wall time <strong>for a job</strong> is 7 days.</li>
+<li>Maximum CPUs <strong>per project</strong> is 2500.</li>
+<li>Maximum GPUs <strong>per project</strong> is 100.</li>
+</ul>
+</div>
+<div class="section" id="queues">
+<h2>Queues<a class="headerlink" href="#queues" title="Permalink to this headline">¶</a></h2>
+<p>As opposed to GREEN II, you do not need to specify the queue on OzSTAR. This is now managed by Slurm. If you ask for a
+GPU you be automatically directed into the GPU queue, if you ask for a lot of memory you will be directed onto a large
+memory node, etc.</p>
 </div>
 <div class="section" id="file-system">
 <h2>File System<a class="headerlink" href="#file-system" title="Permalink to this headline">¶</a></h2>
