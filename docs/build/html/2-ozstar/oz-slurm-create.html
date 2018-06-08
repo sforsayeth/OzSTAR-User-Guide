@@ -103,7 +103,7 @@
 </ul>
 <p class="caption"><span class="caption-text">OzSTAR vs Green II</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What&#8217;s new on OzSTAR?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What's new on OzSTAR?</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Storage</span></p>
 <ul>
@@ -249,7 +249,7 @@ sbatch: Submitted batch job 99999999
 <li>by running one master program controlling several slave programs (<em>master/slave</em> paradigm)</li>
 </ul>
 <p>In the Slurm context, a task represents a <strong>process</strong>; a multi-process program is made of several tasks. By contrast, a multi-threaded program is composed of only one task, which uses several CPUs.</p>
-<p>Tasks are requested/created with the <code class="docutils literal"><span class="pre">--ntasks</span></code> option, while CPUs, for the multithreaded programs, are requested with the <code class="docutils literal"><span class="pre">--cpus-per-task</span></code> option. Tasks cannot be split across several compute nodes, so requesting several CPUs with the <code class="docutils literal"><span class="pre">--cpus-per-task</span></code> option will ensure all CPUs are allocated on the same compute node. By contrast, requesting the same amount of CPUs with the &#8211;ntasks option may lead to several CPUs being allocated on several, distinct compute nodes.</p>
+<p>Tasks are requested/created with the <code class="docutils literal"><span class="pre">--ntasks</span></code> option, while CPUs, for the multithreaded programs, are requested with the <code class="docutils literal"><span class="pre">--cpus-per-task</span></code> option. Tasks cannot be split across several compute nodes, so requesting several CPUs with the <code class="docutils literal"><span class="pre">--cpus-per-task</span></code> option will ensure all CPUs are allocated on the same compute node. By contrast, requesting the same amount of CPUs with the --ntasks option may lead to several CPUs being allocated on several, distinct compute nodes.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">On OzSTAR, while a single node has 36-cores, usage is limited to 32-cores per node for a single job. This is due to the need for leaving cores free to communicate with GPUs.</p>

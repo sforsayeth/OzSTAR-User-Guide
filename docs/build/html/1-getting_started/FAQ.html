@@ -36,7 +36,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="OzSTAR User Guide  documentation" href="../index.html"/>
-        <link rel="next" title="What’s new on OzSTAR?" href="../1a-oz_g2/what-s-new.html"/>
+        <link rel="next" title="What&#39;s new on OzSTAR?" href="../1a-oz_g2/what-s-new.html"/>
         <link rel="prev" title="Swinburne HPC system" href="Swinburne-HPC.html"/> 
 
   
@@ -108,14 +108,14 @@
 <li class="toctree-l2"><a class="reference internal" href="#how-can-i-avoid-session-timeouts">How can I avoid session timeouts?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-can-i-find-out-more-about-using-gpus">How can I find out more about using GPUs?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#why-am-i-getting-disk-quota-exceeded-message">Why am I getting “Disk quota exceeded” message?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#why-don-t-some-nvidia-and-slurm-commands-or-srun-sinteractive-gpu-jobs-work-from-my-screen-session">Why don&#8217;t some nvidia and slurm commands, or srun/sinteractive gpu jobs work from my screen session?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#what-s-with-the-weird-machine-names">What&#8217;s with the weird machine names?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-don-t-some-nvidia-and-slurm-commands-or-srun-sinteractive-gpu-jobs-work-from-my-screen-session">Why don't some nvidia and slurm commands, or srun/sinteractive gpu jobs work from my screen session?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-s-with-the-weird-machine-names">What's with the weird machine names?</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption"><span class="caption-text">OzSTAR vs Green II</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What&#8217;s new on OzSTAR?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What's new on OzSTAR?</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Storage</span></p>
 <ul>
@@ -249,12 +249,12 @@ These nodes can be used to run small tasks interactively. However, for larger jo
 <p>and it will highlight which of your project or home quotas you are exceeding.</p>
 </div>
 <div class="section" id="why-don-t-some-nvidia-and-slurm-commands-or-srun-sinteractive-gpu-jobs-work-from-my-screen-session">
-<h2>Why don&#8217;t some nvidia and slurm commands, or srun/sinteractive gpu jobs work from my screen session?<a class="headerlink" href="#why-don-t-some-nvidia-and-slurm-commands-or-srun-sinteractive-gpu-jobs-work-from-my-screen-session" title="Permalink to this headline">¶</a></h2>
+<h2>Why don't some nvidia and slurm commands, or srun/sinteractive gpu jobs work from my screen session?<a class="headerlink" href="#why-don-t-some-nvidia-and-slurm-commands-or-srun-sinteractive-gpu-jobs-work-from-my-screen-session" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">screen</span></code> is old and weird and setgid. Linux unsets <code class="docutils literal"><span class="pre">LD_LIBRARY_PATH</span></code> for security reasons when running setgid executables, which breaks our pre-loaded <code class="docutils literal"><span class="pre">slurm</span></code> and <code class="docutils literal"><span class="pre">nvidia</span></code> modules. Interactive slurm jobs started from screen sessions inherit this broken environment.</p>
 <p>The simple workaround is to run <code class="docutils literal"><span class="pre">bash</span> <span class="pre">-l</span></code> or <code class="docutils literal"><span class="pre">tcsh</span> <span class="pre">-l</span></code> in each screen window you open, or to use <code class="docutils literal"><span class="pre">tmux</span></code> instead.</p>
 </div>
 <div class="section" id="what-s-with-the-weird-machine-names">
-<h2>What&#8217;s with the weird machine names?<a class="headerlink" href="#what-s-with-the-weird-machine-names" title="Permalink to this headline">¶</a></h2>
+<h2>What's with the weird machine names?<a class="headerlink" href="#what-s-with-the-weird-machine-names" title="Permalink to this headline">¶</a></h2>
 <p>All components of the OzSTAR cluster are named in memory of the late satirist, actor, comedian, and writer <a class="reference external" href="https://en.wikipedia.org/wiki/John_Clarke_(satirist)">John Clarke</a>.</p>
 <p>Login nodes are farnarkle. login node cgroups are grommet. The main filesysem is Dagg mounted at Fred. Lustre servers are arkle, warble, umlaut. The majority of compute nodes are called John, with high memory nodes being Bryan, and the KNL nodes Gina. Unfortunately the mighty Dave Sorenson does not get a guernsey - he might be out injured.</p>
 </div>
@@ -270,7 +270,7 @@ These nodes can be used to run small tasks interactively. However, for larger jo
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../1a-oz_g2/what-s-new.html" class="btn btn-neutral float-right" title="What’s new on OzSTAR?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../1a-oz_g2/what-s-new.html" class="btn btn-neutral float-right" title="What&#39;s new on OzSTAR?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Swinburne-HPC.html" class="btn btn-neutral" title="Swinburne HPC system" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="OzSTAR User Guide  documentation" href="../index.html"/>
         <link rel="next" title="Environment Modules" href="../2-ozstar/Modules.html"/>
-        <link rel="prev" title="What’s new on OzSTAR?" href="../1a-oz_g2/what-s-new.html"/> 
+        <link rel="prev" title="What&#39;s new on OzSTAR?" href="../1a-oz_g2/what-s-new.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -103,7 +103,7 @@
 </ul>
 <p class="caption"><span class="caption-text">OzSTAR vs Green II</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What&#8217;s new on OzSTAR?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What's new on OzSTAR?</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Storage</span></p>
 <ul class="current">
@@ -226,7 +226,7 @@
 <p>Disk quotas are enabled on OzSTAR.</p>
 <p><code class="docutils literal"><span class="pre">/home</span></code> has a per-user limit of 10GB blocks and 100,000 files. This will not be raised. These numbers are set so that backups are feasible.</p>
 <p><code class="docutils literal"><span class="pre">/fred</span></code> has a per-project limit of 10TB blocks and 1M files. If you need extra storage, please contact <a class="reference external" href="mailto:hpc-support&#37;&#52;&#48;swin&#46;edu&#46;au">hpc-support<span>&#64;</span>swin<span>&#46;</span>edu<span>&#46;</span>au</a></p>
-<p>Note that because of filesystem compression (see below) it&#8217;s common to store more data than this and remain under quota. This is because quotas count only actual blocks used on disk.</p>
+<p>Note that because of filesystem compression (see below) it's common to store more data than this and remain under quota. This is because quotas count only actual blocks used on disk.</p>
 <p>To check your quota on any node, type:</p>
 <div class="highlight-rst"><div class="highlight"><pre><span></span>quota
 </pre></div>
@@ -255,9 +255,9 @@
 <p>The best way to get good performance to any filesystem (not just Lustre) is to do reads and writes in large chunks and to use large files rather than many small files. Performing many IOPS should be avoided.</p>
 <div class="section" id="what-is-large">
 <h4>What is “large”?<a class="headerlink" href="#what-is-large" title="Permalink to this headline">¶</a></h4>
-<p>For Lustre, reads and writes of &gt;4MB are ideal. 10 MB and above is best. Small (eg. &lt; 100 kB) reads and writes and especially 4k random writes should be avoided. These cause seeking and obtain low i/o performance from the underlying raids and disks. Small sequential reads are often optimised by read-ahead in block devices or Lustre or ZFS so may perform acceptably, but it&#8217;s unlikely.</p>
+<p>For Lustre, reads and writes of &gt;4MB are ideal. 10 MB and above is best. Small (eg. &lt; 100 kB) reads and writes and especially 4k random writes should be avoided. These cause seeking and obtain low i/o performance from the underlying raids and disks. Small sequential reads are often optimised by read-ahead in block devices or Lustre or ZFS so may perform acceptably, but it's unlikely.</p>
 <p>The best way to get high I/O performance from large parallel codes (eg. a checkpoint) is generally to read or write one large O(GB) file per process, or if the number of processes is very large, then one large file per node. This will send I/O to all or many of the 16 large fast OSTs that make up the <code class="docutils literal"><span class="pre">/fred</span></code> filesystem and so could run at over 30 GB/s (not including speed-ups from transparent filesystem compression).</p>
-<p>Each of the 16 individual OSTs (Object Storage Target) in the <code class="docutils literal"><span class="pre">/fred</span></code> (dagg) filesystem is composed of 4 large raidz3&#8217;s in a zpool and capable of several GB/s. Because each OST is large and fast there is no reason to use any sort of Lustre striping. Lustre file striping is therefore strongly discouraged on OzSTAR.</p>
+<p>Each of the 16 individual OSTs (Object Storage Target) in the <code class="docutils literal"><span class="pre">/fred</span></code> (dagg) filesystem is composed of 4 large raidz3's in a zpool and capable of several GB/s. Because each OST is large and fast there is no reason to use any sort of Lustre striping. Lustre file striping is therefore strongly discouraged on OzSTAR.</p>
 </div>
 <div class="section" id="what-are-iops">
 <h4>What are IOPS?<a class="headerlink" href="#what-are-iops" title="Permalink to this headline">¶</a></h4>
@@ -268,7 +268,7 @@
 <div class="section" id="other-things-to-avoid">
 <h4>Other things to avoid<a class="headerlink" href="#other-things-to-avoid" title="Permalink to this headline">¶</a></h4>
 <p>File lock bouncing is also an issue that can affect POSIX parallel file systems. This typically occurs when multiple nodes are appending to the same shared “log” file. By its very nature the order of the contents of such a file are undefined - it is really a “junk” file. However Lustre will valiantly attempt to interlace I/O from each appending node at the exact moment it writes, leading to a vast amount of “write lock bouncing” between all the appending nodes. This kills the performance of all the processes appending, and from the nodes doing the appending, and increases the load on the MDS greatly. Do not append to any shared files from multiple nodes.</p>
-<p>In general a good rule of thumb is to not write at all to the same file from multiple nodes unless it&#8217;s via a library like MPI IO.</p>
+<p>In general a good rule of thumb is to not write at all to the same file from multiple nodes unless it's via a library like MPI IO.</p>
 </div>
 </div>
 </div>
@@ -287,7 +287,7 @@
         <a href="../2-ozstar/Modules.html" class="btn btn-neutral float-right" title="Environment Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../1a-oz_g2/what-s-new.html" class="btn btn-neutral" title="What’s new on OzSTAR?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../1a-oz_g2/what-s-new.html" class="btn btn-neutral" title="What&#39;s new on OzSTAR?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

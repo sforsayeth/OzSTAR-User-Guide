@@ -103,7 +103,7 @@
 </ul>
 <p class="caption"><span class="caption-text">OzSTAR vs Green II</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What&#8217;s new on OzSTAR?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1a-oz_g2/what-s-new.html">What's new on OzSTAR?</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Storage</span></p>
 <ul>
@@ -251,7 +251,7 @@ ml show foo
 <li>Loading a module without a version identifier <strong>will show the available versions of the module</strong></li>
 <li>Loading an <strong>ambigous module</strong> (A module that is built against two different compiler or OpenMPI versions) requires first <strong>loading the desired parent modules(s) first</strong></li>
 <li>Loading an ambiguous module <strong>will list the possible parent modules</strong></li>
-<li>Loading a module that is not ambigous <strong>will automatically load it&#8217;s parent hierarchy of modules if one exists</strong></li>
+<li>Loading a module that is not ambigous <strong>will automatically load it's parent hierarchy of modules if one exists</strong></li>
 <li><code class="docutils literal"><span class="pre">`module</span> <span class="pre">avail`</span></code> with <strong>no modules loaded</strong> will list <strong>all modules for all compiler combinations on the system</strong></li>
 <li><code class="docutils literal"><span class="pre">`module</span> <span class="pre">avail`</span></code> with <strong>a compiler or compiler/OpenMPI module</strong> loaded will only <strong>list modules for that compiler or compiler/OpenMPI combination</strong></li>
 </ul>
@@ -314,7 +314,7 @@ anaconda2/5.0.1        cudnn/7.0.5-cuda-9.0.176        gcccore/system        gnu
 (...)
 </pre></div>
 </div>
-<p><em>Then if we load GCC 6.4.0&#8217;s OpenMPI 3.0.0, we can see all modules available to the GCC 6.4.0 OpenMPI 3.0.0 toolchain</em></p>
+<p><em>Then if we load GCC 6.4.0's OpenMPI 3.0.0, we can see all modules available to the GCC 6.4.0 OpenMPI 3.0.0 toolchain</em></p>
 <p>On OzSTAR, the following four toolchain combinations exist:-</p>
 <ul class="simple">
 <li>GCC</li>
@@ -325,7 +325,7 @@ anaconda2/5.0.1        cudnn/7.0.5-cuda-9.0.176        gcccore/system        gnu
 </div>
 <div class="section" id="loading-modules">
 <h3>Loading modules<a class="headerlink" href="#loading-modules" title="Permalink to this headline">¶</a></h3>
-<p>If a module is not ambigous, that is to say it only has one parent toolchain, then the module manager will automatically load the parent toolchain before loading your module. See below for loading ambigous modules. Just remember that you need to specify the version of the module. If you don&#8217;t specify the version, the module manager will list the available versions.</p>
+<p>If a module is not ambigous, that is to say it only has one parent toolchain, then the module manager will automatically load the parent toolchain before loading your module. See below for loading ambigous modules. Just remember that you need to specify the version of the module. If you don't specify the version, the module manager will list the available versions.</p>
 <div class="highlight-rst"><div class="highlight"><pre><span></span>module purge
 
 module load python
@@ -335,7 +335,7 @@ Lmod has detected the following error:  Couldn&#39;t find module with name pytho
     <span class="m">*</span> python/3.6.4
 </pre></div>
 </div>
-<p><em>In this example you can see that the module manager has listed the available versions of python because we didn&#8217;t specify the version</em></p>
+<p><em>In this example you can see that the module manager has listed the available versions of python because we didn't specify the version</em></p>
 <div class="highlight-rst"><div class="highlight"><pre><span></span>module purge
 
 module load python/2.7.14
