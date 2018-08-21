@@ -219,7 +219,7 @@ You can mix multi-processing (MPI) and multi-threading (OpenMP) in the same job,
     #! /bin/bash
     #
     #SBATCH --ntasks=8
-    #SBATCH --ncpus-per-task=4
+    #SBATCH --cpus-per-task=4
     module load OpenMPI
     export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
     srun ./myprog
@@ -231,7 +231,7 @@ or even a job array of hybrid jobs:
     #
     #SBATCH --array=1-10
     #SBATCH --ntasks=8
-    #SBATCH --ncpus-per-task=4
+    #SBATCH --cpus-per-task=4
     module load OpenMPI
     export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
     srun ./myprog $SLURM_ARRAY_TASK_ID
