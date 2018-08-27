@@ -17,14 +17,14 @@
 
       {% if logo and theme_logo_only %}
         <!-- a href="{{ pathto(master_doc) }}" -->
-        <a href="http://136.186.1.220"><!-- target="_blank"-->
+        <a href="https://supercomputing.swin.edu.au"><!-- target="_blank"-->
       {% else %}
         <a href="{{ pathto(master_doc) }}" class="icon icon-home"> {{ project }}
       {% endif %}
 
       {% if logo %}
         {# Not strictly valid HTML, but it's the only way to display/scale it properly, without weird scripting or heaps of work #}
-        <img src="{{ pathto('_static/' + logo, 1) }}" class="logo" />
+        <img src="{{ pathto('_static/' + logo, 1) }}" class="logo" style="width: 100%; height: auto; max-width: 100%;"/>
       {% endif %}
       </a>
 

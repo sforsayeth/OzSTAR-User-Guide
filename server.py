@@ -56,13 +56,12 @@ if __name__ == '__main__':
     key = ''
     config_file = '.sphinx-server.yml'
     install_folder = '/opt/sphinx-server/'
-    build_folder = os.path.realpath('_build/html')
-    source_folder = os.path.realpath('.')
+    build_folder = os.path.realpath('/build/docs/')
+    source_folder = os.path.realpath('/source/')
     configuration = None
 
     with open(install_folder + config_file, 'r') as config_stream:
         configuration = yaml.load(config_stream)
-
         if os.path.isfile(source_folder + '/' + config_file):
             with open(source_folder + '/' + config_file, "r") as custom_stream:
                 configuration.update(yaml.load(custom_stream))
@@ -71,7 +70,6 @@ if __name__ == '__main__':
         os.makedirs(build_folder)
 
     if configuration.get('autobuild'):
-
         ignored_files = []
         for path in configuration.get('ignore'):
             ignored_files.append(os.path.realpath(path))
@@ -88,7 +86,7 @@ if __name__ == '__main__':
 
         builder.build()
 
-        server.serve(port=8002, host='0.0.0.0', root=build_folder)
+        server.serve(port=8002, host='0.0.0.0', root="/build/")
     else:
         # Building once when server starts
         builder = sphinx_autobuild.SphinxBuilder(outdir=build_folder, args=['-b', 'html', source_folder, build_folder])
@@ -100,10 +98,10 @@ if __name__ == '__main__':
             auth = configuration.get('credentials')['username'] + ':' + configuration.get('credentials')['password']
             key = base64.b64encode(auth)
 
-            with pushd(build_folder):
+            with pushd("/build/"):
                 BaseHTTPServer.test(AuthHandler, BaseHTTPServer.HTTPServer)
         else:
-            with pushd(build_folder):
+            with pushd("/build/"):
                 Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
                 httpd = SocketServer.TCPServer(('', 8002), Handler)
                 httpd.serve_forever()

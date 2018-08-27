@@ -11,18 +11,23 @@ Entry point is now ``ozstar.swin.edu.au``.
 Hardware
 ----------
 
-Each node includes 36 CPU cores and 2 P100 GPUs. Interconnect is 100 Gb/s intel infiniband. `See here fore more details <https://136.186.1.220/ozstar/>`_.
+Each node includes 36 CPU cores (4 of which are reserved solely for GPU jobs) and 2 P100 GPUs. Interconnect is 100 Gb/s Intel infiniband. `See here for more details <https://supercomputing.swin.edu.au/ozstar/>`_.
 
 Interactive Nodes
 -------------------
 
-There are no dedicated interactive nodes on OzSTAR. However, you can compile and run test jobs on the login
-node or start an interactive session via Slurm.
+There are no dedicated interactive nodes on OzSTAR. However, you can compile and run test jobs on the two login
+nodes or start an interactive session via Slurm.
 
 Job Scheduling
 ----------------
 
-We now use Slurm on OzSTAR. See :doc:`../2-ozstar/torque-vs-slurm` for a comparision between Moab and Slurm.
+We now use Slurm on OzSTAR. See :doc:`../2-ozstar/torque-vs-slurm` for a comparision between Torque/Moab and Slurm.
+
+Memory Requests
+----------------
+
+Job memory limits are enforced by Slurm. The default is 100MB of RAM. If you require more you can request it with eg. ``--mem=20g`` or ``--mem-per-cpu=2g``, up to the per-node limit (on the majority of nodes) of ``--mem=186g`` or ``--mem=191000`` (MB). Do not request more than you need as it will stop other people's jobs from running.
 
 Large memory nodes
 ---------------------
@@ -36,12 +41,26 @@ You will be a member of a new project on OzSTAR as g2 projects are not rolled ov
 files and repositories from g2 to OzSTAR is with ``rsync``. For example, while logged on OzSTAR, you can bring files over via
 ``rsync -av g2:/some/file .``.
 
+Limitations
+-----------
+
+- Maximum wall time **for a job** is 7 days.
+- Maximum CPUs **per project** is 2500.
+- Maximum GPUs **per project** is 100.
+
+Queues
+-------
+
+As opposed to GREEN II, you do not need to specify the queue on OzSTAR. This is now managed by Slurm. If you ask for a
+GPU you be automatically directed into the GPU queue, if you ask for a lot of memory you will be directed onto a large
+memory node, etc.
 
 File System
 --------------
 
 The main filesystem is again Lustre-based. Your root project directory on lustre is now ``/fred/<project_id>``.
 Home directory path is unchanged.
+The filesystem automatically and transparently compresses all your files to save diskspace and improve data throughput.
 
 Modules
 -----------

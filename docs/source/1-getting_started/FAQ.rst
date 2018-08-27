@@ -11,7 +11,7 @@ All Swinburne staff and students are eligible for accounts as are researchers in
 How do I access the facility?
 ------------------------------------------
 
-To access OzSTAR, all access is down through the head node ``ozstar.hpc.swin.edu.au``. Upon login, you will be assigned to one of two nodes, namely ``farnarkle1`` and ``farnarkle2``, in a round robin fashion. From there you can submit jobs to the queue.
+To access OzSTAR, all access is down through the head node ``ozstar.swin.edu.au``. Upon login, you will be assigned to one of two nodes, namely ``farnarkle1`` and ``farnarkle2``, in a round robin fashion. From there you can submit jobs to the queue.
 These nodes can be used to run small tasks interactively. However, for larger jobs that require interaction, you should request an interactive node via Slurm (for more information, see :ref:`interactive_jobs`).
 
 For more details, see the page :doc:`../1-getting_started/Access`.
@@ -32,12 +32,12 @@ How do I change my login password?
 How can I change my login shell?
 ------------------------------------------
 
-You can change your login shell, just type ``/home/changeShell`` in your terminal. This information will take a few minutes to propagate, and you will have to login again for it to take effect.
+You can change your login shell, just type ``changeShell`` in your terminal. This information will take a few minutes to propagate, and you will have to login again for it to take effect.
 
 How can I avoid session timeouts?
 ------------------------------------------
 
-There are a few ways to do this but a simple method is to go to the .ssh directory on your host machine and create a file called “config”. In that file place the line
+There are a few ways to do this but a simple method is to go to the .ssh directory on your laptop or desktop machine and create a file called “config”. In that file place the line
 ::
 
     ServerAliveInterval 120
@@ -63,61 +63,22 @@ Another great starting point is to go to the `GPU Technology Conference <GPU Tec
 Why am I getting “Disk quota exceeded” message?
 ---------------------------------------------------
 
-As an OzSTAR or gSTAR/SwinSTAR user, you may be a member of more than one group. In order to list these groups, you can use the command
+Type the following command on any node ::
 
-::
+    quota
 
-    groups
+and it will highlight which of your project or home quotas you are exceeding.
 
-Each group has its own storage quota, which is shared between its members. If you want to get the quota information of a specific group on lustre, you can use
+Why don't some nvidia and slurm commands, or srun/sinteractive gpu jobs work from my screen session?
+-------------------------------------------------------------------------------------------------------
 
-::
+``screen`` is old and weird and setgid. Linux unsets ``LD_LIBRARY_PATH`` for security reasons when running setgid executables, which breaks our pre-loaded ``slurm`` and ``nvidia`` modules. Interactive slurm jobs started from screen sessions inherit this broken environment.
 
-    lfs quota -g  /lustre
+The simple workaround is to run ``bash -l`` or ``tcsh -l`` in each screen window you open, or to use ``tmux`` instead.
 
-The problem for some users recently has been that the files or directories created under a project directory (e.g ``/lustre/projects/``) have not been created with the correct group ownership because of either they inherit wrong group ownership, or they have incorrect group association. The following commands might help you to fix this issue:
+What's with the weird machine names?
+--------------------------------------
 
-- To find the files and the folders owned by a specific group, you can use
+All components of the OzSTAR cluster are named in memory of the late satirist, actor, comedian, and writer `John Clarke <https://en.wikipedia.org/wiki/John_Clarke_(satirist)>`_.
 
-::
-
-    find  ­group
-
-- In order to map the contents of a certain folder to a specific group you can use
-
-::
-
-    chgrp -R  /path/to/folder
-
-This will change the group ownership of all files and folders (including sub-folder) within a particular directory.
-
-In order to ensure that new files and folders are created with your project group ownership, you can use
-::
-
-    find . /path/to/folder -type d -exec chmod g+s ‘{}’ \;
-
-This will set a special permission so that new files are created with the assigned group owner of that folder. The path used for ‘path/to/folder’ would typically be your working directory.
-
-You will probably face the disk quota exceeded issue because one or more of your directories are associated to the general group “cas”. In order to find all the files and the directories associated to “cas” in a specific path and change them to your group you can use
-::
-
-    find /path/to/folder -group cas -exec chgrp  ‘{}’ \;
-
-Also, Users should be aware that just because a folder is owned by the correct group does not mean that files created under that folder will be. An example of this would be:
-::
-
-    drwxrwxr-x 1 joe p001_swin 4096 Jul 10 12:00 temp_folder
-
-versus:
-::
-
-    drwxrwsr-x 1 joe p001_swin 4096 Jul 10 12:00 temp_folder
-
-Only in the second example, new files and folders will be created under the ownership of the “p001_swin” group. The important permission here is the group stickybit. This is set easily with
-::
-
-    chmod g+s /path/to/folder
-
-Any user with write access will be allowed to change this bit.
-
-The other thing that you should be aware of is the use of ``rsync``. A very typical ``rsync`` command method is to simply use the ``-av`` options. This is a preset for archive, which includes a particular flag for permission preservation. What happens with this is that new writes or syncs of existing files will carry the permission bits of the source files and directories, which may overwrite the existing permission where we have already set the stickybit for inheritance on lustre or on nfs cluster. If you are writing data into some of these directories via rsync, you should ensure your source files also have at least the stickybit applied before transferring, or you could rsync without the ``-p`` option in your command to inherit the destination.
+Login nodes are farnarkle. login node cgroups are grommet. The main filesysem is Dagg mounted at Fred. Lustre servers are arkle, warble, umlaut. The majority of compute nodes are called John, with high memory nodes being Bryan, and the KNL nodes Gina. Unfortunately the mighty Dave Sorenson does not get a guernsey - he might be out injured.

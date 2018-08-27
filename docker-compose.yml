@@ -1,7 +1,6 @@
 version: "3"
 services:
   sphinx-server:
-    #image: dldl/sphinx-server
     build: ./
     container_name: sphinx-server
     expose:
@@ -9,22 +8,6 @@ services:
     ports:
       - "8002:8002"
     volumes:
-      - ./docs/source:/docs
-      #- ./docs/source:/web/docs
-      #- ./docs/source:/var/www/html/docs
-      #- ./docs/build/html:/var/www/html/docs
-    #command:
-    #  - make html
-    #depends_on:
-    #  - reverseproxy
-    #environment:
-    #   VIRTUAL_HOST: ~/docs
-    #   VIRTUAL_PORT: 8002
-       
-
-#networks:
-#  default:
-#    external:
-#      name: nginx-proxy
-
-
+      - ./docs/source:/source
+    command: python /opt/sphinx-server/server.py
+#bash -c "sphinx-build /source /build/docs/ && python /opt/sphinx-server/server.py"

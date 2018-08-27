@@ -118,7 +118,8 @@ html_static_path = ['_static']
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'OzSTARUserGuidedoc'
-
+html_use_smartypants = False
+smartquotes = False
 
 # -- Options for LaTeX output ---------------------------------------------
 

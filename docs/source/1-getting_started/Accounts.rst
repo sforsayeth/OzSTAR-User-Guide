@@ -8,6 +8,12 @@ Overview
 
 Accounts are available to Swinburne staff and students. Also to anyone working in the field of astronomy and space sciences and based at a publicly funded research institution within Australia. Every account must be linked to at least one project, whether that be a general access project that defines a research group or a project approved through a merit allocation scheme. International collaborators on approved projects may also apply for accounts but cannot be the lead on a research project.
 
+Manage your account
+--------------------
+
+If you already have an OzSTAR account and would like to update your contact details, reset your password, etc.
+you can go directly to the account management portal (`supercomputing.swin.edu.au/account-management <https://supercomputing.swin.edu.au/account-management/>`_).
+
 Getting a new account
 -----------------------------------
 
@@ -40,7 +46,7 @@ Create New Project
 ^^^^^^^^^^^^^^^^^^^^^^
 - Step 1: submit a new project request via the account-management system.
 - Step 2: your project request will be sent to our admin team for approval. The apporval process may take up to 48 hours.
-- Step 3: you will receive an email when your project is created. You will find a new project space created on ``/projects/your-project-id``
+- Step 3: you will receive an email when your project is created. You will find a new project space created on ``/fred/your-project-id``
 
 Join Existing Project
 ^^^^^^^^^^^^^^^^^^^^^^
