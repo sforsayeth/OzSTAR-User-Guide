@@ -6,7 +6,7 @@
 Welcome to OzSTAR documentation!
 =============================================
 
-All technical specifications of the OzSTAR hardware are described at `https://supercomputing.swin.edu.au/ozstar/ <https://supercomputing.swin.edu.au/ozstar/>`_. Here, you will find all technical information needed to run jobs on the hardware.
+Here you will find the technical information required to help you run jobs on OzSTAR.
 
 .. toctree::
    :hidden:
