@@ -17,7 +17,9 @@ Access to the supercomputer is available through Secure Shell (SSH) to ozstar.sw
 
 From these nodes you can submit jobs to the queue nodes using `Slurm <https://slurm.schedmd.com>`__. You may also use the login nodes as interactive nodes to run short jobs directly, compile code, or test your application.
 
-From ``farnarkle1/2`` you can also ``ssh sstar``. ``Sstar`` is the dedicated login node for the ``sstar`` queue. From within SUT you can also ``ssh [your-username]@sstar.hpc.swin.edu.au`` directly.
+From each of ``farnarkle1/2`` you can access the other with ``ssh f1`` or ``ssh f2``. ``farnarkle1/2`` are also available for direct login via eg. ``ssh [your-username]@farnarkle1.hpc.swin.edu.au``.
+
+From ``farnarkle1/2`` you can also ``ssh sstar`` or ``ssh gstar``. ``sstar`` is the dedicated login node for the ``sstar`` queue, and similar for ``gstar``. These are also availably directly, but only from within SUT.
 
 **Please, do not use these login nodes to run long jobs or jobs with big computational requirements.** Running such jobs in interactive mode can be done by requesting interactive nodes from the queue.
 
