@@ -20,12 +20,13 @@ Slurm's *partitions* are comparable to PBS's *queues* (e.g. :doc:`torque-vs-slur
 - ``skylake-gpu`` for GPU jobs only on Skylake CPU nodes with nVidia p100/v100 GPUs
 - ``knl`` for Intel Xeon Phi Knights Landing (KNL) nodes
 - ``sstar`` for GPU and non-GPU jobs on older SandyBridge CPUs with nVidia k10/k80 GPUs
+- ``gstar`` for GPU and non-GPU jobs on even older Westmere CPUs with nVidia c2050/c2070 GPUs
 
-With the exception of ``knl``, you should not specify any partition. From the ``farnarkle1/2`` login nodes, the ``skylake`` partition is the default, and gpu jobs are automatically redirected to ``skylake-gpu``. When logged into the ``sstar`` login node, the ``sstar`` partition is the default.
+With the exception of ``knl``, you should not specify any partition. From the ``farnarkle1/2`` login nodes, the ``skylake`` partition is the default, and gpu jobs are automatically redirected to ``skylake-gpu``. When logged into the ``sstar`` login node, the ``sstar`` partition is the default, and same for ``gstar``.
 
-Most people should use the ``skylake`` partition. If ``skylake`` is busy then ``sstar`` is usually an easy alternative and these older cpus probably aren't as slow as you think. ``knl`` nodes have many cores but usually require very large scale threading and AVX2 to get good performance.
+Most people should use the ``skylake`` partition. If ``skylake`` is busy then ``sstar`` or ``gstar`` is usually an easy alternative and these older cpus probably aren't as slow as you think. ``knl`` nodes have many cores but usually require very large scale threading and AVX2 to get good performance.
 
-Note: Because the ``skylake``, ``knl`` and ``sstar`` partitions all have different CPU architectures, and :doc:`Modules` may also differ slightly, codes almost always require a rebuild to use different partitions.
+Note: Because the ``skylake``, ``knl``, ``sstar`` and ``gstar`` partitions all have different CPU architectures, and :doc:`Modules` may also differ slightly, codes almost always require a rebuild to use different partitions.
 
 Slurm Options
 -------------
@@ -39,7 +40,9 @@ For instance if your job needs 2GB per CPU core then you would ask for ``--mem-p
 
 The maximum memory request for the vast majority of nodes (``John`` in ``skylake``) is one of ``--mem=186g``, ``--mem=191000`` (MB), ``--mem-per-cpu=5G``, ``--mem-per-cpu=5968`` (MB). If you ask for more memory than this then your job will be automatically redirected one of the ``Bryan`` nodes which have more RAM available. However there are only few high memory nodes so your job throughput will be low. Again, do not request more than you need as it will also stop other people's jobs from running.
 
-Almost all ``sstar`` nodes physically have ``--mem=62g``, which per-cpu is ``--mem-per-cpu=4000M``.
+Almost all ``sstar`` nodes physically have ``--mem=62g``, which per-cpu (16 cpus) is ``--mem-per-cpu=4000M``.
+
+Almost all ``gstar`` nodes physically have ``--mem=46g``, which per-cpu (12 cpus) is ``--mem-per-cpu=4000M``. A few have 32 cores and ``--mem=439g`` or ``--mem-per-cpu=13g`` and can be requested with ``-C largemem``.
 
 Slurm enforces this memory request by using the Linux kernels ``cgroup`` support which will limit the memory it can use on the node. If your job exceeds that value then the kernel will kill a process which will usually lead to the failure of your job.
 
@@ -58,7 +61,7 @@ If you need to run a program on a compute node that will ask questions, or you w
 
 You would then have to wait until the job started and then be able to interact with it as if you were running it on the login node.
 
-Note: Because ``skylake`` and ``sstar`` partitons have different CPU architectures, srun/sinteractive must be invoked from a login node with a matching architecture. ie. Use ``farnarkle1/2`` for ``skylake``, and the ``sstar`` login node for the ``sstar`` partition.
+Note: Because ``skylake``, ``sstar`` and ``gstar`` partitions have different CPU architectures, srun/sinteractive must be invoked from a login node with a matching architecture. ie. Use ``farnarkle1/2`` for ``skylake``, ``sstar`` for the ``sstar`` partition, and the ``gstar`` login node for the ``gstar`` partition.
 
 Interactive Jobs - Getting a shell prompt on a compute node
 -----------------------------------------------------------
@@ -66,7 +69,7 @@ OzStar has no dedicated interactive nodes, instead you can request them using th
 
 	``sinteractive --time=1:0:0 --mem=4g --cpus-per-task=4``
 
-Note: Because ``skylake`` and ``sstar`` partitons have different CPU architectures, srun/sinteractive must be invoked from a login node with a matching architecture. ie. Use ``farnarkle1/2`` for ``skylake``, and the ``sstar`` login node for the ``sstar`` partition.
+Note: Because ``skylake``, ``sstar`` and ``gstar`` partitions have different CPU architectures, srun/sinteractive must be invoked from a login node with a matching architecture. ie. Use ``farnarkle1/2`` for ``skylake``, ``sstar`` for the ``sstar`` partition, and the ``gstar`` login node for the ``gstar`` partition.
 
 Interactive Jobs - Using X11 applications
 -----------------------------------------
