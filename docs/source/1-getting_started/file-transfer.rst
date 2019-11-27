@@ -91,7 +91,9 @@ Please note that the supercomputer is **NOT** a place to use as a backup for you
 
 Data Transfer Nodes
 --------------------------------------------
-We have a number of data transfer nodes available for users to access directly. They are like regular login nodes and are the preffered place for you to leave long running transfers. 
+We have a number of data transfer nodes available for users to access directly. They are like regular login nodes and are the preffered place for you to leave long running transfers. The standard OzSTAR Apps tree is available, so you can use tools like `bbcp`, etc.
 
-Access them via: 
+The main OzSTAR filesystems are mounted here, plus other legacy filesytems such as /nfs/cluster.
+
+
 ``[your-username]@data-mover[01-04].hpc.swin.edu.au``.
