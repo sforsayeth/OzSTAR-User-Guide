@@ -11,13 +11,15 @@ There are a few other smaller filesystems in the cluster. Of these, ``/home`` is
 Local disks
 -----------
 
-Each compute node has 350GB of local SSD (fast disk) that is accessible from batch jobs. If the i/o patterns in your workflow are inefficient on the usual cluster filesystems, then you should consider using these local disks.
+Each compute node has 350GB of local SSD (fast disk) that is accessible from batch jobs. If the i/o patterns in your workflow are inefficient (e.g may require high IOPS) on the usual cluster filesystems, then you should consider using these local disks.
 
-The ``$JOBFS`` environment variable in each job points at a per-job directory on the local SSD. Space on local disks is requested from ``slurm`` with eg. ``#SBATCH --tmp=20GB``. The ``$JOBFS`` directory is automatically created before each job starts, and deleted after the job ends.
+The ``$JOBFS`` environment variable in each job points at a per-job directory on the local SSD. Space on local disks is requested from ``slurm`` with eg. ``#SBATCH --tmp=20GB``. The ``$JOBFS`` directory is automatically created before each job starts, and deleted after the job ends. Make sure to copy your files from tmp rather than moving them, so that correct permission and ownership is inherited at the destination.
 
 A typical workflow that uses local disks would be to copy tar files from ``/fred`` to ``$JOBFS``, untar, do processing on many small files using many IOPS, tar up the output, copy results back to ``fred``.
 
 OzSTAR also has 8 large NVME drives that are bigger and faster than these SSDs. Please contact hpc-support@swin.edu.au for information on how to access these.
+
+Some applications using file formats like .fits could see a good speed up by using the local SSD rather than the parallel filesystem.
 
 Lustre
 -------------
@@ -90,9 +92,9 @@ What is “large”?
 
 For Lustre, reads and writes of >4MB are ideal. 10 MB and above is best. Small (eg. < 100 kB) reads and writes and especially 4k random writes should be avoided. These cause seeking and obtain low i/o performance from the underlying raids and disks. Small sequential reads are often optimised by read-ahead in block devices or Lustre or ZFS so may perform acceptably, but it's unlikely.
 
-The best way to get high I/O performance from large parallel codes (eg. a checkpoint) is generally to read or write one large O(GB) file per process, or if the number of processes is very large, then one large file per node. This will send I/O to all or many of the 16 large fast OSTs that make up the ``/fred`` filesystem and so could run at over 30 GB/s (not including speed-ups from transparent filesystem compression).
+The best way to get high I/O performance from large parallel codes (eg. a checkpoint) is generally to read or write one large O(GB) file per process, or if the number of processes is very large, then one large file per node. This will send I/O to all or many of the 20 large fast OSTs that make up the ``/fred`` filesystem and so could run at over 30 GB/s (not including speed-ups from transparent filesystem compression).
 
-Each of the 16 individual OSTs (Object Storage Target) in the ``/fred`` (dagg) filesystem is composed of 4 large raidz3's in a zpool and capable of several GB/s. Because each OST is large and fast there is no reason to use any sort of Lustre striping. Lustre file striping is therefore strongly discouraged on OzSTAR.
+Each of the 20 individual OSTs (Object Storage Target) in the ``/fred`` (dagg) filesystem is composed of 4 large raidz3's in a zpool and capable of several GB/s. Because each OST is large and fast there is no reason to use any sort of Lustre striping. Lustre file striping is therefore strongly discouraged on OzSTAR. If you do have large, multi-terrabyte files and want to know about striping then please reach out to us via hpc-support@swin.edu.au
 
 What are IOPS?
 ********************
