@@ -89,3 +89,9 @@ Another potential option is to use `Unison <https://www.cis.upenn.edu/~bcpierce/
 
 Please note that the supercomputer is **NOT** a place to use as a backup for your laptop or workstation's holiday snaps and emails.
 
+Data Transfer Nodes
+--------------------------------------------
+We have a number of data transfer nodes available for users to access directly. They are like regular login nodes and are the preffered place for you to leave long running transfers. 
+
+Access them via: 
+``[your-username]@data-mover[01-04].hpc.swin.edu.au``.
