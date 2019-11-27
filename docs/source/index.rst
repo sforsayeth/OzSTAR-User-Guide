@@ -55,6 +55,7 @@ Here you will find the technical information required to help you run jobs on Oz
    2-ozstar/oz-slurm-details
    2-ozstar/oz-slurm-create
    2-ozstar/oz-slurm-examples
+   2-ozstar/oz-slurm-monitoring
    2-ozstar/torque-vs-slurm
 
 
