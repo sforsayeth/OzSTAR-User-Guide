@@ -76,6 +76,10 @@ If a transfer is interrupted, you might end up with part of the files being tran
 
     If one large file is left partially transferred, you can resume it using the ``--partial``.
 
+Useful rsync options: 
+
+``rsync -avPxHS --no-g --chmod=Dg+s /g2/lustre/some/dir/ /fred/ozXXX/some/other/dir/`` 
+
 
 Synchronising with a local directory
 --------------------------------------------
