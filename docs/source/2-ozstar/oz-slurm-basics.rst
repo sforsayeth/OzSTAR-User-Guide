@@ -3,6 +3,8 @@
 Slurm: basics
 ==================================
 
+(For more detail on each command please see job monitoring)
+
 Brief Command Summary
 ------------------------
 - Job control and monitoring:  ``scontrol`` and ``squeue`` and ``showq``.
