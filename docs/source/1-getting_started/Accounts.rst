@@ -25,7 +25,7 @@ Getting a new account
     * For new accounts:
         - Fill in the form on https://supercomputing.swin.edu.au/account-management/new_account_request with your details.
 - Step 2:
-    * The system will send you an email to verify your email address.
+    * The system will send you an email to verify your email address. This will expire after 24 hours. If your link has expired please submit a support ticket to hpc-support@swin.edu.au.
 - Step 3:
     * Your account request will be sent to our admin team for approval. This may take up to 48 hours. You will not be able to login to the account-management system until your account has been approved.
 - Step 4:
