@@ -291,7 +291,7 @@ If you need simply to have an interactive Bash session on a compute node, with t
 
 Doing that, you are submitting a 1-CPU, default memory, default duration job that will return a Bash prompt when it starts.
 
-You can srun an mpi task inside your sinteractive session so long as you request the session with the ``--gres=tmp:0``. If you don't then you might find your task hangs indefinitely.
+You can srun an mpi task inside your sinteractive session so long as you execute with the flag: ``--gres=tmp:0``. If you don't then you might find your task hangs indefinitely.
 
 If you need more flexibility, you will need to use the `salloc <https://slurm.schedmd.com/salloc.html>`_ command. The ``salloc`` command accepts the same parameters as ``sbatch`` as far as resource requirement are concerned. Once the allocation is granted, you can use ``srun`` the same way you would in a submission script.
 
