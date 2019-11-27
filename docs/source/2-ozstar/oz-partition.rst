@@ -24,9 +24,15 @@ Slurm's *partitions* are comparable to PBS's *queues* (e.g. :doc:`torque-vs-slur
 
 With the exception of ``knl``, you should not specify any partition. From the ``farnarkle1/2`` login nodes, the ``skylake`` partition is the default, and gpu jobs are automatically redirected to ``skylake-gpu``. When logged into the ``sstar`` login node, the ``sstar`` partition is the default, and same for ``gstar``.
 
+The following login nodes should be used for submitting jobs to the required partition:
+
+- ``farnarkle[1-2]`` for submitting to the `skylake` or `skylake-gpu` partitions.
+- ``sstar`` for submitting to the `sstar` partition.
+- ``gstar`` for submitting to the `gstar` partition.  
+
 Most people should use the ``skylake`` partition. If ``skylake`` is busy then ``sstar`` or ``gstar`` is usually an easy alternative and these older cpus probably aren't as slow as you think. ``knl`` nodes have many cores but usually require very large scale threading and AVX2 to get good performance.
 
-Note: Because the ``skylake``, ``knl``, ``sstar`` and ``gstar`` partitions all have different CPU architectures, and :doc:`Modules` may also differ slightly, codes almost always require a rebuild to use different partitions.
+Note: Because the ``skylake``, ``knl``, ``sstar`` and ``gstar`` partitions all have different CPU architectures, and :doc:`Modules` may also differ slightly, codes almost always require a rebuild to use different partitions. Codes can be re-compiled on the respective login node. 
 
 Slurm Options
 -------------
